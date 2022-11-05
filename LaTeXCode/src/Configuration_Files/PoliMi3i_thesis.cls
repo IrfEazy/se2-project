@@ -23,6 +23,7 @@
 % Define new command: numbered and un-numbered chapter in Polimi style. 
 
 \let\latexchapter\chapter
+%! suppress = MightBreakTexify
 \renewcommand{\chapter}{\@ifstar{\polimichapterstar}{\polimichapter}}
 
 \newcommand{\polimichapter}[1]{
