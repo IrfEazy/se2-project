@@ -45,14 +45,14 @@
 \usepackage{tikz} % A package for high-quality hand-made figures.
 \usetikzlibrary{}
 \graphicspath{{./Images/}} % Directory of the images
-\usepackage{caption} % Coloured captions
-\usepackage{xcolor} % Coloured captions
+%\usepackage{caption} % Coloured captions
+%\usepackage{xcolor} % Coloured captions
 \usepackage{amsthm,thmtools,xcolor} % Coloured "Theorem"
 \usepackage{float}
 
 % STANDARD MATH PACKAGES
 \usepackage{amsmath}
-\usepackage{amsthm}
+%\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{bm}
@@ -69,7 +69,16 @@
 \usepackage{algorithmic}
 
 % PACKAGES FOR REFERENCES & BIBLIOGRAPHY
-\usepackage[colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref} % Adds clickable links at references
+\usepackage[
+    colorlinks=true,
+    linkcolor=black,
+    anchorcolor=black,
+    citecolor=black,
+    filecolor=black,
+    menucolor=black,
+    runcolor=black,
+    urlcolor=black
+]{hyperref} % Adds clickable links at references
 \usepackage{cleveref}
 \usepackage[square, numbers, sort&compress]{natbib} % Square brackets, citing references with numbers, citations sorted by appearance in the text and compressed
 \bibliographystyle{abbrvnat} % You may use a different style adapted to your field
@@ -89,9 +98,9 @@
 %----------------------------------------------------------------------------
 
 % EXAMPLES OF NEW COMMANDS
-\newcommand{\bea}{\begin{eqnarray}} % Shortcut for equation arrays
-\newcommand{\eea}{\end{eqnarray}}
-\newcommand{\e}[1]{\times 10^{#1}}  % Powers of 10 notation
+%\newcommand{\bea}{\begin{eqnarray}} % Shortcut for equation arrays
+%\newcommand{\eea}{\end{eqnarray}}
+%\newcommand{\e}[1]{\times 10^{#1}}  % Powers of 10 notation
 
 %----------------------------------------------------------------------------
 %	ADD YOUR PACKAGES (be careful of package interaction)
@@ -121,15 +130,15 @@
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
 
 \puttitle{
-title=Systems and Methods for Big and Unstructured Data Project,
-name1=Name Surname 1, % Author Name and Surname
-name2=Name Surname 2,
-name3=Name Surname 3,
-name4=Name Surname 4,
-name5=Name Surname 5,
+title=Software Engineering 2\\Requirements Analysis and\\Specifications Document,
+name1=Irfan Cela [10694934], % Author Name and Surname
+name2=Mario Cela [10685242],
+name3=Alessandro Cogollo [10571078],
+%name4=Name Surname 4,
+%name5=Name Surname 5,
 academicyear=2022-2023,
-groupnumber=GroupNumber
-} % These info will be put into your Title page 
+%groupnumber=GroupNumber
+} % These info will be put into your Title page
 
 %----------------------------------------------------------------------------
 %	PREAMBLE PAGES: ABSTRACT (inglese e italiano), EXECUTIVE SUMMARY
@@ -143,7 +152,7 @@ groupnumber=GroupNumber
 
 % TABLE OF CONTENTS
 \thispagestyle{empty}
-\tableofcontents % Table of contents 
+\tableofcontents % Table of contents
 \thispagestyle{empty}
 \cleardoublepage
 
@@ -211,7 +220,8 @@ as well as Equation~\eqref{eq:maxwell1} and Equation~\eqref{eq:maxwell3}.
 Thanks to the \verb|cleveref| package, there is no need to use \verb|\eqref|.
 Remember that Equations have to be numbered only if they are referenced in the text.
 
-Equations~\eqref{eq:maxwell_multilabels1}, \eqref{eq:maxwell_multilabels2}, \eqref{eq:maxwell_multilabels3}, and \eqref{eq:maxwell_multilabels4} show again Maxwell's equations without brace:
+Equations~\eqref{eq:maxwell_multilabels1},~\eqref{eq:maxwell_multilabels2},~\eqref{eq:maxwell_multilabels3},
+and~\eqref{eq:maxwell_multilabels4} show again Maxwell's equations without brace:
 \begin{align}
 \nabla\cdot \bm{D} & = \rho, \label{eq:maxwell_multilabels1} \\
 \nabla \times \bm{E} +  \frac{\partial \bm{B}}{\partial t} &= \bm{0}, \label{eq:maxwell_multilabels2} \\
@@ -234,7 +244,8 @@ but with just one label:
 \end{equation}
 
 \section{Figures, Tables and Algorithms}
-Figures, Tables and Algorithms have to contain a Caption that describe their content, and have to be properly reffered in the text.
+Figures, Tables and Algorithms have to contain a Caption that describe their content, and have to be properly
+referred in the text.
 
 \subsection{Figures}
 \label{subsec:figures}
@@ -254,16 +265,17 @@ Here xxx is the correct format, e.g. \verb|.png|, \verb|.jpg|, \verb|.eps|, \dot
 \end{figure}
 
 Thanks to the \texttt{\textbackslash subfloat} command, a single figure, such as Figure~\ref{fig:quadtree},
-can contain multiple sub-figures with their own caption and label, e.g. \color{black} Figure~\ref{fig:polimi_logo1} and Figure~\ref{fig:polimi_logo2}.
+can contain multiple sub-figures with their own caption and label, e.g. \color{black} Figure~\ref{fig:polimi_logo1}
+and Figure~\ref{fig:polimi_logo2}.
 
 \begin{figure}[H]
 \centering
 \subfloat[One PoliMi logo.\label{fig:polimi_logo1}]{
-\includegraphics[scale=0.5]{Images/logo_polimi_scritta.eps}
+\includegraphics[scale=0.5]{Images/logo_polimi_scritta}
 }
 \quad
 \subfloat[Another one PoliMi logo.\label{fig:polimi_logo2}]{
-\includegraphics[scale=0.5]{Images/logo_polimi_scritta2.eps}
+\includegraphics[scale=0.5]{Images/logo_polimi_scritta2}
 }
 \caption[Shorter caption]{This is a very long caption you don't want to appear in the List of Figures.}
 \label{fig:quadtree2}
@@ -273,7 +285,8 @@ can contain multiple sub-figures with their own caption and label, e.g. \color{b
 \subsection{Tables}
 \label{subsec:tables}
 
-Within the environments \texttt{table} and  \texttt{tabular} you can create very fancy tables as the one shown in Table~\ref{table:example}.
+Within the environments \texttt{table} and  \texttt{tabular} you can create very fancy tables as the one shown in
+Table~\ref{table:example}.
 \begin{table}[H]
 \caption*{\textbf{Title of Table (optional)}}
 \centering
@@ -293,7 +306,9 @@ Within the environments \texttt{table} and  \texttt{tabular} you can create very
 \end{table}
 
 You can also consider to highlight selected columns or rows in order to make tables more readable.
-Moreover, with the use of \texttt{table*} and the option \texttt{bp} it is possible to align them at the bottom of the page. One example is presented in Table~\ref{table:exampleC}.
+Moreover, with the use of \texttt{table*} and the option \texttt{bp} it is possible to align them at the bottom of
+the page.
+One example is presented in Table~\ref{table:exampleC}.
 
 \begin{table}[H]
 \centering
@@ -344,6 +359,7 @@ An example is shown in Algorithm~\ref{alg:var}.
 \caption{Name of the Algorithm}
 \label{alg:var}
 \label{protocol1}
+%! suppress = MissingImport
 \begin{algorithmic}[1]
 \STATE Initial instructions
 \FOR{$for-condition$}

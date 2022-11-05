@@ -1,2 +1,6 @@
 # Ignore idea's workspace configuration folder
 /.idea/
+/out/
+!/out/
+/out/*
+!/out/Project.pdf

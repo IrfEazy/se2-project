@@ -110,7 +110,7 @@
         \vfill
         %\begin{minipage}{0.95\textwidth}
         \begin{minipage}{0.95\textwidth}
-            \includegraphics[trim={1.2cm 0 0 0},clip, width=0.7\textwidth]{Images/02_ING_IND_INFORMAZIONE_COL_POSITIVO.eps}
+            \includegraphics[trim={1.2cm 0 0 0},clip, width=0.7\textwidth]{Images/02_ING_IND_INFORMAZIONE_COL_POSITIVO}
             \hfill
             \\
             \vspace{2.5cm}
@@ -122,14 +122,14 @@
             {\color{black} \hspace{6.3em} \Large \bfseries{\nameB}} \\
             \vspace{0.51cm}
             {\color{black} \hspace{6.3em} \Large \bfseries{\nameC}} \\
-            \vspace{0.51cm}
-            {\color{black} \hspace{6.3em} \Large \bfseries{\nameD}} \\
-            \vspace{0.51cm}
-            {\color{black} \hspace{6.3em} \Large \bfseries{\nameE}} \\
-            \\
-            \vspace{0.51cm}
-            \\
-            {\color{black} \Large {Group Number:} \bfseries{\groupnumber}} \\ \\
+            %\vspace{0.51cm}
+            %{\color{black} \hspace{6.3em} \Large \bfseries{\nameD}} \\
+            %\vspace{0.51cm}
+            %{\color{black} \hspace{6.3em} \Large \bfseries{\nameE}} \\
+            %\\
+            %\vspace{0.51cm}
+            %\\
+            %{\color{black} \Large {Group Number:} \bfseries{\groupnumber}} \\ \\
         \end{minipage}
         \\
         \vspace*{\fill}
