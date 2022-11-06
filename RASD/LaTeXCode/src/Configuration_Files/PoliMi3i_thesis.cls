@@ -69,7 +69,7 @@
             \vfill
             \centering
             \transparent{0.4}
-            \includegraphics[width=0.85\paperwidth]{./raggiera_polimi.eps}
+            \includegraphics[width=0.85\paperwidth]{/D:/Users/corsair-dragon/Documents/Github - Mario/CelaCelaCogollo/RASD/LaTeXCode/src/Images/raggiera_polimi}
             \vfill
         }}}
 
@@ -80,7 +80,7 @@
             \vfill
             \centering
             \transparent{0.4}
-            \includegraphics[width=0.70\paperwidth]{./raggiera_polimi.eps}
+            \includegraphics[width=0.70\paperwidth]{/D:/Users/corsair-dragon/Documents/Github - Mario/CelaCelaCogollo/RASD/LaTeXCode/src/Images/raggiera_polimi}
             \vfill
         }}}
 
@@ -111,7 +111,7 @@
         \vfill
         %\begin{minipage}{0.95\textwidth}
         \begin{minipage}{0.95\textwidth}
-            \includegraphics[trim={1.2cm 0 0 0},clip, width=0.7\textwidth]{Images/02_ING_IND_INFORMAZIONE_COL_POSITIVO}
+            \includegraphics[trim={1.2cm 0 0 0},clip, width=0.7\textwidth]{/D:/Users/corsair-dragon/Documents/Github - Mario/CelaCelaCogollo/RASD/LaTeXCode/src/Images/02_ING_IND_INFORMAZIONE_COL_POSITIVO}
             \hfill
             \\
             \vspace{2.5cm}
