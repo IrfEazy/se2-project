@@ -1,6 +1,6 @@
 # Ignore idea's workspace configuration folder
 /.idea/
-LaTeXCode/out/
-!LaTeXCode/out/
-LaTeXCode/out/*
-!LaTeXCode/out/Project.pdf
+RASD/LaTeXCode/out/
+!RASD/LaTeXCode/out/
+RASD/LaTeXCode/out/*
+!RASD/LaTeXCode/out/Project.pdf
