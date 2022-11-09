@@ -4,3 +4,4 @@ RASD/LaTeXCode/out/
 !RASD/LaTeXCode/out/
 RASD/LaTeXCode/out/*
 !RASD/LaTeXCode/out/Project.pdf
+/RASD/LaTeXCode/src/Images/*.pdf

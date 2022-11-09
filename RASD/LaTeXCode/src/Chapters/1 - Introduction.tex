@@ -1,6 +1,3 @@
-%! Author = Mario
-%! Date = 11/6/2022
-
 The EVs are eco-friendly vehicles that will be on our roads in the next future.
 In order to keep global warming below 1.5°C, Europe have decided to reduce greenhouse gas emissions of CO2 per
 person per year by 2030, and, by the same year, the IEA predicts that electric vehicles will have a market share
@@ -9,20 +6,107 @@ EVs consumption is measured in kilowatt-hours per 100 kilometers, and most of th
 between 150 and 350 kilometers on a single charge, but premium-brand models can currently cover more than 500
 kilometers.
 
-%Batteries used in EVs makes the car in order to have a longer life service than the fuel cars, and they are to be
-%used in future to stabilize smart grids, which denotes intelligent electricity networks.
-%In particular, they perfectly coordinate the generation, the storage and the consumption of electricity and
-%equalizes power fluctuations in the grid.
-
-%The batteries are the main problem of electromobility, for instance, the users asks for batteries that allows
-%them to drive for long distances, and at low costs.
-
 In this context, when people use an electric vehicle, knowing where to charge it and carefully planning the
 charging process in such a way that it introduces minimal interference and constraints on our daily schedule
 is of great importance.
 
-That's were \verb|eMALL| operates: it can find charging stations owned by several Charging Point Operators (CPO) and,
+That's were \verb|eMALL| operates: it can find charging stations owned by several Charging Point Operators - CPO - and,
 considering the activities in user's schedule, it can propose the best possible path of charging process
 in order to minimize the cost and the waisted time at the station.
 
-%In this setting a software that allows people to choose for the best Charging Point Operator, e.g.\ CPO
+
+\section{Purpose}
+\label{sec:purpose}
+\newcounter{g}
+\setcounter{g}{1}
+\newcommand{\cg}{\theg\stepcounter{g}}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ |l|p{0.9\linewidth}| }
+        \hline
+        \textbf{ID} & \textbf{Description}                                                                                                     \\
+        \hline
+        G\cg        & The EVD can see charging stations nearby a specific location on the map                                                  \\
+        \hline
+        G\cg        & The EVD can get the costs of charging stations                                                                           \\
+        \hline
+        G\cg        & The EVD can search for special offer provided by charging stations                                                       \\
+        \hline
+        G\cg        & The EVD can book a charge for his EV at a charging station for a specified time frame                                    \\
+        \hline
+        G\cg        & The EVD can pay for the recharging service                                                                               \\
+        \hline
+        G\cg        & Given the destination inserted in an activity in his calendar application, the EVD receives suggestions to charge his EV \\ %TODO: not correctly explained
+        \hline
+    \end{tabular}
+    \caption{The goals.}
+    \label{tab:goals_tab}
+\end{table}
+
+
+\section{Scope}
+\label{sec:scope}
+
+
+\section{Definition, Acronyms, Abbreviations}
+\label{sec:definition_acronyms_abbreviations}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ |l|l| }
+            \hline
+            \textbf{Acronyms} & \textbf{Definition}                              \\
+            \hline
+            eMSP              & e-Mobility Service Provider                      \\
+            \hline
+            CPO               & Charging Point Operator                          \\
+            \hline
+            CPMS              & Charge Point Management System                   \\
+            \hline
+            DSO               & Distribution System Operator                     \\
+            \hline
+            RASD              & Requirements Analysis and Specification Document \\
+            \hline
+            WP                & World Phenomena                                  \\
+            \hline
+            SP                & Shared Phenomena                                 \\
+            \hline
+            GX                & Goal Number X                                    \\
+            \hline
+            EVD               & Electric Vehicle Driver                          \\
+            \hline
+        \end{tabular}
+        \caption{Acronyms used in the document.}
+        \label{tab:acronyms}
+    \end{center}
+\end{table}
+
+
+\section{Revision history}
+\label{sec:revision_history}
+
+
+\section{Reference Documents}
+\label{sec:reference_documents}
+The specification document \verb|Assignment RDD AY 2022-2023.pdf|.
+
+
+\section{Document Structure}
+\label{sec:document_structure}
+The document is structured in six sections, as described below.
+
+First section introduce the goals of the project, purposes, and a brief analysis on world and shared phenomena;
+abbreviations and definitions useful to understand the problem are listed as well.
+
+The following section, the second one, provides an overall description of the problem: here scenarios and further
+details on domain, and scenarios are included, aside from more product and user characteristics, assumptions,
+dependencies and constraints.
+
+Later on, the third section focuses on the specific requirements and provides a more detailed analysis of external
+interface requirements, functional requirements and performance requirements.
+
+Lastly, the fourth section provides a formal analysis, using alloy.
+This chapter is crucial to prove the correctness of the model described in the previous sections, and should focus on
+reporting results of the checks performed and meaningful assertions.
+
+Section five reports the effort spent by each group member in the redaction of this document, meanwhile the last
+section simply lists bibliography references and other resources used to redact this document.

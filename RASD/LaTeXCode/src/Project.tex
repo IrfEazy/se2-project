@@ -47,7 +47,9 @@
 \graphicspath{{./Images/}} % Directory of the images
 %\usepackage{caption} % Coloured captions
 %\usepackage{xcolor} % Coloured captions
-\usepackage{amsthm,thmtools,xcolor} % Coloured "Theorem"
+\usepackage{amsthm} % Coloured "Theorem"
+\usepackage{thmtools}
+\usepackage{xcolor}
 \usepackage{float}
 
 % STANDARD MATH PACKAGES
@@ -130,9 +132,9 @@
 
     \puttitle{
         title=Software Engineering 2\\Requirements Analysis and\\Specification Document,
-        name1=Irfan Cela [10694934], % Author Name and Surname
-        name2=Mario Cela [10685242],
-        name3=Alessandro Cogollo [10571078],
+        name1=Irfan Cela - 10694934, % Author Name and Surname
+        name2=Mario Cela - 10685242,
+        name3=Alessandro Cogollo - 10571078,
 %name4=Name Surname 4,
 %name5=Name Surname 5,
         academicyear=2022-2023,
@@ -178,136 +180,24 @@
     \input{Chapters/1 - Introduction}
 
 
-    \section{Purpose}\label{sec:purpose}
-    \subsection{Goals}
-    \begin{tabular}{ |c|c| } 
-    	\hline
-    	G1 & Know about the charging stations nearby\\
-    	\hline
-    \end{tabular}
-
-
-    \section{Scope}\label{sec:scope}
-    \subsection{World Phenomena}
-    \begin{tabular}{ |c|c| } 
-    	\hline
-    	WP1 & Electric car owners drive their vehicles\\
-    	\hline
-    \end{tabular}
-
-    \subsection{Shared Phenomena}
-	\begin{tabular}{ |c|c| } 
-		\hline
-		SP1 & EVDs need to recharge their battery\\
-		\hline
-	\end{tabular}
-
-    \section{Definition, Acronyms, Abbreviations}\label{sec:definition_acronyms_abbreviations}
-	\begin{tabular}{ |c|c| } 
-		\hline
-		eMSPs & e-Mobility Service Providers\\
-		\hline
-		CPOs & Charging Point Operators\\ 
-		\hline
-		CPMS & Charge Point Management System\\ 
-		\hline
-		DSOs & Distribution System Operators\\ 
-		\hline
-		RASD & Requirements Analysis and Specification Document\\
-		\hline
-		WP & World Phenomena\\
-		\hline
-		SP & Shared Phenomena\\
-		\hline
-		GX & Goal Number X\\
-		\hline
-		EVDs & Electric Vehicle Drivers\\
-		\hline
-	\end{tabular}
-
-    \section{Revision history}\label{sec:revision_history}
-
-
-    \section{Reference Documents}\label{sec:reference_documents}
-	The specification document “01. Assignment RDD AY 2022-2023.pdf”.
-
-    \section{Document Structure}\label{sec:document_structure}
-	The document is structured in six sections, as described below.
-	
-	First section introduce the goals of the project, purposes, and a brief analysis on world and shared phenomena; abbreviations and definitions useful to understand the problem are listed as well. 
-	
-	The following section, the second one, provides an overall description of the problem: here scenarios and further details on domain, and scenarios are included, aside from more product and user characteristics, assumptions, dependencies and constraints.
-	
-	Later on, the third section focuses on the specific requirements and provides a more detailed analysis of external interface requirements, functional requirements and performance requirements.
-	
-	Lastly, the fourth section provides a formal analysis, using alloy. This chapter is crucial to prove the correctness of the model described in the previous sections, and should focus on reporting results of the checks performed and meaningful assertions.
-	
-	Section five reports the effort spent by each group member in the redaction of this document, meanwhile the last section simply lists bibliography references and other resources used to redact this document.
-
     \chapter{Overall Description}\label{ch:overall_description}
-
-
-    \section{Product perspective}\label{sec:product_perspective}
-
-
-    \section{Product functions}\label{sec:product_functions}
-
-
-    \section{User characteristics}\label{sec:user_characteristics}
-
-
-    \section{Assumptions, dependencies and constraints}\label{sec:assumptions_dependencies_and_constraints}
+    \input{Chapters/2 - Overall Description.tex}
 
 
     \chapter{Specific Requirements}\label{ch:specific_requirements}
-
-
-    \section{External Interface Requirements}\label{sec:external_interface_requirements}
-
-    \subsection{User Interfaces}\label{subsec:user_interfaces}
-
-    \subsection{Hardware Interfaces}\label{subsec:hardware_interfaces}
-
-    \subsection{Software Interfaces}\label{subsec:software_interfaces}
-
-    \subsection{Communication Interfaces}\label{subsec:communication_interfaces}
-
-
-    \section{Functional Requirements}\label{sec:functional_requirements}
-
-
-    \section{Performance Requirements}\label{sec:performance_requirements}
-
-
-    \section{Design Constraints}\label{sec:design_constraints}
-
-    \subsection{Standards compliance}\label{subsec:standards_compliance}
-
-    \subsection{Hardware limitations}\label{subsec:hardware_limitations}
-
-    \subsection{Any other constraint}\label{subsec:any_other_constraint}
-
-
-    \section{Software System Attributes}\label{sec:software_system_attributes}
-
-    \subsection{Reliability}\label{subsec:reliability}
-
-    \subsection{Availability}\label{subsec:availability}
-
-    \subsection{Security}\label{subsec:security}
-
-    \subsection{Maintainability}\label{subsec:maintainability}
-
-    \subsection{Portability}\label{subsec:portability}
+    \input{Chapters/3 - Specific Requirements.tex}
 
 
     \chapter{Formal Analysis Using Alloy}\label{ch:formal_analysis_using_alloy}
+    \input{Chapters/4 - Formal Analysis Using Alloy.tex}
 
 
     \chapter{Effort Spent}\label{ch:effort_spent}
+    \input{Chapters/5 - Effort Spent.tex}
 
 
     \chapter{References}\label{ch:references}
+    \input{Chapters/6 - References}
 
 
 %-------------------------------------------------------------------------
