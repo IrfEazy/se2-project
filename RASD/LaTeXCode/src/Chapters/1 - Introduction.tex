@@ -46,7 +46,54 @@ in order to minimize the cost and the waisted time at the station.
 
 \section{Scope}
 \label{sec:scope}
-
+\newcounter{wp}
+\setcounter{wp}{1}
+\newcommand{\cwp}{\thewp\stepcounter{wp}}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ |l|p{0.8\linewidth}| }
+            \hline
+            \textbf{ID} & \textbf{Description}                                               \\
+            \hline
+            WP\cwp      & The DSO provides energy to the CPO                                 \\
+            \hline
+            WP\cwp      & The EVD wants to charge his EV's battery                           \\
+            \hline
+            WP\cwp      & The EVD wants to know the prices of a specific charging station    \\
+            \hline
+            WP\cwp      & The EVD wants to know if there are any special offer he can redeem \\
+            \hline
+            WP\cwp      & The EVD wants to know the position of a specific charging station  \\
+            \hline
+            WP\cwp      & An eMSP actives a new offer for his customers                      \\
+            \hline
+            WP\cwp      & The CPO have deals with eMSP and offer them their charging station \\
+            \hline
+            WP\cwp      & The EVD pays for the service                                       \\
+            \hline
+            WP\cwp      & The EVD inserts a new activity in his calendar                     \\
+            \hline
+%TODO: evaluate the WP ``The EVD has a calendar where he inserts his activities'' with respect to WP8
+%TODO: possibly a domain assumption ``The EV uses a GPS module for its localization''
+%TODO: we have to insert as a domain assumption that our system is compatible only with EVs system navigation because
+%            we never speak about phones, but only about EVs
+%TODO: possibly a domain assumption ``The EV uses internet connection in order to communicate with CPMS' API''
+%TODO: possibly a domain assumption ``Each EV has compatibility with a particular charging plug''
+%TODO: possibly a domain assumption ``The EV's navigation system provides information about its GPS''
+%TODO: possibly a domain assumption ``The EV's navigation system provides information about its average consumption''
+%TODO: possibly a domain assumption ``The EV's navigation system provides information about its battery status''
+%TODO: possibly a domain assumption ``The eMSP offers API in order to manage charging services''
+%TODO: possibly a domain assumption ``The eMSP offers the availability of charging points in its charging stations through its API''
+%TODO: possibly a domain assumption ``The eMSP provides charging station location information to eMSPs thanks to its API''
+%TODO: possibly a domain assumption ``The eMSP shows to EVDs the ability to book charging stations up to a week in advance''
+%TODO: possibly a requirement ``eMSP allows the EVD to be in place for the check up to 15 minutes from the booked time''
+%            It cannot be a WP because the eMSP is already part of the system, and furthermore is not exclusively part
+%            of the reality and then not a WP.
+        \end{tabular}
+    \end{center}
+    \caption{World Phenomenas.}
+    \label{tab:worldph_tab}
+\end{table}
 
 \section{Definition, Acronyms, Abbreviations}
 \label{sec:definition_acronyms_abbreviations}
