@@ -95,6 +95,33 @@ in order to minimize the cost and the waisted time at the station.
     \label{tab:worldph_tab}
 \end{table}
 
+\newcounter{sp}
+\setcounter{sp}{1}
+\newcommand{\csp} {\thesp\stepcounter{sp}} \begin{table}[H]
+	\begin{center}
+		\begin{longtable}{ |l|p{0.5\linewidth}|l|l| } \hline 
+			\textbf{ID} & \textbf{Description} & \textbf{Controller} & \textbf{Observer}\\
+		\hline SP\csp & The EVD creates an account in eMALL system & EVD & eMALL\\
+			\hline SP\csp & The EVD logs in eMALL & EVD & eMALL\\
+			\hline SP\csp & eMALL notifies the EVD about the need of charging the EV & eMALL & EVD\\
+			\hline SP\csp & eMALL gets EVD's current position & eMALL & EVD\\
+			\hline SP\csp & eMALL gets the position of charging stations through eMSP's API & eMALL & eMSP\\
+			\hline SP\csp & eMALL gets the costs of charging stations through eMSP's API & eMALL & eMSP\\
+			\hline SP\csp & eMALL gets special offers active in close charging stations through eMSP's API & eMALL & eMSP\\
+			\hline SP\csp & eMALL gets information about the availability of charging points in a charging station through eMSP's API & eMALL & eMSP\\
+			\hline SP\csp & eMALL gets information about the plugs available in a charging station through eMSP's API & eMALL & eMSP\\
+			\hline SP\csp & The EVD retrieves information about the availability of charging points in a charging station & EVD & eMALL\\
+			\hline SP\csp & The EVD retrieves information about the availability of a specific plug in a charging station & EVD & eMALL\\
+			\hline SP\csp & The EVD books a charging point for a specific plug through eMALL & EVD & eMALL\\
+			\hline SP\csp & The EVD pays for a caution after booking a charge through eMALL & EVD & eMALL\\
+			\hline SP\csp & The EVD starts the charge and waits until the battery reaches the desired level of power & EVD & eMALL\\
+			\hline
+		\end{longtable}
+	\end{center}
+\caption{Shared Phenomenas.}
+\label{tab:sharedph_tab}
+\end{table}
+
 \section{Definition, Acronyms, Abbreviations}
 \label{sec:definition_acronyms_abbreviations}
 \begin{table}[H]
