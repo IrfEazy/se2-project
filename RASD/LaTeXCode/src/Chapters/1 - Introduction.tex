@@ -111,57 +111,71 @@ in order to minimize the cost and the waisted time at the station.
 \newcounter{sp}
 \setcounter{sp}{1}
 \newcommand{\csp} {\thesp\stepcounter{sp}}
-\begin{table}[H]
-    \begin{center}
-        \begin{longtable}{ |l|p{0.5\linewidth}|l|l| }
-            \hline
-            \textbf{ID} & \textbf{Description}                                                                                      & \textbf{Controller} & \textbf{Observer} \\
-            \hline
-            SP\csp      & The EVD creates an account in eMALL system                                                                & EVD                 & eMALL             \\
-            \hline
-            SP\csp      & The EVD logs in eMALL                                                                                     & EVD                 & eMALL             \\
-            \hline
-            SP\csp      & eMALL notifies the EVD about the need of charging the EV                                                  & eMALL               & EVD               \\
-            \hline
-            SP\csp      & eMALL gets EVD's current position                                                                         & eMALL               & EVD               \\
-            \hline
-            SP\csp      & eMALL gets the position of charging stations through eMSP's API                                           & eMALL               & eMSP              \\
-            \hline
-            SP\csp      & eMALL gets the costs of charging stations through eMSP's API                                              & eMALL               & eMSP              \\
-            \hline
-            SP\csp      & eMALL gets special offers active in close charging stations through eMSP's API & eMALL & eMSP\\
-            \hline
-            SP\csp      & eMALL gets information about the availability of charging points in a charging station through eMSP's API & eMALL & eMSP\\
-            \hline
-            SP\csp      & eMALL gets information about the plugs available in a charging station through eMSP's API & eMALL & eMSP\\
-            \hline
-            SP\csp      & The EVD retrieves information about the availability of charging points in a charging station & EVD & eMALL\\
-            \hline
-            SP\csp      & The EVD retrieves information about the availability of a specific plug in a charging station & EVD & eMALL\\
-            \hline
-            SP\csp      & The EVD books a charging point for a specific plug through eMALL                                          & EVD                 & eMALL             \\
-            \hline
-            SP\csp      & The EVD pays for a caution after booking a charge through eMALL                                           & EVD                 & eMALL             \\
-            \hline
-            SP\csp      & The EVD starts the charge and waits until the battery reaches the desired level of power & EVD & eMALL\\
-            \hline
-            SP\csp      & CPO inserts location information into the CPMS                                                            & EVD                 & eMALL             \\
-            \hline
-            SP\csp      & CPMS requests electricity to the DSO                                                                      & EVD                 & eMALL             \\
-            \hline
-            SP\csp      & The EVD inserts a new payment method and the required information into the system                                                                                                          & EVD                 & eMALL             \\
-            \hline
-            SP\csp      & eMALL returns the outcome of the validity of the payment method inserted by the EVD                                                                                                          & EVD                 & eMALL             \\
-            \hline
-            SP\csp      & eMALL returns the outcome of the payment done by the EVD                                                  & EVD                 & eMALL             \\
-            \hline
-            SP\csp      & eMALL notifies the user of the end of the charging process of his EV's battery                                                  & EVD                 & eMALL             \\
-            \hline
-        \end{longtable}
-    \end{center}
-    \caption{Shared Phenomenas.}
-    \label{tab:sharedph_tab}
-\end{table}
+\begin{center}
+    \begin{longtable}{ |l|p{0.5\linewidth}|l|l| }
+        \hline
+        \textbf{ID} & \textbf{Description}                                                                                                      & \textbf{Controller} & \textbf{Observer} \\
+        \hline
+        SP\csp      & The EVD creates an account in the eMALL system                                                                            & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD logs in eMALL                                                                                                     & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL gets EVD's current position                                                                                         & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD asks for the list of charging stations nearby to his/her position to eMALL                                        & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the list of all the charging stations nearby his/her position to the EVD                                    & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD asks for detailed information about a specific charging station to eMALL                                          & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the charging cost per kWh of the charging station specified by the EVD                                      & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the charging cost per minute of the charging station specified by the EVD                                   & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the cost per minute of the additional fare for late unplugging of the charging station specified by the EVD & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the charging power of the charging station specified by the EVD                                             & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the types of connectors accepted by the charging points of the charging station specified by the EVD        & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the number of charging points of the charging station specified by the EVD                                  & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL returns the current status (available, occupied, maintenance) of the charging station specified by the EVD          & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD asks for special offers that he/she can redeem to eMALL                                                           & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns all the active special offers to the EVD                                                                    & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD asks for the schedule of a specific charging station to eMALL                                                     & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the schedule of the charging station specified by the EVD                                                   & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD books a charging point for a specific plug through eMALL                                                          & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD pays for a caution after booking a charging session through eMALL                                                 & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD inserts a new payment method and the required information into eMALL                                              & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the outcome of the validity of the payment method inserted by the EVD                                       & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The EVD starts the charge and waits until the battery reaches the desired level of power                                  & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & The EVD pays for the charging session using the module offered by eMALL                                                   & EVD                 & eMALL             \\
+        \hline
+        SP\csp      & eMALL returns the outcome of the payment done by the EVD                                                                  & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL notifies the user of the end of the charging process of his EV's battery                                            & eMALL               & EVD               \\
+        \hline
+        SP\csp      & eMALL notifies the EVD about the need of charging the EV                                                                  & eMALL               & EVD               \\
+        \hline
+        SP\csp      & The CPO inserts location information into eMALL                                                                           & CPO                 & eMALL             \\
+        %\hline
+        %SP\csp      & CPMS requests electricity to the DSO                                                                                      & CPO                 & eMALL             \\
+        \hline
+        \caption{Shared Phenomenas.}
+        \label{tab:sharedph_tab}
+    \end{longtable}
+\end{center}
 
 
 \section{Definition, Acronyms, Abbreviations}
