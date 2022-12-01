@@ -1,5 +1,4 @@
 \section{Product perspective}\label{sec:product_perspective}
-\subsection{Scenarios}\label{subsec:scenarios}
 \subsection{Class Diagrams}\label{subsec:class-diagrams}
 The figure below list and describes the classes involved in the system, and their basic functionalities, their basic attributes and relationships between them. Some suggestions for a further expansion and deepening of the diagram below, could be to evaluate the use of a decorator pattern to implement the "Fee" class; also, to evaluate the use a status pattern to assign the state of a charging point (free, booked, occupied, broken). Furthermore, another suggestion could be to adopt the factory pattern to implement the "plug" interface.
 \begin{figure}[H]
@@ -8,37 +7,38 @@ The figure below list and describes the classes involved in the system, and thei
 	\caption{A simplified Class Diagram}
 	\label{fig: class_diagram}
 \end{figure}
+
 \subsection{State Diagrams}\label{subsec:state-diagrams}
-\textbf{EVD wants to know position and characteristics of charging stations at a certain location}.
+\textbf{The EVD gets position and characteristics of charging stations at a certain location}.
 
 EVD Andrew is going to use his car to go to the university for the Software Engineering 2 exam, but his EV is out of battery.
 So, he needs to decide where to charge his vehicle.
-To do that, he decides to open the \verb|eMALL| application and enters the map section.
-At first, he sees if there is any charging station around him.
-The problem is that at his current position there is only one charging station, that is shown as broken at the moment.
+To do that, he opens the \verb|eMALL| application and enters the map section.
+At first, he sees if there is any charging station around him, but unfortunately at his current position there is only
+one charging station, that is shown as in maintenance.
 So, he decides to see where to charge his EV nearby the university, inserting Milan in the location bar.
 From the huge amount of charging station, he decides to decide the one that costs less then the other ones.
 So, he selects a charging station and gets its additional information.
-He repeats the process until the decision of the charging station is made.
+He goes on searching other stations until he finds the best one for him.
 At this point, the navigation process ends.
 
 It is shown a state diagram that summaries the flow of activities done in the charging stations navigation process:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{StateDiagrams/get_charging_stations_location_state_diagram}
+    \includegraphics[width=0.8\linewidth]{StateDiagrams/get_charging_stations_location_state_diagram}
     \caption{Get locations of charging stations state diagram}
     \label{fig: locations_sd}
 \end{figure}
 
-\textbf{EVD wants to book a charge at a specified charging station at a certain timeframe}
+\textbf{EVD books a charge at a specified charging station at a certain timeframe}
 
 Now, Andrew needs to book a charge for his EV. Ones the choice of the charging station is done, he selects it on the map
 and enters the booking section.
-If the charging station cannot offer reservation to EVD because of not availability status, the EVD is notified.
-Mario has to decide in which timeframe wants the charging point to be reserved.
-So, he gets availability schedule of the charging station and selects when he thinks to go to charge.
+If the charging station cannot offer reservation to EVD because of no availability status, it is shown to the EVD.
+Andrew has to decide in which timeframe wants the charging point to be reserved.
+So, he gets the availability schedule of the charging station and selects when he thinks to go to charge.
 If it is no more available, the EVD is returned at the previous section.
-Otherwise, if there is a caution to pay it is shown to the EVD.
+Otherwise, if there is a caution to pay it is shown to the EVD, that makes the payment.
 Finally, the EVD receives an e-mail that confirms the reservation, with all the useful information.
 
 It is shown a state diagram that summaries the activities in the booking process:
@@ -49,11 +49,11 @@ It is shown a state diagram that summaries the activities in the booking process
     \label{fig: booking_sd}
 \end{figure}
 
-\textbf{CPO wants to add charging points in its CPMS}
+\textbf{CPO adds charging points in its CPMS}
 
 \verb|LIGHT| is the new company of the successful businessman Nole Mask.
 They decided to trust the \verb|eMALL| project, entrusting them the responsibility of managing their IT infrastructure.
-After logging in, they start inserting new charging points owned by them distributed in the territory.
+After logging in, they start inserting new charging points owned by them that are distributed in the territory.
 If it belongs to a new charging station, it has to be created too.
 So, they insert all the information they are requested (location, costs, connectors, power, etc.).
 After they confirm and submit what they inserted, they can add a new charging point.
@@ -66,6 +66,18 @@ It is shown a state diagram to summaries the activities in the charging points i
     \caption{Insert charging points state diagram}
     \label{fig: insert_charging_points_sd}
 \end{figure}
+
+\subsection{Scenarios}\label{subsec:scenarios}
+\textbf{Unregistered EVD creates an account}.
+
+\textit{NomeFantasia} has his own EV and is looking for an application that offers him the chance to charge his vehicle
+easily and to be able to smartly plan a charging process depending on the status of the battery and his daily schedule.
+Fortunately, he finds out eMALL. So, he immediately proceeds to create an account.
+At first, he opens the application and goes to the “sign up” section.
+He inserts his name, second name, date of birth, living address, e-mail address, password, and telephone number.
+He receives an email with a 6-digit code to be inserted in the new window shown by the eMALL system to confirm his e-mail address.
+After accepting the terms \& conditions and submitting all the information that has been inserted, his account is correctly
+created, and he can start using the application.
 
 \section{Product functions}\label{sec:product_functions}
 
