@@ -1,4 +1,13 @@
 \section{Product perspective}\label{sec:product_perspective}
+\subsection{Scenarios}\label{subsec:scenarios}
+\subsection{Class Diagrams}\label{subsec:class-diagrams}
+The figure below list and describes the classes involved in the system, and their basic functionalities, their basic attributes and relationships between them. Some suggestions for a further expansion and deepening of the diagram below, could be to evaluate the use of a decorator pattern to implement the "Fee" class; also, to evaluate the use a status pattern to assign the state of a charging point (free, booked, occupied, broken). Furthermore, another suggestion could be to adopt the factory pattern to implement the "plug" interface.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{ClassDiagrams/Class Diagram - noPatterns}
+	\caption{A simplified Class Diagram}
+	\label{fig: class_diagram}
+\end{figure}
 \subsection{State Diagrams}\label{subsec:state-diagrams}
 \textbf{EVD wants to know position and characteristics of charging stations at a certain location}.
 
@@ -62,6 +71,11 @@ It is shown a state diagram to summaries the activities in the charging points i
 
 
 \section{User characteristics}\label{sec:user_characteristics}
-
+The actors listed below are considered in the eMALL system
+\begin{itemize}
+	\item \textbf{CPO:} owns one or more charging stations, and manages bookings and promotions about its charging points. He buys energy from DSOs, based on prices and needs. CPOs has their own IT system.
+	\item \textbf{Unregistered EV Driver:} anybody who owns an electric veichle, but isn’t registered in the eMALL system. Before accessing its benefits, it needs to get an account.
+	\item \textbf{Registered EV Driver:} an electric vehicle owner who already joined the eMALL system, and access its benefits. He’s identified with a unique ID, and can own one or more vehicles with different specifics. They can check prices and position of charging points, in addition to receiving notifications about promotions reserved to them.
+\end{itemize}
 
 \section{Assumptions, dependencies and constraints}\label{sec:assumptions_dependencies_and_constraints}
