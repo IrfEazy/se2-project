@@ -5,3 +5,11 @@ RASD/LaTeXCode/out/
 RASD/LaTeXCode/out/*
 !RASD/LaTeXCode/out/Project.pdf
 /RASD/LaTeXCode/src/Images/*.pdf
+/RASD/LaTeXCode/src/*.aux
+/RASD/LaTeXCode/src/*.lof
+/RASD/LaTeXCode/src/*.log
+/RASD/LaTeXCode/src/*.lot
+/RASD/LaTeXCode/src/*.out
+/RASD/LaTeXCode/src/Project.pdf
+/RASD/LaTeXCode/src/*.synctex.gz
+/RASD/LaTeXCode/src/*.toc
