@@ -11,7 +11,7 @@ also, to evaluate the use of a status pattern to assign the state of a charging 
 Furthermore, another suggestion could be to adopt the factory pattern to implement the ``plug'' interface.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=0.9\linewidth]{ClassDiagrams/Class Diagram - noPatterns}
+        \includegraphics[width=0.9\linewidth]{ClassDiagrams/Class_Diagram_-_noPatterns}
         \caption{A simplified Class Diagram}
         \label{fig:class_diagram}
     \end{center}
@@ -114,8 +114,21 @@ It consists of a 20\% discount for all the EVDs that are under 25.
 Considering that he has to charge his EV, decides to book a charging session at a charging station owned by the CPO \verb|SOLARIS|.
 After selecting the timeframe and verifying its availability, he inserts the discount code SARTORIUS\@.
 
+
 \section{Product functions}
 \label{sec:product_functions}%
+\textbf{The EVD books a charging session}\\
+The main functionality of eMALL is to book charge sessions in different charging stations for the EVD\@.
+In particular, the system shows charging stations to the EVD and waits for him to select where he wants to book a charging session.
+
+In particular, when eMALL retrieves information about the charging stations available in the local area, it also retrieves all the extra info about the available plugs and power supplies.
+
+The system has to control if the charging station is currently unavailable, and if it is, it gets the station's schedule.
+The EVD has to choose a timeframe between the ones available to book a charge session.
+eMALL also queries the charging station to know if the station has or not a mandatory caution to pay to end the booking process.
+If the station does not have a caution policy, then eMALL finishes the booking process by sending an informative email to the EVD that resumes all the booking info.
+
+In the email, eMALL also specifies the serial number associated with the charging point of the charging station where the EVD has to charge his EV\@.
 
 
 \section{User characteristics}

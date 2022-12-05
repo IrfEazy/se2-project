@@ -31,7 +31,6 @@
     \phantomsection % To help hyperref link to the right page
     \latexchapter{#1}
     \renewcommand{\headrulewidth}{0pt} %removing the horizontal line in the header
-    %\addcontentsline{toc}{chapter}{#1} % Also adds the chapter name to the Contents
     \fancyhead[LO, RE]{ \textbf{\textcolor{bluepoli}\thechapter\hsp\textcolor{bluepoli}{|   }\hsp \leftmark}}% Header
     \fancyhead[LE, RO]{\thepage}
     \vspace{-1cm}
@@ -92,9 +91,6 @@
 \define@key[OIST]{title}{name1}{\def\nameA{#1}}
 \define@key[OIST]{title}{name2}{\def\nameB{#1}}
 \define@key[OIST]{title}{name3}{\def\nameC{#1}}
-\define@key[OIST]{title}{name4}{\def\nameD{#1}}
-\define@key[OIST]{title}{name5}{\def\nameE{#1}}
-\define@key[OIST]{title}{groupnumber}{\def\groupnumber{#1}}
 \define@key[OIST]{title}{academicyear}{\def\academicyear{#1}}
 
 \providecommand{\puttitle}{}
@@ -109,7 +105,6 @@
     \begin{titlepage}
         \AddToShipoutPicture*{\BackgroundPicTR}
         \vfill
-        %\begin{minipage}{0.95\textwidth}
         \begin{minipage}{0.95\textwidth}
             \includegraphics[trim={1.2cm 0 0 0},clip, width=0.7\textwidth]{Images/02_ING_IND_INFORMAZIONE_COL_POSITIVO}
             \hfill
@@ -123,14 +118,6 @@
             {\color{black} \hspace{6.3em} \Large \bfseries{\nameB}} \\
             \vspace{0.51cm}
             {\color{black} \hspace{6.3em} \Large \bfseries{\nameC}} \\
-            %\vspace{0.51cm}
-            %{\color{black} \hspace{6.3em} \Large \bfseries{\nameD}} \\
-            %\vspace{0.51cm}
-            %{\color{black} \hspace{6.3em} \Large \bfseries{\nameE}} \\
-            %\\
-            %\vspace{0.51cm}
-            %\\
-            %{\color{black} \Large {Group Number:} \bfseries{\groupnumber}} \\ \\
         \end{minipage}
         \\
         \vspace*{\fill}

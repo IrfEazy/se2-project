@@ -45,8 +45,6 @@
 \usepackage{tikz} % A package for high-quality hand-made figures.
 \usetikzlibrary{}
 \graphicspath{{./Images/}} % Directory of the images
-%\usepackage{caption} % Coloured captions
-%\usepackage{xcolor} % Coloured captions
 \usepackage{amsthm} % Coloured "Theorem"
 \usepackage{thmtools}
 \usepackage{xcolor}
@@ -54,7 +52,6 @@
 
 % STANDARD MATH PACKAGES
 \usepackage{amsmath}
-%\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{bm}
@@ -99,11 +96,6 @@
 %	NEW COMMANDS DEFINED
 %----------------------------------------------------------------------------
 
-% EXAMPLES OF NEW COMMANDS
-%\newcommand{\bea}{\begin{eqnarray}} % Shortcut for equation arrays
-%\newcommand{\eea}{\end{eqnarray}}
-%\newcommand{\e}[1]{\times 10^{#1}}  % Powers of 10 notation
-
 %----------------------------------------------------------------------------
 %	ADD YOUR PACKAGES (be careful of package interaction)
 %----------------------------------------------------------------------------
@@ -135,10 +127,7 @@
         name1=Irfan Cela - 10694934, % Author Name and Surname
         name2=Mario Cela - 10685242,
         name3=Alessandro Cogollo - 10571078,
-%name4=Name Surname 4,
-%name5=Name Surname 5,
         academicyear=2022-2023,
-%groupnumber=GroupNumber
     } % These info will be put into your Title page
 
 %----------------------------------------------------------------------------
@@ -176,28 +165,34 @@
     \mainmatter % Begin numeric (1,2,3...) page numbering
 
 
-    \chapter{Introduction}\label{ch:introduction}
-    \input{Chapters/1 - Introduction}
+    \chapter{Introduction}
+    \label{ch:introduction}%
+    \input{Chapters/1_-_Introduction}
 
 
-    \chapter{Overall Description}\label{ch:overall_description}
-    \input{Chapters/2 - Overall Description.tex}
+    \chapter{Overall Description}
+    \label{ch:overall_description}%
+    \input{Chapters/2_-_Overall_Description}
 
 
-    \chapter{Specific Requirements}\label{ch:specific_requirements}
-    \input{Chapters/3 - Specific Requirements.tex}
+    \chapter{Specific Requirements}
+    \label{ch:specific_requirements}%
+    \input{Chapters/3_-_Specific_Requirements}
 
 
-    \chapter{Formal Analysis Using Alloy}\label{ch:formal_analysis_using_alloy}
-    \input{Chapters/4 - Formal Analysis Using Alloy.tex}
+    \chapter{Formal Analysis Using Alloy}
+    \label{ch:formal_analysis_using_alloy}%
+    \input{Chapters/4_-_Formal_Analysis_Using_Alloy}
 
 
-    \chapter{Effort Spent}\label{ch:effort_spent}
-    \input{Chapters/5 - Effort Spent.tex}
+    \chapter{Effort Spent}
+    \label{ch:effort_spent}%
+    \input{Chapters/5_-_Effort_Spent}
 
 
-    \chapter{References}\label{ch:references}
-    \input{Chapters/6 - References}
+    \chapter{References}
+    \label{ch:references}%
+    \input{Chapters/6_-_References}
 
 
 %-------------------------------------------------------------------------
@@ -209,7 +204,8 @@
     \appendix
 
 
-    \chapter{Appendix A}\label{ch:appendix_a}
+    \chapter{Appendix A}
+    \label{ch:appendix_a}%
     If you need to include an appendix to support the research in your thesis, you can place it at the end of the manuscript.
     An appendix contains supplementary material (figures, tables, data, codes, mathematical proofs, surveys, \dots)
     which supplement the main results contained in the previous chapters.
@@ -220,7 +216,5 @@
 
 % LIST OF TABLES
     \listoftables
-
     \cleardoublepage
-
 \end{document}
