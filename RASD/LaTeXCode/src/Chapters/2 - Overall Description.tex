@@ -1,93 +1,137 @@
-\section{Product perspective}\label{sec:product_perspective}
-\subsection{Class Diagrams}\label{subsec:class-diagrams}
-The figure below list and describes the classes involved in the system, and their basic functionalities, their basic attributes and relationships between them. Some suggestions for a further expansion and deepening of the diagram below, could be to evaluate the use of a decorator pattern to implement the "Fee" class; also, to evaluate the use a status pattern to assign the state of a charging point (free, booked, occupied, broken). Furthermore, another suggestion could be to adopt the factory pattern to implement the "plug" interface.
+\section{Product perspective}
+\label{sec:product_perspective}%
+
+\subsection{Class Diagrams}
+\label{subsec:class_diagrams}%
+The figure below lists and describes the classes involved in the system, their basic functionalities, their basic attributes,
+and the relationships between them.
+Some suggestions for a further expansion and deepening of the diagram below could be to evaluate the use of a decorator
+pattern to implement the ``Fee'' class;
+also, to evaluate the use of a status pattern to assign the state of a charging point (free, booked, occupied, broken).
+Furthermore, another suggestion could be to adopt the factory pattern to implement the ``plug'' interface.
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth]{ClassDiagrams/Class Diagram - noPatterns}
-	\caption{A simplified Class Diagram}
-	\label{fig: class_diagram}
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{ClassDiagrams/Class Diagram - noPatterns}
+        \caption{A simplified Class Diagram}
+        \label{fig:class_diagram}
+    \end{center}
 \end{figure}
 
-\subsection{State Diagrams}\label{subsec:state-diagrams}
-\textbf{The EVD gets position and characteristics of charging stations at a certain location}.
+\subsection{State Diagrams}
+\label{subsec:state_diagrams}%
 
+\paragraph{The EVD gets position and characteristics of charging stations at a certain location.}
 EVD Andrew is going to use his car to go to the university for the Software Engineering 2 exam, but his EV is out of battery.
 So, he needs to decide where to charge his vehicle.
 To do that, he opens the \verb|eMALL| application and enters the map section.
-At first, he sees if there is any charging station around him, but unfortunately at his current position there is only
-one charging station, that is shown as in maintenance.
+At first, he sees if there is any charging station around him, but unfortunately at his current position,
+there is only one charging station, which is shown as in maintenance.
 So, he decides to see where to charge his EV nearby the university, inserting Milan in the location bar.
-From the huge amount of charging station, he decides to decide the one that costs less then the other ones.
+From the huge amount of charging stations, he decides to decide the one that costs less than the other ones.
 So, he selects a charging station and gets its additional information.
 He goes on searching other stations until he finds the best one for him.
 At this point, the navigation process ends.
 
 It is shown a state diagram that summaries the flow of activities done in the charging stations navigation process:
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{StateDiagrams/get_charging_stations_location_state_diagram}
-    \caption{Get locations of charging stations state diagram}
-    \label{fig: locations_sd}
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{StateDiagrams/get_charging_stations_location_state_diagram}
+        \caption{Get locations of charging stations state diagram}
+        \label{fig:locations_sd}
+    \end{center}
 \end{figure}
 
-\textbf{EVD books a charge at a specified charging station at a certain timeframe}
-
-Now, Andrew needs to book a charge for his EV. Ones the choice of the charging station is done, he selects it on the map
-and enters the booking section.
-If the charging station cannot offer reservation to EVD because of no availability status, it is shown to the EVD.
-Andrew has to decide in which timeframe wants the charging point to be reserved.
+\paragraph{EVD books a charge at a specified charging station at a certain timeframe.}
+Andrew needs to book a charge for his EV\@.
+He selects a charging station on the map and enters the booking section.
+If the charging station cannot offer a reservation to EVD because of no availability status, it alerts the EVD\@.
+Andrew has to decide in which timeframe he wants the charging point to be reserved.
 So, he gets the availability schedule of the charging station and selects when he thinks to go to charge.
-If it is no more available, the EVD is returned at the previous section.
-Otherwise, if there is a caution to pay it is shown to the EVD, that makes the payment.
-Finally, the EVD receives an e-mail that confirms the reservation, with all the useful information.
+The system asks to pay a deposit to the EVD, which makes the payment.
+Finally, the EVD receives an e-mail with all the information that confirms the reservation.
 
 It is shown a state diagram that summaries the activities in the booking process:
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{StateDiagrams/book_a_charge_state_diagram}
-    \caption{Book a charge state diagram}
-    \label{fig: booking_sd}
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{StateDiagrams/book_a_charge_state_diagram}
+        \caption{Book a charge state diagram}
+        \label{fig:booking_sd}
+    \end{center}
 \end{figure}
 
-\textbf{CPO adds charging points in its CPMS}
-
-\verb|LIGHT| is the new company of the successful businessman Nole Mask.
-They decided to trust the \verb|eMALL| project, entrusting them the responsibility of managing their IT infrastructure.
-After logging in, they start inserting new charging points owned by them that are distributed in the territory.
-If it belongs to a new charging station, it has to be created too.
-So, they insert all the information they are requested (location, costs, connectors, power, etc.).
+\paragraph{CPO adds charging points in its CPMS.}
+\verb|SOLARIS| is the new company of the successful businessman Hugh Peter.
+They decided to trust the \verb|eMALL| project, entrusting them with the responsibility of managing their IT infrastructure.
+After logging in, they start inserting new charging points owned by them and distributed throughout the territory.
+If it belongs to a new charging station, he needs to create it too.
+So, they insert all the requested information (location, costs, connectors, power, etc.).
 After they confirm and submit what they inserted, they can add a new charging point.
-Otherwise, they easily end the process.
+Otherwise, the process ends.
 
 It is shown a state diagram to summaries the activities in the charging points insertion process:
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{StateDiagrams/insert_charging_points_state_diagram}
-    \caption{Insert charging points state diagram}
-    \label{fig: insert_charging_points_sd}
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{StateDiagrams/insert_charging_points_state_diagram}
+        \caption{Insert charging points state diagram}
+        \label{fig:insert_charging_points_sd}
+    \end{center}
 \end{figure}
 
-\subsection{Scenarios}\label{subsec:scenarios}
-\textbf{Unregistered EVD creates an account}.
+\subsection{Scenarios}
+\label{subsec:scenarios}%
 
-\textit{NomeFantasia} has his own EV and is looking for an application that offers him the chance to charge his vehicle
-easily and to be able to smartly plan a charging process depending on the status of the battery and his daily schedule.
-Fortunately, he finds out eMALL. So, he immediately proceeds to create an account.
-At first, he opens the application and goes to the “sign up” section.
+\paragraph{Unregistered EVD creates an account.}
+Mike Hoar has his EV and is looking for an application that offers the chance to charge his vehicle and smartly plan a charging process depending on the battery status and his daily schedule.
+Fortunately, he finds out \verb|eMALL|\@.
+So, he immediately proceeds to create an account.
+At first, he opens the application and goes to the ``sign up'' section.
 He inserts his name, second name, date of birth, living address, e-mail address, password, and telephone number.
-He receives an email with a 6-digit code to be inserted in the new window shown by the eMALL system to confirm his e-mail address.
-After accepting the terms \& conditions and submitting all the information that has been inserted, his account is correctly
-created, and he can start using the application.
+He receives an e-mail with a 6-digit code to be inserted in the new window shown by the \verb|eMALL| system to confirm his e-mail address.
+After accepting the terms \& conditions and submitting all the inserted information, the system creates his account, and he can start using the application.
 
-\section{Product functions}\label{sec:product_functions}
+\paragraph{The EVD charges his/her EV.}
+After booking a charge, NomeFantasia goes to the charging station at the chosen hour.
+After turning off the EV, he opens the \verb|eMALL| application and enters the charge section.
+From the set of close charging points, he selects which one has the serial number he received by \verb|eMALL| by e-mail
+when he booked the charge.
+So, he asks to charge the EV at that charging point.
+After verifying that the EVD can charge at that charging point, the application communicates to the user that the
+connectors are now unlocked and ready for charging his EV\@.
+While the EV is in charge, the system notifies the EVD of the current status of the charging process.
+When the process ends, he unplugs the connector, pays through the \verb|eMALL| application, and gets back in his car.
+
+\paragraph{The EVD inserts a new activity in its calendar and receives a suggestion for a charging process.}
+Joe inserts a new activity in his calendar, specifying the hour and destination of the event.
+After doing that, he receives a notification that shows the EVD where and when to charge his vehicle.
+The system creates suggestions to minimize the cost and the time lost at the charging station.
+It also considers special offers activated by the CPOs registered in the eMALL system.
+So, Joe accepts the received proposal and confirms the book of the listed charging points, making the needed payments.
+
+\paragraph{The EVD receives a notification about a new special offer activated by a CPO}
+Joe receives a notification about a new special offer activated by the CPO \verb|SOLARIS|.
+So, he opens the promotion page, reads what it is about, and gets the discount code of the offer.
+It consists of a 20\% discount for all the EVDs that are under 25.
+Considering that he has to charge his EV, decides to book a charging session at a charging station owned by the CPO \verb|SOLARIS|.
+After selecting the timeframe and verifying its availability, he inserts the discount code SARTORIUS\@.
+
+\section{Product functions}
+\label{sec:product_functions}%
 
 
-\section{User characteristics}\label{sec:user_characteristics}
+\section{User characteristics}
+\label{sec:user_characteristics}%
 The actors listed below are considered in the eMALL system
 \begin{itemize}
-	\item \textbf{CPO:} owns one or more charging stations, and manages bookings and promotions about its charging points. He buys energy from DSOs, based on prices and needs. CPOs has their own IT system.
-	\item \textbf{Unregistered EV Driver:} anybody who owns an electric veichle, but isn’t registered in the eMALL system. Before accessing its benefits, it needs to get an account.
-	\item \textbf{Registered EV Driver:} an electric vehicle owner who already joined the eMALL system, and access its benefits. He’s identified with a unique ID, and can own one or more vehicles with different specifics. They can check prices and position of charging points, in addition to receiving notifications about promotions reserved to them.
+    \item \textbf{CPO:} owns one or more charging stations, and manages bookings and promotions about its charging points.
+    He buys energy from DSOs, based on prices and needs.
+    CPOs has their own IT system.
+    \item \textbf{Unregistered EV Driver:} anybody who owns an electric vehicle, but isn’t registered in the eMALL system.
+    Before accessing its benefits, it needs to get an account.
+    \item \textbf{Registered EV Driver:} an electric vehicle owner who already joined the eMALL system, and access its benefits.
+    He’s identified with a unique ID, and can own one or more vehicles with different specifics.
+    They can check prices and position of charging points, in addition to receiving notifications about promotions reserved to them.
 \end{itemize}
 
-\section{Assumptions, dependencies and constraints}\label{sec:assumptions_dependencies_and_constraints}
+
+\section{Assumptions, dependencies and constraints}
+\label{sec:assumptions_dependencies_and_constraints}%
