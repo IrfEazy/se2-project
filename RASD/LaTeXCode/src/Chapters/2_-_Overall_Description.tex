@@ -120,39 +120,39 @@ After selecting the timeframe and verifying its availability, he inserts the dis
 \section{Product functions}
 \label{sec:product_functions}%
 \textbf{The EVD books a charging session} \\
-The main functionality of eMALL is to book charge sessions in different charging stations for the EVD\@.
+The main functionality of the eMALL is to book charge sessions in different charging stations for the EVD\@.
 In particular, the system shows charging stations to the EVD and waits for him to select where he wants to book a charging session.
 
-When eMALL retrieves information about the charging stations available in the local area, it also retrieves all the extra info about the available plugs and power supplies.
+When the eMALL retrieves information about the charging stations available in the local area, it also retrieves all the extra info about the available plugs and power supplies.
 
 The system has to control if the charging station is currently unavailable, and if it is not, it gets the station's schedule.
 The EVD has to choose a timeframe between the ones available to book a charge session.
-eMALL also queries the charging station to know if the station has or not a mandatory caution to pay to end the booking process.
-If the station does not have a caution policy, then eMALL finishes the booking process by sending an informative email to the EVD that resumes all the booking info.
+The eMALL also queries the charging station to know if the station has or not a mandatory deposit to pay to end the booking process.
+If the station does not have a deposit policy, then the eMALL finishes the booking process by sending an informative email to the EVD that resumes all the booking info.
 
-In the email, eMALL also specifies the serial number associated with the charging point of the charging station where the EVD has to charge his EV\@.
+In the email, the eMALL also specifies the serial number associated with the charging point of the charging station where the EVD has to charge his EV\@.
 
 \textbf{The EVD receives charging alerts about where to charge his EV} \\
-eMALL offers smart functions about when the EVD might book a charge for his EV\@.
-Hence, when an EVD inserts a new activity in his calendar, eMALL computes the best route to reach the destination through an external navigator API\@.
-eMALL also checks the battery status of the EV, so it notifies the best itinerary for the EVD\@.
-If the battery state doesn't allow the EVD to reach the destination place, then eMALL shows him the best route with the charging stations available along the road.
+The eMALL offers smart functions about when the EVD might book a charge for his EV\@.
+Hence, when an EVD inserts a new activity in his calendar, the eMALL computes the best route to reach the destination through an external navigator API\@.
+The eMALL also checks the battery status of the EV, so it notifies the best itinerary for the EVD\@.
+If the battery state doesn't allow the EVD to reach the destination, then the eMALL shows him the best route with the charging stations available along the road.
 
-eMALL tries to minimize the costs.
+The eMALL tries to minimize the costs.
 Hence, starting from the current battery status, the system computes the maximum kilometers an EV can travel before running out of battery.
-If the EV can reach the destination, eMALL marks the route returned by the API as preferred.
-On the other hand, eMALL finds charging stations along the road and selects the one with the minimum costs because it knows the details about the EV, for instance, the plug type.
+If the EV can reach the destination, the eMALL marks the route returned by the API as preferred.
+On the other hand, the eMALL finds charging stations along the road and selects the one with the minimum costs because it knows the details about the EV, for instance, the plug type.
 The best charging station found is shown to the EVD, allowing him to decide whether to start a booking process.
 
 If the EVD doesn't accept the eMALL solution, he can book another charging station along the road and start, as well, a booking process.
 
 \textbf{The CPO manages its charging stations} \\
 A CPO should be able to manage its charging stations and relative charging points.
-In general, a CPO might have new charging stations to register in eMALL, and, as well, it might have charging points too.
+In general, a CPO might have new charging stations to register in the eMALL, and, as well, it might have charging points too.
 The system allows the CPO to register charging stations, by entering all the info about them, for instance, the position on the map and the number of charging points available.
 Furthermore, the system allows the registration of also charging points by inserting info like the available plugs and the power supply of the charging process.
 
-Just like the CPO inserts new information about its product, it can also delete charging points or charging stations from eMALL\@.
+Just like the CPO inserts new information about its product, it can also delete charging points or charging stations from the eMALL\@.
 
 The system also shows CPOs charging stations and relative charging points on the map.
 This functionality is necessary because they might break down, so the CPO has to change their availability status (offline, under maintenance, online).
