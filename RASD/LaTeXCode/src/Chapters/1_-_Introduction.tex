@@ -41,31 +41,31 @@ Follows a table that lists all the goals of the \verb|eMALL| system:
 \begin{center}
     \begin{longtable}{ |l|p{0.9\linewidth}| }
         \hline
-        \textbf{ID} & \textbf{Description}                                                                                                     \\
+        \textbf{ID} & \textbf{Description}                                                                                      \\
         \hline
-        G\cg        & The EVD can see charging stations nearby a specific location on the map                                                  \\
+        G\cg        & The EVD can see charging stations nearby a specific location on the map                                   \\
         \hline
-        G\cg        & The EVD can get the detailed information of charging stations                                                            \\
+        G\cg        & The EVD can get the detailed information of charging stations                                             \\
         \hline
-        G\cg        & The EVD can search for special offer provided by charging stations                                                       \\
+        G\cg        & The EVD can search for special offer provided by charging stations                                        \\
         \hline
-        G\cg        & The EVD can book a charge for his EV at a charging station for a specified time frame                                    \\
+        G\cg        & The EVD can book a charge for his EV at a charging station for a specified time frame                     \\
         \hline
-        G\cg        & The EVD can pay for the recharging service                                                                               \\
+        G\cg        & The EVD can pay for the recharging service                                                                \\
         \hline
-        G\cg        & Given the destination inserted in an activity in his calendar application, the EVD receives suggestions to charge his EV \\ %TODO: not correctly explained
+        G\cg        & After the EVD inserts a new activity into the calendar, he/she receives suggestions about charging the EV \\
         \hline
-        G\cg        & The CPO can get information about its charging stations                                                                  \\
+        G\cg        & The CPO can get information about its charging stations                                                   \\
         \hline
-        G\cg        & The CPO can start charging a vehicle and monitor the charging process to know when to stop                               \\
+        G\cg        & The CPO can start charging a vehicle and monitor the charging process to know when to stop                \\
         \hline
-        G\cg        & The CPO can obtain the internal status of one of its charging station                                                    \\
+        G\cg        & The CPO can obtain the internal status of one of its charging station                                     \\
         \hline
-        G\cg        & The CPO can acquire by the DSOs information about the current price energy                                               \\
+        G\cg        & The CPO can acquire by the DSOs information about the current price energy                                \\
         \hline
-        G\cg        & The CPO can decide from which DSO to acquire energy                                                                      \\
+        G\cg        & The CPO can decide from which DSO to acquire energy                                                       \\
         \hline
-        G\cg        & The CPO can decide how to get energy for charging (DSO or battery storage, a mix of the two)                             \\
+        G\cg        & The CPO can decide how to get energy for charging (DSO or battery storage, a mix of the two)              \\
         \hline
         \caption{The goals.}
         \label{tab:goals_tab}%
@@ -86,53 +86,34 @@ Follows a table that lists all the goals of the \verb|eMALL| system:
         \hline
         \textbf{ID} & \textbf{Description}                                               \\
         \hline
-        WP\cwp      & The DSO provides energy to charging stations                       \\
-        \hline
         WP\cwp      & The EVD wants to charge his EV's battery                           \\
         \hline
-        WP\cwp      & The EVD wants to know the prices of a specific charging station    \\
+        WP\cwp      & The EVD wants to know information of a specific charging station   \\
         \hline
         WP\cwp      & The EVD wants to know if there are any special offer he can redeem \\
-        \hline
-        WP\cwp      & The EVD wants to know the position of a specific charging station  \\
-        \hline
-        WP\cwp      & The CPO have deals with eMSP and offer them their charging station \\
-        \hline
-        WP\cwp      & The EVD inserts a new activity in his calendar                     \\
-        \hline
-        WP\cwp      & Charging Points are distributed in the territory                   \\
-        \hline
-        WP\cwp      & CPO buys energy from a DSO at the price defined by the latter      \\
-        \hline
-        WP\cwp      & CPO defines the selling price of electricity                       \\
-        \hline
-        WP\cwp      & CPO defines special offers for its customers                       \\
         \hline
         WP\cwp      & The EVD connects the plug of the charging point to the EV          \\
         \hline
         WP\cwp      & The EV reaches the desired level of battery charge                 \\
         \hline
-%TODO: evaluate the WP ``The EVD has a calendar where he inserts his activities'' with respect to WP8
-%TODO: possibly a domain assumption ``The EV uses a GPS module for its localization''
-%TODO: we have to insert as a domain assumption that our system is compatible only with EVs system navigation because
-%            we never speak about phones, but only about EVs
-%TODO: possibly a domain assumption ``The EV uses internet connection in order to communicate with CPMS' API''
-%TODO: possibly a domain assumption ``Each EV has compatibility with a particular charging plug''
-%TODO: possibly a domain assumption ``The EV's navigation system provides information about its GPS''
-%TODO: possibly a domain assumption ``The EV's navigation system provides information about its average consumption''
-%TODO: possibly a domain assumption ``The EV's navigation system provides information about its battery status''
-%TODO: possibly a domain assumption ``The eMSP offers API in order to manage charging services''
-%TODO: possibly a domain assumption ``The eMSP offers the availability of charging points in its charging stations through its API''
-%TODO: possibly a domain assumption ``The eMSP provides charging station location information to eMSPs thanks to its API''
-%TODO: possibly a domain assumption ``The eMSP shows to EVDs the ability to book charging stations up to a week in advance''
-%TODO: possibly a requirement ``eMSP allows the EVD to be in place for the check up to 15 minutes from the booked time''
-%TODO: possibly a domain assumption: The EVD has a payment service that allows him to pay digitally
-%            It cannot be a WP because the eMSP is already part of the system, and furthermore is not exclusively part
-%            of the reality and then not a WP.
+        WP\cwp      & Charging Points are distributed in the territory                   \\
+        \hline
+        WP\cwp      & A charging point breaks                                            \\
+        \hline
+        WP\cwp      & It is released an update for the firmware of a charging point      \\
+        \hline
+        WP\cwp      & CPO defines the selling price of electricity                       \\
+        \hline
+        WP\cwp      & CPO defines special offers for its customers                       \\
+        \hline
+        WP\cwp      & The DSO provides energy to charging stations                       \\
+        \hline
         \caption{World Phenomenas.}
         \label{tab:worldph_tab}%
     \end{longtable}
 \end{center}
+
+%TODO: give a read now that the context is more clear and correct what must be corrected
 
 \subsection{Shared phenomena}
 \label{subsec:shared_phenomena}%
@@ -231,7 +212,7 @@ Follows a table that lists all the goals of the \verb|eMALL| system:
         SP\csp      & eMALL gets EVD's current schedule from his/her calendar                                                                     & eMALL               & EVD               \\
         \hline
         \caption{Shared Phenomenas.}
-        \label{tab:sharedph_tab}%
+        \label{tab:sharedph_tab}
     \end{longtable}
 \end{center}
 
@@ -274,6 +255,7 @@ Follows a table that lists all the goals of the \verb|eMALL| system:
 \section{Revision history}
 \label{sec:revision_history}%
 
+%TODO: add references used during the draft of the document
 
 \section{Reference Documents}
 \label{sec:reference_documents}%

@@ -17,13 +17,12 @@ for those EVDs who are used to booking a charge at the same charging station (ba
 The system only requires a smartphone or computer with an internet connection and web browser to access websites or mobile applications.
 Furthermore, eMALL communicates with the EV through its company's API to get the current battery level, the charging state,
 so if it is plugged in and if it is charging, and the number of routable kilometers obtained on the current battery level.
-%Since the app is developed for android systems too, it can be accessed by the onboard computer of those EVs that permits
-%the connection with a smartphone.
 To access personalized suggestions, based on EV’s position, the device in use has to be able to detect its location with a GPS or Glonass localization system.
 
-%\subsection{Software Interfaces}
-%\label{subsec:software_interfaces}%
+%TODO: think id there is something you can write in this subsection
 
+\subsection{Software Interfaces}
+\label{subsec:software_interfaces}%
 
 \subsection{Communication Interfaces}
 \label{subsec:communication_interfaces}%
@@ -33,11 +32,17 @@ Below are listed different communication interfaces used to exchange information
 \begin{itemize}
     \item \textbf{CPMS and Charging Points.} The CPMSs offered to the CPO will communicate with the charging point
     through the OCPP communication protocol.
-    Thanks to it, the system can manage the charging session, thanks to the possibility of starting and stopping it.
+    Thanks to it, the system can manage the charging session, given the possibility of starting and stopping it.
     Another significant functionality offered by OCPP is the diagnostic of the charging point:
     a CPO can reboot its charging spots, can get their log, and can update their firmware.
+    %TODO: Does it make sense to put an example of an external system
+    \item \textbf{eMALL and EVs.} The eMALL system communicates with the EVs registered by the EVD\@.
+    As explained in the domain assumption section, we suppose that there is a third-party system that offers its API
+    so to get the status of the battery of the EV. %An example of a system that provides these features is Smartcar,
+    %which is already used by companies like AmpUp or BeCharge to remotely retrieve the battery level and remaining range of the EVs.
     \item \textbf{.}
 \end{itemize}
+
 
 \section{Functional Requirements}
 \label{sec:functional_requirements}%

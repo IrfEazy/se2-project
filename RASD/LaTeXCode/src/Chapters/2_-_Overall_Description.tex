@@ -60,6 +60,8 @@ It is shown a state diagram that summaries the activities in the booking process
     \end{center}
 \end{figure}
 
+%TODO: change the order of the flow: you start adding stations and then points. Update also the diagram
+
 \paragraph{CPO adds charging points in its CPMS.}
 \verb|SOLARIS| is the new company of the successful businessman Hugh Peter.
 They decided to trust the \verb|eMALL| project, entrusting them with the responsibility of managing their IT infrastructure.
@@ -172,6 +174,33 @@ The actors listed below are considered in the eMALL system
     They can check prices and position of charging points, in addition to receiving notifications about promotions reserved to them.
 \end{itemize}
 
+%TODO: add other lines if you need them
 
 \section{Assumptions, dependencies and constraints}
-\label{sec:assumptions_dependencies_and_constraints}%
+\label{sec:assumptions_dependencies_and_constraints}
+\newcounter{da}
+\setcounter{da}{1}
+\newcommand{\cda}{\theda\stepcounter{da}}
+\begin{center}
+    \begin{longtable}{ |l|p{0.9\linewidth}| }
+        \hline
+        \textbf{ID} & \textbf{Description}                                                                                                     \\
+        \hline
+        DA\cda      & The EVD uses a device with GPS module for navigation and localization                                                    \\
+        \hline
+        DA\cda      & The EVD uses a device with internet connectivity                                                                         \\
+        \hline
+        DA\cda      & There is a specific compatibility between EV's plug and connectors offered by charging points                            \\
+        \hline
+        DA\cda      & The \verb|eMALL| system communicates with a third-party entity which provides real-time EV's information through its API \\
+        \hline
+        DA\cda      & The \verb|eMALL| system communicates with DSOs through their APIs                                                        \\
+        \hline
+        DA\cda      & Charging points have their own software                                                                                  \\
+        \hline
+        DA\cda      & Communication between CPMSs and charging points happens through the OCPP protocol                                        \\
+        \hline
+        \caption{Domain assumptions.}
+        \label{tab:domainassmptn_tab}%
+    \end{longtable}
+\end{center}
