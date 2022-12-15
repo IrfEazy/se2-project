@@ -30,7 +30,7 @@ The eMALL system needs to communicate with other actors to offer functionalities
 the communication is bidirectional and permits eMALL to obtain the desired data and serve elaborated data.
 Below are listed different communication interfaces used to exchange information with users:
 \begin{itemize}
-    \item \textbf{CPMS and Charging Points.} The CPMSs offered to the CPO will communicate with the charging point
+    \item \textbf{CPMS and Charging Points.} The CPMSs offered to the CPO communicate with the charging point
     through the OCPP communication protocol.
     Thanks to it, the system can manage the charging session, given the possibility of starting and stopping it.
     Another significant functionality offered by OCPP is the diagnostic of the charging point:
@@ -40,16 +40,161 @@ Below are listed different communication interfaces used to exchange information
     As explained in the domain assumption section, we suppose that there is a third-party system that offers its API
     so to get the status of the battery of the EV. %An example of a system that provides these features is Smartcar,
     %which is already used by companies like AmpUp or BeCharge to remotely retrieve the battery level and remaining range of the EVs.
-    \item \textbf{.}
+    \item \textbf{CPMS and DSOs.} The CPMSs offered to the CPO communicate with the DSOs through their APIs.
+    CPOs can get selling prices set by the DSOs and they can decide from which DSO to acquire electricity.
+    \item \textbf{eMALL and third-party payment services.} The \verb|eMALL| system offers the possibility to pay through
+    external payment services to the EVD. The communication happens thanks to APIs offered by the companies that handle payments.
 \end{itemize}
 
 
 \section{Functional Requirements}
 \label{sec:functional_requirements}%
 
+\subsection{Requirements}
+\label{subsec: requirements}%
+
+%TODO: complete the table after having completed the use cases
+\newcounter{req}
+\setcounter{req}{1}
+\newcommand{\creq}{\thereq\stepcounter{req}}
+\begin{center}
+    \begin{longtable}{|l|l|}
+        \hline
+        \textbf{ID} & \textbf{Description} \\
+        \hline
+        R\creq      &                      \\
+        \hline
+        \caption{Requirements.}
+        \label{tab: req}%
+    \end{longtable}
+\end{center}
+
+\subsection{Mapping on goals}
+\label{subsec: map_on_g}%
+
+%TODO: complete the table after having done the requirements
+\newcounter{mg}
+\setcounter{mg}{1}
+\newcommand{\cmg}{\themg\stepcounter{mg}}
+\begin{center}
+    \begin{longtable}{|l|l|l|}
+        \hline
+        \textbf{Goal} & \textbf{Domain assumptions} & \textbf{Requirements} \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        G\cmg         &                             &                       \\
+        \hline
+        \caption{Mapping on goals.}
+        \label{tab: map_on_g}%
+    \end{longtable}
+\end{center}
+
+%TODO: correct the diagrams if you add or remove use cases
+
+\subsection{Use case diagrams}
+\label{subsec: use_case_diag}%
+
+\textbf{Unregistered EVD}
+\begin{figure} [H]
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{Images/UseCaseDiagrams/unregistered_EVD_use_case_diagram}
+        \caption{Unregistered EVD use case diagram}
+        \label{fig: unreg_EVD_diag}
+    \end{center}
+\end{figure}
+
+\textbf{Registered EVD}
+\begin{figure} [H]
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{Images/UseCaseDiagrams/registered_EVD_use_case_diagram}
+        \caption{Unregistered EVD use case diagram}
+        \label{fig: reg_EVD_diag}
+    \end{center}
+\end{figure}
+
+\textbf{CPO}
+\begin{figure} [H]
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{Images/UseCaseDiagrams/CPO_use_case_diagram}
+        \caption{Unregistered EVD use case diagram}
+        \label{fig: cpo_diag}
+    \end{center}
+\end{figure}
+
+\subsection{Use cases}
+\label{subsec: use_cases}%
+%TODO: write it better
+In this section, they are explained and represented the main identified use cases.
+There is a table with entry conditions, event flow, exit conditions and exception for each of them, and a sequence diagram
+that shows the messages exchanged between the entities and the called functions.
+
+\subsection{Mapping on requirements}
+\label{subsec: map_on_req}%
+\newcounter{mr}
+\setcounter{mr}{1}
+\newcommand{\cmr}{\themr\stepcounter{mr}}
+\begin{center}
+    \begin{longtable}{|l|l|}
+        \hline
+        \textbf{Use Case} & \textbf{Requirements} \\
+        \hline
+        \caption{Mapping on requirements.}
+        \label{tab: map_on_req}
+    \end{longtable}
+\end{center}
+
 
 \section{Performance Requirements}
 \label{sec:performance_requirements}%
+According to a market analysis conducted by \verb|MOTUS-E| in September 2022,
+the number of fully electric vehicles and plug-in hybrid vehicles registered in Italy is 320.776.
+If we suppose that the eMALL system will be used by one in every three EVDs,
+the system should guarantee that it can handle simultaneously an overall of 100.000 connected clients, more or less.
+\\
+From the data storage point of view, the \verb|eMALL| system should consider three different sources of data:
+\begin{itemize}
+    \item \textbf{EVD's personal data.} We consider that $5\ KB$ is enough for the storage of personal information of an EVD\@.
+    Considering $10^5$ EVDs, it is needed a total of:
+    \begin{center}
+        $10^5\cdot5\ KB = 488,3\ MB$
+    \end{center}
+    \item \textbf{EVD's calendar.} One of the functionalities offered by the \verb|eMALL| system is to insert new activities
+    into EVD's calendar.
+    The events have not much information: they specify starting time and destination of the activity.
+    We can assume that each event requires $0.5 KB$ of storage.
+    Considering all the potential users and assuming that they insert three activities a day, for the first year they are needed:
+    \begin{center}
+        $10^5\cdot 3\cdot 365\cdot 1\ KB = 104,43\ GB$
+    \end{center}
+    \item \textbf{History of charging sessions.} The \verb|eMALL| system should save the information of all the charging sessions.
+    If we assume that the information of each charging session requires $3\ KB$ of storage.
+    Considering all the potential users and assuming that they charge their vehicle once a day, for the first year they are needed:
+    \begin{center}
+        $10^5\cdot 365\cdot 3\ KB = 104,43\ GB$
+    \end{center}
+    %TODO: complete sources for data
+\end{itemize}
 
 
 \section{Design Constraints}
