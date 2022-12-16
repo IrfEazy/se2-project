@@ -1,15 +1,35 @@
-# Ignore idea's workspace configuration folder
+# Ignore `.idea` workspace configuration folder
 **.idea/
+
+# Ignore `.run` configuration folder
 **.run/
+
+# Ignore all the content of folder `out`, except `Project.pdf`
 **out/
 !**out/
 **out/*
 !**out/Project.pdf
+
+# Ignore all Portable Document Format Files
 **.pdf
+
+# Ignore all LaTeX Auxiliary Files
 **.aux
+
+# Ignore all Audacity File Lists
 **.lof
+
+# Ignore all Log Files
 **.log
+
+# Ignore all LaTeX Auxiliary Files for List of Figures
 **.lot
+
+# Ignore all Compiled Executable Files
 **.out
+
+# Ignore all GNU Zipped Archives
 **.synctex.gz
+
+# Ignore all Table of Contents Files
 **.toc
