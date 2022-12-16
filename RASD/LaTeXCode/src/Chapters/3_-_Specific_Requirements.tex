@@ -165,34 +165,71 @@ that shows the messages exchanged between the entities and the called functions.
 
 \section{Performance Requirements}
 \label{sec:performance_requirements}%
+\textbf{Number of users.} \\
 According to a market analysis conducted by \verb|MOTUS-E| in September 2022,
 the number of fully electric vehicles and plug-in hybrid vehicles registered in Italy is 320.776.
 If we suppose that the eMALL system will be used by one in every three EVDs,
-the system should guarantee that it can handle simultaneously an overall of 100.000 connected clients, more or less.
+the system should guarantee that it can handle an overall of 100.000 clients. \\
+So, we can consider that the system should be able to handle th $50\%$ of them could be connected simultaneously. \\
 \\
-From the data storage point of view, the \verb|eMALL| system should consider three different sources of data:
+\textbf{Data storage} \\
+From the data storage point of view, the \verb|eMALL| system should consider several sources of data:
 \begin{itemize}
     \item \textbf{EVD's personal data.} We consider that $5\ KB$ is enough for the storage of personal information of an EVD\@.
-    Considering $10^5$ EVDs, it is needed a total of:
+    Considering $10^5$ EVDs, the system needs:
     \begin{center}
         $10^5\cdot5\ KB = 488,3\ MB$
     \end{center}
     \item \textbf{EVD's calendar.} One of the functionalities offered by the \verb|eMALL| system is to insert new activities
     into EVD's calendar.
     The events have not much information: they specify starting time and destination of the activity.
-    We can assume that each event requires $0.5 KB$ of storage.
-    Considering all the potential users and assuming that they insert three activities a day, for the first year they are needed:
+    We can assume that each event requires $1 KB$ of storage.
+    Considering all the potential users and assuming that they insert three activities a day, for the first year the system needs:
     \begin{center}
         $10^5\cdot 3\cdot 365\cdot 1\ KB = 104,43\ GB$
     \end{center}
     \item \textbf{History of charging sessions.} The \verb|eMALL| system should save the information of all the charging sessions.
-    If we assume that the information of each charging session requires $3\ KB$ of storage.
-    Considering all the potential users and assuming that they charge their vehicle once a day, for the first year they are needed:
+    We assume that the information of each charging session requires $3\ KB$ of storage.
+    To decide how many times we want to assume a generic EVD charges his EV, we have to consider different factors,
+    such as the EVDs' habits, the storage of their EV's battery, and the distances they can drive during the day.
+    For example, an EVD who drives long distances every day and whose EV has a small battery may need to charge
+    it more frequently than an EVD with a larger battery who only drives short distances.
+    Similarly, an EVD that can access fast charging infrastructure may be able to charge his EV less frequently than
+    a driver who only has access to slower charging stations.
+    So, it is reasonable to assume that a generic EVD charges his EV twice a week. \\
+    For the first year, the system needs:
     \begin{center}
-        $10^5\cdot 365\cdot 3\ KB = 104,43\ GB$
+        $10^5\cdot \frac{365}{7} \cdot 2\cdot 3\ KB = 29,84\ GB$
     \end{center}
-    %TODO: complete sources for data
+    \item \textbf{CPO's personal data.} If we consider that in Italy there could be more or less 50 CPOs,
+    as we did for the EVDs, we can assume that one in every three CPOs subscribes to the \verb|eMALL| system.
+    We consider enough $5\ KB$ of storage for each profile.
+    So, the system needs:
+    \begin{center}
+        $20\cdot 5\ KB = 100\ KB$
+    \end{center}
+    \item \textbf{Charging points registration.} Each CPO registers information about their charging points distributed in the territory.
+    Referring again to the market analysis conducted by \verb|MOTUS-E|, in September 2022,
+    there were a total of 32.776 charging points in Italy.
+    So, we can assume that all the CPOs register 11.000 charging points all together.
+    We consider enough $5\ KB$ of storage for the registration of each charging spot.
+    So, the system needs:
+    \begin{center}
+        $11 000\cdot 5\ KB = 53,71\ MB$
+    \end{center}
 \end{itemize}
+The rest of storage needed is about the several functionalities offered to the EVDs and to the CPOs.
+So, after summing all the values obtained in the previous list, we overestimate the memory suggested for the first year
+of life of the system.
+Summing all the values, it is:
+\begin{center}
+    $488,3\ MB + 104,43\ GB + 29,84\ GB + 100\ KB + 53,71\ MB = 134,8\ GB$
+\end{center}
+So, a memory storage of $200\ GB$ will be enough for the first year of the \verb|eMALL| system. \\
+\\
+\textbf{Time response} \\
+The \verb|eMALL| system should handle all the requests within 3 seconds, given that there are not strict time response requirements.
+
 
 
 \section{Design Constraints}
