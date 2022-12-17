@@ -21,7 +21,7 @@ To access personalized suggestions, based on EV’s position, the device in use 
 
 \subsection{Software Interfaces}
 \label{subsec:software_interfaces}%
-%TODO: think id there is something you can write in this subsection
+%TODO: think if there is something you can write in this subsection
 
 \subsection{Communication Interfaces}
 \label{subsec:communication_interfaces}%
@@ -143,7 +143,389 @@ Below are listed different communication interfaces used to exchange information
 %TODO: write it better
 In this section, they are explained and represented the main identified use cases.
 There is a table with entry conditions, event flow, exit conditions and exception for each of them, and a sequence diagram
-that shows the messages exchanged between the entities and the called functions.
+that shows the messages exchanged between the entities and the called functions. \\
+%TODO: find new use cases
+%TODO: insert sequence diagrams
+%TODO: insert exeptions
+\textbf{EVD registration.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Unregistered EVD                                                                                                                                                                                      \\
+        \hline
+        Entry conditions & The EVD isn’t registered in the eMALL system, and he clicks the sign-up button                                                                                                                        \\
+        \hline
+        Event Flow       & 1. eMALL asks the unregistered EVD to insert personal information (i.e., name, surname, birthday, billing address, e-mail, and password).                                                             \\
+        & 2. The unregistered EVD fills out the form with his personal information (name, surname, birthday, billing address, e-mail, and password) and accepts the “Terms \& Conditions” and “Privacy Policy”. \\
+        & 3. eMALL validates the inserted EVD’s personal information.                                                                                                                                           \\
+        & 4. eMALL asks the unregistered EVD to insert payment method information.                                                                                                                              \\
+        & 5. The EVD fills out a form with its payment method information.                                                                                                                                      \\
+        & 6. eMALL validates the inserted EVD’s payment method.                                                                                                                                                 \\
+        & 7. eMALL sends a confirmation email to the EVD.                                                                                                                                                       \\
+        & 8. eMALL sends back the EVD’s registration outcome.                                                                                                                                                   \\
+        \hline
+        Exit condition   & An account is created.                                                                                                                                                                                \\
+        \hline
+        Exceptions       & 3.1. eMALL isn’t able to validate the EVD’s personal information.                                                                                                                                     \\
+        & 6.1. eMALL isn’t able to validate the EVD’s payment method.                                                                                                                                           \\
+        & In all these cases, the user is notified with an error message.                                                                                                                                       \\
+        \hline
+        \caption{EVD registration use case.}
+        \label{tab: EVD_sign_up_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{EVD logs in.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered EVD                                                                                                    \\
+        \hline
+        Entry conditions & The EVD is registered in the eMALL system and he clicks the log in button.                                        \\
+        \hline
+        Event Flow       & 1. eMALL asks the registered EVD to insert the e-mail.                                                            \\
+        & 2. The registered EVD inserts the e-mail.                                                                         \\
+        & 3. eMALL validates the inserted e-mail.                                                                           \\
+        & 4. eMALL asks the registered EVD to insert the password associated with the e-mail.                               \\
+        & 5. The registered EVD inserts the password.                                                                       \\
+        & 6. eMALL validates the inserted password in combination with the e-mail.                                          \\
+        & 7. eMALL sends back the login outcome.                                                                            \\
+        \hline
+        Exit condition   & The EVD access the eMALL system.                                                                                  \\
+        \hline
+        Exceptions       & 3.1 The e-mail is not recognized.                                                                                 \\
+        & 6.1 The password is not correct.                                                                                  \\
+        & In both cases, the user receives a notification through an error message. He has to insert his credentials again. \\
+        \hline
+        \caption{EVD logs in use case.}
+        \label{tab: EVD_logs_in_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{EVD adds an EV.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered EVD                                                                                \\
+        \hline
+        Entry conditions & The EVD is registered and correctly logged in.                                                \\
+        & The EVD clicks the ``Add a Vehicle'' button from his profile section of eMALL                 \\
+        \hline
+        Event Flow       & 1. eMALL asks the registered EVD to insert car informations.                                  \\
+        & 2. The registered EVD inserts the requested information and he sends them to the eMALL.       \\
+        & 3. eMALL validates the information searching for possible errors.                             \\
+        & 4. eMALL asks the registered EVD to insert a nickname for the vehicle to save in his profile. \\
+        & 5. The registered EVD inserts the nickame.                                                    \\
+        & 6. eMALL validates the nickname also searching for duplicates between user EV nicknames.      \\
+        & 7. eMALL sends back the registration outcome.                                                 \\
+        \hline
+        Exit condition   & EVD car information are not coherent or correct.                                              \\
+        \hline
+        Exceptions       & 3.1 The e-mail is not recognized.                                                             \\
+        & 5.1 The inserted nickname is already taken between those owned by the user.                   \\
+        & In both cases, the user receives a notification through an error message.                     \\
+        \hline
+        \caption{EVD adds an EV use case.}
+        \label{tab: EVD_adds_a_vehicle_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{Registered EVD books a charge.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered EVD                                                                             \\
+        \hline
+        Entry conditions & The EVD is registered and correctly logged in.                                             \\
+        & The EVD selects a specific charging station and clicks the ``book'' button                 \\
+        \hline
+        Event Flow       & 1. eMALL asks the registered EVD to choose a timeframe.                                    \\
+        & 2. The registered EVD inserts the timeframe.                                               \\
+        & 3. eMALL checks if the selected timeframe is currently available.                          \\
+        & 4. eMALL selects a charging point to reserve for the EVD depending on EV's specifications. \\
+        & 5. eMALL asks the registered EVD to confirm the booking with the prompted information.     \\
+        & 6. The registered EVD clicks the ``Confir'' button to confirm the booking.                 \\
+        & 7. eMALL adds the booking to the EVD's calendar.                                           \\
+        & 8. eMALL sends back the booking outcome.                                                   \\
+        \hline
+        Exit condition   & A charging session is booked.                                                              \\
+        \hline
+        Exceptions       & 3.1. No free charging points are available at the selected timeframe.                      \\
+        & The user is notified with an error message, and asked to select a new timeframe.           \\
+        \hline
+        \caption{EVD books a charge use case.}
+        \label{tab: EVD_booking_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{EVD consults the map of charging stations.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered EVD                                                                                     \\
+        \hline
+        Entry conditions & The EVD is registered and correctly logged in.                                                     \\
+        & The EVD is in the map section at a given or specified location.                                    \\
+        \hline
+        Event Flow       & 1. eMALL shows the map with all the charging stations available over a specific location.          \\
+        & 2. The registered EVD moves on the map, searching for a charging station.                          \\
+        & 3. eMALL retrieves the charging station locations in the new place.                                \\
+        & 4. The registered EVD selects a specific charging station to get its detailed information.         \\
+        & 5. eMALL retrieves the charging station's detailed information.                                    \\
+        \hline
+        Exit condition   & The registered EVD changes section, and moves from the dashboard.                                  \\
+        \hline
+        Exceptions       & 1.1 The user didn’t accept sharing location.                                                       \\
+        & In this case, the user is notified by an error message and needs to move to its position manually. \\
+        \hline
+        \caption{EVD consults the map of charging stations use case.}
+        \label{tab: EVD_map_charging_stations_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{Registered EVD consults a specific promotion that can be redeemed.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered EVD                                                                                                        \\
+        \hline
+        Entry conditions & The EVD is registered and correctly logged in.                                                                        \\
+        & The EVD is in the promotion section.                                                                                  \\
+        \hline
+        Event Flow       & 1. eMALL sends the promotion list to the registered EVD.                                                              \\
+        & 2. The registered EVD selects a promotion to activate.                                                                \\
+        & 3. The registered EVD triggers the offer.                                                                             \\
+        & 4. eMALL asks the registered EVD to choose between his payment methods.                                               \\
+        & 5. The registered EVD picks the payment method.                                                                       \\
+        & 6. eMALL asks the registered EVD to confirm the payment.                                                              \\
+        & 7. The registered EVD authorizes the payment.                                                                         \\
+        & 8. eMALL makes the payment.                                                                                           \\
+        & 9. eMALL sends back the payment outcome.                                                                              \\
+        \hline
+        Exit condition   & The promotion has been activated.                                                                                     \\
+        \hline
+        Exceptions       & 8.1. The payment fails due to no sufficient funds.                                                                    \\
+        & 8.2. The payment fails due to the failure of the transaction.                                                         \\
+        & 8.3. The payment fails because of data input errors.                                                                   \\
+        & 8.4. The payment fails due to technical issues.                                                                       \\
+        & In these cases, the registered EVD receives a notification with an error message, and the promotion is not activated. \\
+        \hline
+        \caption{EVD consults a specific promotion that can be redeemed use case.}
+        \label{tab: EVD_consults_promotion_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{Registered EVD adds a new event to the calendar.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered EVD                                                                                     \\
+        \hline
+        Entry conditions & The EVD is registered and correctly logged in.                                                     \\
+        & The EVD is in the map section.                                                                     \\
+        \hline
+        Event Flow       & 1. eMALL shows the map with all the charging stations available over a specific location.          \\
+        & 2. The registered EVD moves on the map, searching for a charging station.                          \\
+        & 3. eMALL retrieves the charging station locations in the new place.                                \\
+        & 4. The registered EVD selects a specific charging station to get its detailed information.         \\
+        & 5. eMALL retrieves the charging station's detailed information.                                    \\
+        \hline
+        Exit condition   & The registered EVD changes section, and moves from the dashboard.                                  \\
+        \hline
+        Exceptions       & 1.1 The user didn’t accept sharing location.                                                       \\
+        & In this case, the user is notified by an error message and needs to move to its position manually. \\
+        \hline
+        \caption{EVD adds a new event to the calendar use case.}
+        \label{tab: EVD_adds_event_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{CPO logs in.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & CPO                                                                                                 \\
+        \hline
+        Entry conditions & CPO’s operator is in the business login section.                                                    \\
+        \hline
+        Event Flow       & 1. eMALL asks the CPO operator to insert his credentials to log in.                                 \\
+        & 2. The CPO operator inserts the CPO ID associated with its company, password, and email.            \\
+        & 3. eMALL validates the inserted credentials combination.                                            \\
+        & 4. eMALL sends back the login outcome.                                                              \\
+        \hline
+        Exit condition   & The CPO access the business section of the eMALL system                                             \\
+        \hline
+        Exceptions       & 3.1.1. CPO credentials are not correct and not validated by eMALL.                                  \\
+        & 3.2.1. CPO’s affiliate agreement has expired, and its ID is no longer allowed to access the system. \\
+        & In both cases, the user receives a notification with an error message.                              \\
+        & Also, in the second case, the operator is invited to call the sales team.                           \\
+        \hline
+        \caption{CPO logs in use case.}
+        \label{tab: CPO_logs_in_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{CPO sets a fee.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & CPO                                                                \\
+        \hline
+        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in. \\
+        & The CPO enters the profile section.                                \\
+        \hline
+        Event Flow       & 1. eMALL shows the CPO his profile.                                \\
+        & 2. The CPO enters the charging station managing section.           \\
+        & 3. eMALL shows the CPO his managing charging station section.      \\
+        & 4. The CPO taps the ``manage price'' button.                       \\
+        & 5. The CPO inserts the value of the new energy selling price.      \\
+        & 6. The CPO taps the submission button.                             \\
+        & 7. eMALL sends back the outcome of the setting of the fee.         \\
+        \hline
+        Exit condition   & The selling price is set to the new value.                         \\
+        \hline
+        Exceptions       &                                                                    \\
+        \hline
+        \caption{CPO sets a fee use case.}
+        \label{tab: CPO_sets_fee_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{CPO adds a charging station.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & CPO                                                                                                      \\
+        \hline
+        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                                       \\
+        & The CPO is in the charging station section from the profile section.                                     \\
+        & The CPO clicks the button to add a new charging station to its profile.                                  \\
+        \hline
+        Event Flow       & 1. eMALL asks the CPO to insert the location of the new charging station.                                \\
+        & 2. The CPO inserts the region, province, city, and address of the new charging station.                  \\
+        & 3. eMALL asks the CPO to insert the initial status of the new charging station.                          \\
+        & 4. The CPO inserts the status of the new charging station (available, maintenance, broken, unavailable). \\
+        & 5. eMALL asks the CPO to insert the charging costs.                                                      \\
+        & 6. The CPO inserts the charging costs.                                                                   \\
+        & 7. eMALL asks the CPO to add charging points to the new charging station.                                \\
+        & 8. The CPO inserts the information of the charging points.                                               \\
+        & 9. eMALL validates all the inserted information.                                                         \\
+        & 10. eMALL sends back the outcome of the insertion of the new charging station.                           \\
+        \hline
+        Exit condition   & The charging station is created and added to the CPO’s profile.                                          \\
+        \hline
+        Exceptions       & 9.1 There is already a charging station at the same location specified by the CPO.                       \\
+        & The CPO receives a notification with an error message, and the charging station is not created.          \\
+        \hline
+        \caption{CPO adds a charging station use case.}
+        \label{tab: CPO_adds_charging_station_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{CPO adds a charging point.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & CPO                                                                                             \\
+        \hline
+        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                              \\
+        & The CPO is in the charging station section from the profile section.                            \\
+        & The CPO clicks the “add charging point” button.                                                 \\
+        \hline
+        Event Flow       & 1. eMALL shows the CPO the list of its charging stations and asks it to select one.             \\
+        & 2. The CPO selects a charging station.                                                          \\
+        & 3. eMALL asks the CPO to insert the information about the charging station.                     \\
+        & 4. The CPO inserts the serial number, the types of connectors installed on the charging point, the power supply,
+        the initial status of the charging point, and the other required information. \\
+        & 5. eMALL validates the inserted information about the charging point.                           \\
+        & 6. eMALL sends back to the CPO the outcome of the creation of the new charging point.           \\
+        \hline
+        Exit condition   & The charging point is added to the charging station.                                            \\
+        \hline
+        Exceptions       & 4.1 There is already a charging point with the same serial number in the profile of the CPO.    \\
+        & The CPO receives a notification with an error message, and the charging station is not created. \\
+        \hline
+        \caption{CPO adds a charging point use case.}
+        \label{tab: CPO_adds_charging_point_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{CPO changes the metadata of a charging point.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & CPO                                                                                 \\
+        \hline
+        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                  \\
+        & The CPO is in the charging station section from the profile section.                \\
+        & The CPO clicks the “edit charging station” button.                                  \\
+        \hline
+        Event Flow       & 1. eMALL shows the CPO the list of its charging stations and asks it to select one. \\
+        & 2. The CPO selects a charging station.                                              \\
+        & 3. eMALL asks the CPO to insert the new values for the charging point.              \\
+        & 4. The CPO edits the metadata of the charging station.                              \\
+        & 5. eMALL updates the charging point with the new inserted values.                   \\
+        & 6. eMALL sends back to the CPO the outcome of the update.                           \\
+        \hline
+        Exit condition   & The metadata of the charging station is updated.                                    \\
+        \hline
+        Exceptions       &                                                                                     \\
+        \hline
+        \caption{CPO changes the metadata of a charging point use case.}
+        \label{tab: CPO_updates_charging_point_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{CPO activates a promotion.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & CPO                                                                                \\
+        \hline
+        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                 \\
+        & The CPO is in the profile section.                                                 \\
+        & The CPO clicks the “activate new promotion” button.                                \\
+        \hline
+        Event Flow       & 1. eMALL asks the CPO to define the features of the new promotion.                 \\
+        & 2. The CPO defines the features of the new promotion.                              \\
+        & 3. eMALL saves the new promotion.                                                  \\
+        & 4. eMALL initializes the promotion.                                                \\
+        & 5. eMALL sends back to the CPO the outcome of the activation of the new promotion. \\
+        \hline
+        Exit condition   & The promotion is created and activated.                                            \\
+        \hline
+        Exceptions       &                                                                                    \\
+        \hline
+        \caption{CPO activates a promotion use case.}
+        \label{tab: CPO_activates_promotion_use_case}
+    \end{longtable}
+\end{center}
+
+\textbf{CPO decides the DSO from which acquire energy.}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & CPO                                                                          \\
+        \hline
+        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.           \\
+        & The CPO is in the DSO section from the profile section.                      \\
+        & The CPO clicks the “set DSO” button.                                         \\
+        \hline
+        Event Flow       & 1. eMALL shows the CPO the list of DSOs.                                     \\
+        & 2. eMALL asks the CPO to select a DSO from the list.                         \\
+        & 3. The CPO selects a DSO from the list.                                      \\
+        & 4. eMALL updates CPO’s profile information.                                  \\
+        & 5. eMALL activates the selected DSO as the one from which to acquire energy. \\
+        & 6. eMALL sends back to the CPO the outcome of the setting of the DSO         \\
+        \hline
+        Exit condition   & The DSO from which to acquire energy is updated.                             \\
+        \hline
+        Exceptions       &                                                                              \\
+        \hline
+        \caption{CPO decides the DSO from which acquire energy use case.}
+        \label{tab: CPO_decides_DSO_use_case}
+    \end{longtable}
+\end{center}
 
 \subsection{Mapping on requirements}
 \label{subsec: map_on_req}%
