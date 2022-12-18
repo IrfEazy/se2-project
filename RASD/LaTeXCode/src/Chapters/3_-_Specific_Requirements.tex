@@ -21,18 +21,13 @@ To access personalized suggestions, based on EV’s position, the device in use 
 
 \subsection{Software Interfaces}
 \label{subsec:software_interfaces}%
-%TODO: think if there is something you can write in this subsection
-
-\subsection{Communication Interfaces}
-\label{subsec:communication_interfaces}%
-The eMALL system needs to communicate with other actors to offer functionalities to the users;
-the communication is bidirectional and permits eMALL to obtain the desired data and serve elaborated data.
-Below are listed different communication interfaces used to exchange information with users:
+%TODO: complete the section
+The following list describes the required software interfaces that the \verb|eMALL| system uses:
 \begin{itemize}
-    \item \textbf{CPMS and Charging Points.} The CPMSs offered to the CPO communicate with the charging point
-    through the OCPP communication protocol.
+    \item \textbf{CPMS and Charging Points.} The CPMS that is offered to the CPO communicates with the charging points
+    through their API\@.
     Thanks to it, the system can manage the charging session, given the possibility of starting and stopping it.
-    Another significant functionality offered by OCPP is the diagnostic of the charging point:
+    Another significant functionality is the diagnostic of the charging point:
     a CPO can reboot its charging spots, can get their log, and can update their firmware.
     %TODO: Does it make sense to put an example of an external system
     \item \textbf{eMALL and EVs.} The eMALL system communicates with the EVs registered by the EVD\@.
@@ -45,6 +40,11 @@ Below are listed different communication interfaces used to exchange information
     \item \textbf{eMALL and third-party payment services.} The \verb|eMALL| system offers the possibility to pay through
     external payment services to the EVD. The communication happens thanks to APIs offered by the companies that handle payments.
 \end{itemize}
+
+\subsection{Communication Interfaces}
+\label{subsec:communication_interfaces}%
+%TODO: explain why TCP/IP is the best communication protocol for the eMALL system
+%TODO: identify interfaces (OCPP and others)
 
 
 \section{Functional Requirements}
