@@ -26,7 +26,8 @@ The following list describes the required software interfaces that the \verb|eMA
 \begin{itemize}
     \item \textbf{CPMS and Charging Points.} The CPMS that is offered to the CPO communicates with the charging points
     through their API\@.
-    Thanks to it, the system can manage the charging session, given the possibility of starting and stopping it.
+    Thanks to it, the system can manage the charging session, given the possibility of starting and stopping it or set
+    the power supply to be given to each connected EV\@.
     Another significant functionality is the diagnostic of the charging point:
     a CPO can reboot its charging spots, can get their log, and can update their firmware.
     %TODO: Does it make sense to put an example of an external system
@@ -49,8 +50,11 @@ The communication protocols that the \verb|eMALL| system uses are:
 \begin{itemize}
     \item \textbf{Open Charge Point Protocol (OCPP).} It is used for the communication between the CPMS and the charging
     stations.
-    \item \textbf{HTTP(S).} It is used when external APIs are exploited to retrieve data through the web, such as
-    the communication between the \verb|eMALL| system and the DSOs and third-party payment services.
+    \item \textbf{HyperText Transfer Protocol over Secure Socket Layer (HTTPS).} The protocol is used every time data are
+    exchanged with the external world.
+    So, it is used when \verb|eMALL| communicates with EVDs and CPOs.
+    As defined in the domain assumption section, we assume that external APIs exploited by the system to retrieve data
+    through the web from DSOs and EVs use a HTTPS communication protocol.
 \end{itemize}
 
 
@@ -151,10 +155,9 @@ The communication protocols that the \verb|eMALL| system uses are:
 In this section, they are explained and represented the main identified use cases.
 There is a table with entry conditions, event flow, exit conditions and exception for each of them, and a sequence diagram
 that shows the messages exchanged between the entities and the called functions. \\
-%TODO: find new use cases
 %TODO: insert sequence diagrams
 %TODO: insert exeptions
-\textbf{EVD registration.}
+\subsubsection*{EVD registration}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -182,7 +185,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{EVD logs in.}
+\subsubsection*{EVD logs in}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -210,7 +213,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{EVD adds an EV.}
+\subsubsection*{EVD adds an EV}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -238,7 +241,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{Registered EVD books a charge.}
+\subsubsection*{Registered EVD books a charge}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -252,7 +255,7 @@ that shows the messages exchanged between the entities and the called functions.
         & 3.\ eMALL checks if the selected timeframe is currently available.                          \\
         & 4.\ eMALL selects a charging point to reserve for the EVD depending on EV's specifications. \\
         & 5.\ eMALL asks the registered EVD to confirm the booking with the prompted information.     \\
-        & 6.\ The registered EVD clicks the ``Confirm'' button to confirm the booking.                 \\
+        & 6.\ The registered EVD clicks the ``Confirm'' button to confirm the booking.                \\
         & 7.\ eMALL adds the booking to the EVD's calendar.                                           \\
         & 8.\ eMALL sends back the booking outcome.                                                   \\
         \hline
@@ -266,7 +269,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{EVD consults the map of charging stations.}
+\subsubsection*{EVD consults the map of charging stations}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -283,7 +286,7 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Exit condition   & The registered EVD changes section, and moves from the dashboard.                                  \\
         \hline
-        Exceptions       & 1.1 The user did not accept sharing location.                                                       \\
+        Exceptions       & 1.1 The user did not accept sharing location.                                                      \\
         & In this case, the user is notified by an error message and needs to move to its position manually. \\
         \hline
         \caption{EVD consults the map of charging stations use case.}
@@ -291,7 +294,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{Registered EVD consults a specific promotion that can be redeemed.}
+\subsubsection*{Registered EVD consults a specific promotion that can be redeemed}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -323,32 +326,92 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{Registered EVD adds a new event to the calendar.}
+\subsubsection*{Registered EVD starts the charging process}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & Registered EVD                                                                                     \\
+        Actor            & Registered EVD                                                                                                       \\
         \hline
-        Entry conditions & The EVD is registered and correctly logged in.                                                     \\
-        & The EVD is in the map section.                                                                     \\
+        Entry conditions & The EVD is registered and correctly logged in.                                                                       \\
+        & The EVD starts charging the EV at a charging point of the charging station.                                          \\
         \hline
-        Event Flow       & 1.\ eMALL shows the map with all the charging stations available over a specific location.         \\
-        & 2.\ The registered EVD moves on the map, searching for a charging station.                         \\
-        & 3.\ eMALL retrieves the charging station locations in the new place.                               \\
-        & 4.\ The registered EVD selects a specific charging station to get its detailed information.        \\
-        & 5.\ eMALL retrieves the charging station's detailed information.                                   \\
+        Event Flow       & 1.\ eMALL communicates to the EVD if he has been correctly authenticated and if he can charge at the charging point. \\
+        & 2.\ The registered EVD initializes the charging process.                                                             \\
+        & 3.\ eMALL defines the source of the electricity (batteries or DSO).                                                  \\
+        & 4.\ eMALL defines how much electricity to give to the connected EV depending on actual energy demand.                \\
+        & 5.\ eMALL sends updates of the charging session to the EVD.                                                          \\
+        & 6.\ The registered EVD stops the charging process.                                                                   \\
+        & 7.\ eMALL sends the receipt of the charging session to the EVD.                                                      \\
+        & 8.\ The registered EVD makes the payment for the charging session.                                                   \\
+        & 9.\ eMALL sends back the payment outcome                                                                             \\
         \hline
-        Exit condition   & The registered EVD changes section, and moves from the dashboard.                                  \\
+        Exit condition   & The registered EVD has charged the EV and paid for the service received.                                             \\
         \hline
-        Exceptions       & 1.1 The user did not accept sharing location.                                                       \\
-        & In this case, the user is notified by an error message and needs to move to its position manually. \\
+        Exceptions       &                                                                                                                      \\
         \hline
-        \caption{EVD adds a new event to the calendar use case.}
-        \label{tab: EVD_adds_event_use_case}
+        \caption{Registered EVD starts the charging process use case.}
+        \label{tab: EVD_charges_EV_use_case}
     \end{longtable}
 \end{center}
 
-\textbf{CPO logs in.}
+\subsubsection*{Registered EVD makes a payment}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered EVD                                                                                                        \\
+        \hline
+        Entry conditions & The EVD is registered and correctly logged in.                                                                        \\
+        & The EVD has decided the charging station where will charge the EV and is in the payment module.                       \\
+        \hline
+        Event Flow       & 1.\ eMALL shows EVD's payment methods and asks to select one of them.                                                 \\
+        & 2.\ The registered EVD selects a payment method.                                                                      \\
+        & 3.\ eMALL verifies funds availability.                                                                                \\
+        & 4.\ eMALL starts the payment process.                                                                                 \\
+        & 5.\ eMALL sends back the payment outcome.                                                                             \\
+        \hline
+        Exit condition   & The registered EVD has paid for a book or for a activation of a promotion.                                            \\
+        \hline
+        Exceptions       & 5.1. The payment fails due to no sufficient funds.                                                                    \\
+        & 5.2. The payment fails due to the failure of the transaction.                                                         \\
+        & 5.3. The payment fails because of data input errors.                                                                  \\
+        & 5.4. The payment fails due to technical issues.                                                                       \\
+        & In these cases, the registered EVD receives a notification with an error message, and the promotion is not activated. \\
+        \hline
+        \caption{EVD EVD makes a payment use case.}
+        \label{tab: EVD_pays_use_case}
+    \end{longtable}
+\end{center}
+
+\subsubsection*{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & Registered EVD                                                                                                \\
+        \hline
+        Entry conditions & The EVD is registered and correctly logged in.                                                                \\
+        & The EVD opens the calendar section.                                                                           \\
+        \hline
+        Event Flow       & 1.\ eMALL shows the calendar to the registered EVD.                                                           \\
+        & 2.\ The registered EVD clicks the ``insert new activity'' button.                                             \\
+        & 3.\ eMALL sends the form to be compiled for the addition of a new activity.                                   \\
+        & 4.\ The registered EVD inserts and submits the requested information.                                         \\
+        & 5.\ eMALL processes the received form.                                                                        \\
+        & 6.\ eMALL saves the new activity into registered EVD calendar.                                                \\
+        & 7.\ eMALL calculates the best schedule of where and when to charge the EV and sends it to the registered EVD. \\
+        & 8.\ The registered EVD selects a charging station from the list of stations suggested by \verb|eMALL|.        \\
+        & 9.\ eMALL books the selected charging station at the specified timeframe.                                     \\
+        & 10.\ eMALL sends back the booking outcome to the registered EVD.                                              \\
+        \hline
+        Exit condition   & The registered EVD inserted a new activity received a suggestion about charging session.                      \\
+        \hline
+        Exceptions       &                                                                                                               \\
+        \hline
+        \caption{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule use case.}
+        \label{tab: EVD_adds_activity_calendar_use_case}
+    \end{longtable}
+\end{center}
+
+\subsubsection*{CPO logs in}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -373,7 +436,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{CPO sets a fee.}
+\subsubsection*{CPO sets the charging cost}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -399,7 +462,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{CPO adds a charging station.}
+\subsubsection*{CPO adds a charging station}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -430,7 +493,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{CPO adds a charging point.}
+\subsubsection*{CPO adds a charging point}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -458,7 +521,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{CPO changes the metadata of a charging point.}
+\subsubsection*{CPO changes the metadata of a charging point}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -484,7 +547,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{CPO activates a promotion.}
+\subsubsection*{CPO activates a promotion}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -509,7 +572,31 @@ that shows the messages exchanged between the entities and the called functions.
     \end{longtable}
 \end{center}
 
-\textbf{CPO decides the DSO from which acquire energy.}
+\subsubsection*{CPO plans a maintenance session for a charging station}
+\begin{center}
+    \begin{longtable}{lp{0.75\linewidth}}
+        \hline
+        Actor            & CPO                                                                                             \\
+        \hline
+        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                              \\
+        & The CPO is in the charging station section from the profile section and has selected a station. \\
+        & The CPO clicks the ``schedule maintenance'' button.                                             \\
+        \hline
+        Event Flow       & 1.\ eMALL shows the CPO the list of DSOs.                                                       \\
+        & 2.\ eMALL asks the CPO to specify the date and the hour of the maintenance.                     \\
+        & 3.\ eMALL plans the maintenance session of the charging station.                                \\
+        & 4.\ eMALL sends back the outcome of the planning of the maintenance to the CPO.                 \\
+        \hline
+        Exit condition   & It is planned a maintenance session for the specified charging station.                         \\
+        \hline
+        Exceptions       &                                                                                                 \\
+        \hline
+        \caption{CPO plans a maintenance session for a charging station use case.}
+        \label{tab: CPO_plans_maintenance_use_case}
+    \end{longtable}
+\end{center}
+
+\subsubsection*{CPO decides the DSO from which acquire energy}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -553,14 +640,14 @@ that shows the messages exchanged between the entities and the called functions.
 
 \section{Performance Requirements}
 \label{sec:performance_requirements}%
-\textbf{Number of users.} \\
+\subsection*{Number of users}
 According to a market analysis conducted by \verb|MOTUS-E| in September 2022,
 the number of fully electric vehicles and plug-in hybrid vehicles registered in Italy is 320.776.
 If we suppose that the eMALL system will be used by one in every three EVDs,
 the system should guarantee that it can handle an overall of 100.000 clients. \\
 So, we can consider that the system should be able to handle th $50\%$ of them could be connected simultaneously.
 
-\textbf{Data storage} \\
+\subsection*{Data storage}
 From the data storage point of view, the \verb|eMALL| system should consider several sources of data:
 \begin{itemize}
     \item \textbf{EVD's personal data.} We consider that $5\ KB$ is enough for the storage of personal information of an EVD\@.
@@ -624,12 +711,20 @@ The \verb|eMALL| system should handle all the requests within 3 seconds, given t
 
 \subsection{Standards compliance}
 \label{subsec:standards_compliance}%
+First of all, the system should respect all the laws regarding privacy and data treatment and exchange with third parties (i.e.\ CPOs);
+to work in Europe, the system should respect the EU GDPR\@.
+In particular, a general description of the main principles that data should have in order to guarantee their privacy
+is given in Art.\ 5 of the GDPR document.
 
 \subsection{Hardware limitations}
 \label{subsec:hardware_limitations}%
+The \verb|eMALL| system can be used from both web browsers and mobile applications.
+As explained in the system attributes section, the system is strictly related to the operating systems
+in which the mobile application will be implemented, so Android and IO\@..
 
 \subsection{Any other constraint}
 \label{subsec:any_other_constraint}%
+There are not other constraints.
 
 
 \section{Software System Attributes}
@@ -637,15 +732,40 @@ The \verb|eMALL| system should handle all the requests within 3 seconds, given t
 
 \subsection{Reliability}
 \label{subsec:reliability}%
+The \verb|eMALL| system should guarantee critical operations as payment.
+But, its functionalities are mainly about data management of the user and CPOs' infrastructure.
+It would not be critical if one of these operations fails, given that the process can be started and repeated.
+So, considering the different behaviors the system should have, it is reasonable to have a failure rate
+between $0.1\%$ and $1\%$, so to be between high-quality reliable systems and more common systems.
 
 \subsection{Availability}
 \label{subsec:availability}%
+The \verb|eMALL| system should guarantee the CPO a good experience in their IT infrastructure management.
+So, considering the business functionalities that the system offers to the companies, it would not be acceptable a day of downtime.
+That's the reason why the system should guarantee $99.9\%$ of uptime.
+In this section we just consider the business functionalities because the interactions between the EVDs and \verb|eMALL|
+don't introduce constraints for the availability of the system.
 
 \subsection{Security}
 \label{subsec:security}%
+The \verb|eMALL| system communicates with EVDs and CPOs, and stores their personal information.
+For this reason, it should assure data privacy and data encryption when information is exchanged through the internet.
+This is guaranteed thanks to the HTTPS\@.
+Furthermore, \verb|eMALL| should encrypt all the information before proceeding with the storage.
 
 \subsection{Maintainability}
 \label{subsec:maintainability}%
+The \verb|eMALL| system should be divided in different modules depending on the offered functionalities.
+It is necessary to facilitate maintenance and substitution of the modules, and to eventually extend the system.
+Furthermore, every implemented functionality has to be well documented.
+What should guide the design definition process is to allow a maintenance that does not affect untouched modules and their interfaces.
 
 \subsection{Portability}
 \label{subsec:portability}%
+The \verb|eMALL| system is not strictly related to software and hardware.
+To be more portable, the system can be developed on both Android and IOS\@.
+In order to do that, it has to be decided which programming language and development tools to use:
+if the budget is not high and would be better to save time and effort, it is recommended to use cross-platform
+development tools;
+otherwise, the system can be implemented separately,
+increasing in that way the effort needed for the developing and the maintenance of the applications.
