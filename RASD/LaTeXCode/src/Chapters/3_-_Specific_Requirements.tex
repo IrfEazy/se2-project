@@ -45,6 +45,13 @@ The following list describes the required software interfaces that the \verb|eMA
 \label{subsec:communication_interfaces}%
 %TODO: explain why TCP/IP is the best communication protocol for the eMALL system
 %TODO: identify interfaces (OCPP and others)
+The communication protocols that the \verb|eMALL| system uses are:
+\begin{itemize}
+    \item \textbf{Open Charge Point Protocol (OCPP).} It is used for the communication between the CPMS and the charging
+    stations.
+    \item \textbf{HTTP(S).} It is used when external APIs are exploited to retrieve data through the web, such as
+    the communication between the \verb|eMALL| system and the DSOs and third-party payment services.
+\end{itemize}
 
 
 \section{Functional Requirements}
