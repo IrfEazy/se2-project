@@ -93,7 +93,7 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|eMALL| system shall allow a registered EVD to select a specific charging station.                                                      \\
         \hline
-        R\creq      & The \verb|eMALL| system shall allow a registered EVD to get the location of a specific charging station.                                        \\
+        R\creq      & The \verb|eMALL| system shall allow a registered EVD to get the location of a specific charging station.                                         \\
         \hline
         R\creq      & The \verb|eMALL| system shall allow a registered EVD to get the costs of a specific charging station.                                            \\
         \hline
@@ -127,7 +127,7 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|eMALL| system shall communicate to charging points to start the charging session.                                                      \\
         \hline
-        R\creq      & The \verb|eMALL| system shall define the source of the charging session (batteries or DSO).                                                       \\
+        R\creq      & The \verb|eMALL| system shall define the source of the charging session (batteries or DSO).                                                      \\
         \hline
         R\creq      & The \verb|eMALL| system shall define the power of the charging session.                                                                          \\
         \hline
@@ -486,7 +486,7 @@ After that, to facilitate reading, the section reports the text of all the assum
 \subsubsection*{Unregistered EVD}
 \begin{figure} [H]
     \begin{center}
-        \includegraphics[width=0.9\linewidth]{Images/UseCaseDiagrams/unregistered_EVD_use_case_diagram}
+        \includegraphics[width=0.7\linewidth]{Images/UseCaseDiagrams/unregistered_EVD_use_case_diagram}
         \caption{Unregistered EVD use case diagram.}
         \label{fig: unregistered_EVD_diag}
     \end{center}
@@ -1132,145 +1132,145 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{p{0.12\linewidth}p{0.88\linewidth}}
         \hline
-        \textbf{Use Case} & \textbf{Requirements} \\
+        \textbf{Use Case} & \textbf{Requirements}                                                                                                                           \\
         \hline
-        UC\cmr & R1. The eMALL system shall allow an unregistered EVD to create an account. \\
-        & R21.\ The eMALL system shall allow a registered EVD to insert a new payment method. \\
-        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R1. The eMALL system shall allow an unregistered EVD to create an account.                                                                      \\
+        & R21.\ The eMALL system shall allow a registered EVD to insert a new payment method.                                                             \\
+        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments.                                                \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R2. The eMALL system shall allow a registered EVD to log in. \\
+        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
         \hline
-        UC\cmr & R2. The eMALL system shall allow a registered EVD to log in. \\
-        & R3. The eMALL system shall allow a registered EVD to add an EV in his profile. \\
-        & R4. The eMALL system shall communicate with EV’s brand API to get needed information. \\
-        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station. \\
+        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
+        & R3. The eMALL system shall allow a registered EVD to add an EV in his profile.                                                                  \\
+        & R4. The eMALL system shall communicate with EV’s brand API to get needed information.                                                           \\
+        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station.                                                      \\
         \hline
-        UC\cmr & R2. The eMALL system shall allow a registered EVD to log in. \\
-        & R5. The eMALL system shall allow a registered EVD to book a charge. \\
-        & R6. The eMALL system shall allow a registered EVD to select a timeframe to reserve a charging point. \\
-        & R7. The eMALL system shall add a booked reservation into EVD’s calendar. \\
-        & R55.\ The eMALL system shall reserve a charging point in a certain timeframe. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
+        & R5. The eMALL system shall allow a registered EVD to book a charge.                                                                             \\
+        & R6. The eMALL system shall allow a registered EVD to select a timeframe to reserve a charging point.                                            \\
+        & R7. The eMALL system shall add a booked reservation into EVD’s calendar.                                                                        \\
+        & R55.\ The eMALL system shall reserve a charging point in a certain timeframe.                                                                   \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R2. The eMALL system shall allow a registered EVD to log in. \\
-        & R8. The eMALL system shall allow a registered EVD to get all the charging station near to his current location. \\
-        & R9. The eMALL system shall allow a registered EVD to insert a specific location to get charging station nearby. \\
-        & R10.\ The eMALL system shall allow a registered EVD to move into the map of charging stations. \\
-        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station. \\
-        & R12.\ The eMALL system shall allow a registered EVD to get the location of a specific charging station. \\
-        & R13.\ The eMALL system shall allow a registered EVD to get the costs of a specific charging station. \\
-        & R14.\ The eMALL system shall allow a registered EVD to get the CPO owner of a specific charging station. \\
-        & R15.\ The eMALL system shall allow a registered EVD to get type of connectors of a specific charging station. \\
-        & R16.\ The eMALL system shall allow a registered EVD to get maximum power supply of the spots of a specific charging station. \\
-        & R17.\ The eMALL system shall allow a registered EVD to get the status of a specific charging station. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
+        & R8. The eMALL system shall allow a registered EVD to get all the charging station near to his current location.                                 \\
+        & R9. The eMALL system shall allow a registered EVD to insert a specific location to get charging station nearby.                                 \\
+        & R10.\ The eMALL system shall allow a registered EVD to move into the map of charging stations.                                                  \\
+        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station.                                                      \\
+        & R12.\ The eMALL system shall allow a registered EVD to get the location of a specific charging station.                                         \\
+        & R13.\ The eMALL system shall allow a registered EVD to get the costs of a specific charging station.                                            \\
+        & R14.\ The eMALL system shall allow a registered EVD to get the CPO owner of a specific charging station.                                        \\
+        & R15.\ The eMALL system shall allow a registered EVD to get type of connectors of a specific charging station.                                   \\
+        & R16.\ The eMALL system shall allow a registered EVD to get maximum power supply of the spots of a specific charging station.                    \\
+        & R17.\ The eMALL system shall allow a registered EVD to get the status of a specific charging station.                                           \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R2. The eMALL system shall allow a registered EVD to log in. \\
-        & R18.\ The eMALL system shall allow a registered EVD to get the list of active promotions. \\
-        & R19.\ The eMALL system shall allow a registered EVD to select a specific promotion. \\
-        & R20.\ The eMALL system shall allow a registered EVD to activate a promotion. \\
-        & R21.\ The eMALL system shall allow a registered EVD to insert a new payment method. \\
-        & R22.\ The eMALL system shall allow a registered EVD to select a payment method. \\
-        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method. \\
-        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
+        & R18.\ The eMALL system shall allow a registered EVD to get the list of active promotions.                                                       \\
+        & R19.\ The eMALL system shall allow a registered EVD to select a specific promotion.                                                             \\
+        & R20.\ The eMALL system shall allow a registered EVD to activate a promotion.                                                                    \\
+        & R21.\ The eMALL system shall allow a registered EVD to insert a new payment method.                                                             \\
+        & R22.\ The eMALL system shall allow a registered EVD to select a payment method.                                                                 \\
+        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
+        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments.                                                \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R2. The eMALL system shall allow a registered EVD to log in. \\
-        & R22.\ The eMALL system shall allow a registered EVD to select a payment method. \\
-        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method. \\
-        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments. \\
-        & R25.\ The eMALL system shall allow a registered EVD to start a charging process. \\
-        & R26.\ The eMALL system shall verify the identity of the EVD requesting to start a charging session. \\
-        & R27.\ The eMALL system shall communicate to charging points to unlock their plug. \\
-        & R28.\ The eMALL system shall communicate to charging points to start the charging session. \\
-        & R29.\ The eMALL system shall define the source of the charging session (batteries or DSO). \\
-        & R30.\ The eMALL system shall define the power of the charging session. \\
-        & R31.\ The eMALL system shall get EV’s battery status. \\
-        & R32.\ The eMALL system shall send notifications about the current status of the charging session to the registered EVD\@. \\
-        & R33.\ The eMALL system shall allow a registered EVD to stop the charging session. \\
-        & R34.\ The eMALL system shall communicate to a charging point to stop the charging session. \\
-        & R35.\ The eMALL system shall send the receipt of the charging session to the registered EVD\@. \\
-        & R36.\ The eMALL system shall communicate the outcome of the payment to a registered EVD\@. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
+        & R22.\ The eMALL system shall allow a registered EVD to select a payment method.                                                                 \\
+        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
+        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments.                                                \\
+        & R25.\ The eMALL system shall allow a registered EVD to start a charging process.                                                                \\
+        & R26.\ The eMALL system shall verify the identity of the EVD requesting to start a charging session.                                             \\
+        & R27.\ The eMALL system shall communicate to charging points to unlock their plug.                                                               \\
+        & R28.\ The eMALL system shall communicate to charging points to start the charging session.                                                      \\
+        & R29.\ The eMALL system shall define the source of the charging session (batteries or DSO).                                                      \\
+        & R30.\ The eMALL system shall define the power of the charging session.                                                                          \\
+        & R31.\ The eMALL system shall get EV’s battery status.                                                                                           \\
+        & R32.\ The eMALL system shall send notifications about the current status of the charging session to the registered EVD\@.                       \\
+        & R33.\ The eMALL system shall allow a registered EVD to stop the charging session.                                                               \\
+        & R34.\ The eMALL system shall communicate to a charging point to stop the charging session.                                                      \\
+        & R35.\ The eMALL system shall send the receipt of the charging session to the registered EVD\@.                                                  \\
+        & R36.\ The eMALL system shall communicate the outcome of the payment to a registered EVD\@.                                                      \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R2. The eMALL system shall allow a registered EVD to log in. \\
-        & R22.\ The eMALL system shall allow a registered EVD to select a payment method. \\
-        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method. \\
-        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
+        & R22.\ The eMALL system shall allow a registered EVD to select a payment method.                                                                 \\
+        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
+        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments.                                                \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R2. The eMALL system shall allow a registered EVD to log in. \\
-        & R5. The eMALL system shall allow a registered EVD to book a charge. \\
-        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station. \\
-        & R37.\ The eMALL system shall allow a registered EVD to access in his own calendar. \\
-        & R38.\ The eMALL system shall allow a registered EVD to add a new activity into his calendar. \\
-        & R39.\ The eMALL system shall allow a registered EVD to specify the starting hour of a new activity. \\
-        & R40.\ The eMALL system shall allow a registered EVD to specify the destination of a new activity. \\
-        & R41.\ The eMALL system shall save a new activity into EVD’s calendar. \\
+        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
+        & R5. The eMALL system shall allow a registered EVD to book a charge.                                                                             \\
+        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station.                                                      \\
+        & R37.\ The eMALL system shall allow a registered EVD to access in his own calendar.                                                              \\
+        & R38.\ The eMALL system shall allow a registered EVD to add a new activity into his calendar.                                                    \\
+        & R39.\ The eMALL system shall allow a registered EVD to specify the starting hour of a new activity.                                             \\
+        & R40.\ The eMALL system shall allow a registered EVD to specify the destination of a new activity.                                               \\
+        & R41.\ The eMALL system shall save a new activity into EVD’s calendar.                                                                           \\
         & R42.\ The eMALL system shall calculate the best schedules of where and when to charge registered EVD’s EV so to minimize costs and wasted time. \\
-        & R43.\ The eMALL system shall communicate to the registered EVD the details of the suggestions about the calculated schedules. \\
-        & R69.\ The eMALL system shall store users information. \\
+        & R43.\ The eMALL system shall communicate to the registered EVD the details of the suggestions about the calculated schedules.                   \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R44.\ The eMALL system shall allow a CPO to log in as a business user. \\
+        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
         \hline
-        UC\cmr & R44.\ The eMALL system shall allow a CPO to log in as a business user. \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations. \\
-        & R46.\ The eMALL system shall allow a CPO to set new selling prices for charging sessions. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R46.\ The eMALL system shall allow a CPO to set new selling prices for charging sessions.                                                       \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R44.\ The eMALL system shall allow a CPO to log in as a business user. \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations. \\
-        & R47.\ The eMALL system shall allow a CPO to add a new charging station in its profile. \\
-        & R48.\ The eMALL system shall allow a CPO to specify the location of charging station (region, province, city, address). \\
-        & R49.\ The eMALL system shall allow a CPO to specify the status of a charging station (available, maintenance, broken, unavailable). \\
-        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station. \\
-        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point. \\
-        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point. \\
-        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point. \\
-        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R47.\ The eMALL system shall allow a CPO to add a new charging station in its profile.                                                          \\
+        & R48.\ The eMALL system shall allow a CPO to specify the location of charging station (region, province, city, address).                         \\
+        & R49.\ The eMALL system shall allow a CPO to specify the status of a charging station (available, maintenance, broken, unavailable).             \\
+        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station.                                               \\
+        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point.                                                        \\
+        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
+        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
+        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R44.\ The eMALL system shall allow a CPO to log in as a business user. \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations. \\
-        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station. \\
-        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point. \\
-        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point. \\
-        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point. \\
-        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station.                                               \\
+        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point.                                                        \\
+        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
+        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
+        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R44.\ The eMALL system shall allow a CPO to log in as a business user. \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations. \\
-        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station. \\
-        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point. \\
-        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point. \\
-        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point. \\
-        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station.                                               \\
+        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point.                                                        \\
+        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
+        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
+        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R44.\ The eMALL system shall allow a CPO to log in as a business user. \\
-        & R56.\ The eMALL system shall allow a CPO to manage its promotions. \\
-        & R57.\ The eMALL system shall allow a CPO to create a new promotion. \\
-        & R58.\ The eMALL system shall allow a CPO to specify the details of the a promotion. \\
-        & R59.\ The eMALL system shall save the information of a promotion. \\
-        & R60.\ The eMALL system shall initialize the information of a new promotion. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
+        & R56.\ The eMALL system shall allow a CPO to manage its promotions.                                                                              \\
+        & R57.\ The eMALL system shall allow a CPO to create a new promotion.                                                                             \\
+        & R58.\ The eMALL system shall allow a CPO to specify the details of the a promotion.                                                             \\
+        & R59.\ The eMALL system shall save the information of a promotion.                                                                               \\
+        & R60.\ The eMALL system shall initialize the information of a new promotion.                                                                     \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R44.\ The eMALL system shall allow a CPO to log in as a business user. \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations. \\
-        & R61.\ The eMALL system shall allow a CPO to schedule a maintenance session for a charging station. \\
-        & R62.\ The eMALL system shall allow a CPO to specify date and starting hour of a maintenance session for a charging station. \\
-        & R63.\ The eMALL system shall communicate to a charging station to schedule a maintenance at a specified timeframe. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R61.\ The eMALL system shall allow a CPO to schedule a maintenance session for a charging station.                                              \\
+        & R62.\ The eMALL system shall allow a CPO to specify date and starting hour of a maintenance session for a charging station.                     \\
+        & R63.\ The eMALL system shall communicate to a charging station to schedule a maintenance at a specified timeframe.                              \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
-        UC\cmr & R44.\ The eMALL system shall allow a CPO to log in as a business user. \\
-        & R64.\ The eMALL system shall allow a CPO to get the list of DSOs. \\
-        & R65.\ The eMALL system shall allow a CPO to select a DSO from the list of DSOs. \\
-        & R66.\ The eMALL system shall allow a CPO to update its electricity provider. \\
-        & R67.\ The eMALL system shall communicate to a specified DSO to send energy to the charging stations of a CPO\@. \\
-        & R68.\ The eMALL system shall get the electricity selling prices from the DSOs. \\
-        & R69.\ The eMALL system shall store users information. \\
+        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
+        & R64.\ The eMALL system shall allow a CPO to get the list of DSOs.                                                                               \\
+        & R65.\ The eMALL system shall allow a CPO to select a DSO from the list of DSOs.                                                                 \\
+        & R66.\ The eMALL system shall allow a CPO to update its electricity provider.                                                                    \\
+        & R67.\ The eMALL system shall communicate to a specified DSO to send energy to the charging stations of a CPO\@.                                 \\
+        & R68.\ The eMALL system shall get the electricity selling prices from the DSOs.                                                                  \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
         \hline
         \caption{Mapping on requirements.}
         \label{tab: map_on_req}
