@@ -178,24 +178,31 @@ The actors listed below are considered in the eMALL system
 \setcounter{da}{1}
 \newcommand{\cda}{\theda\stepcounter{da}}
 \begin{center}
-%TODO: add other lines if you need them
     \begin{longtable}{ |l|p{0.9\linewidth}| }
         \hline
-        \textbf{ID} & \textbf{Description}                                                                                                     \\
+        \textbf{ID} & \textbf{Description}                                                                                     \\
         \hline
-        DA\cda      & The EVD uses a device with GPS module for navigation and localization                                                    \\
+        DA\cda      & Each user has needed competences to use the \verb|eMALL| system.                                          \\
         \hline
-        DA\cda      & The EVD uses a device with internet connectivity                                                                         \\
+        DA\cda      & The EVD has an e-mail.                                                                                   \\
         \hline
-        DA\cda      & There is a specific compatibility between EV's plug and connectors offered by charging points                            \\
+        DA\cda      & The EVD has a payment method.                                                                            \\
         \hline
-        DA\cda      & The \verb|eMALL| system communicates with a third-party entity which provides real-time EV's information through its API \\
+        DA\cda      & The EVD uses a device with internet connectivity.                                                        \\
         \hline
-        DA\cda      & The \verb|eMALL| system communicates with DSOs through their APIs                                                        \\
+        DA\cda      & The EVD uses a device with GPS module for navigation and localization.                                   \\
         \hline
-        DA\cda      & Charging points have their own software                                                                                  \\
+        DA\cda      & There is a specific compatibility between EV's plug and connectors offered by charging points            \\
         \hline
-        DA\cda      & Communication between CPMSs and charging points happens through the OCPP protocol                                        \\
+        DA\cda      & Charging points have their own software.                                                                 \\
+        \hline
+        DA\cda      & Communication between the \verb|eMALL| system and the charging points happens through the OCPP protocol. \\
+        \hline
+        DA\cda      & The \verb|eMALL| system communicates with EV brands API to get vehicles' specification.                  \\
+        \hline
+        DA\cda      & The \verb|eMALL| system communicates with DSOs through their APIs.                                       \\
+        \hline
+        DA\cda      & The \verb|eMALL| system communicates with third-party payment services to manage the payments.           \\
         \hline
         \caption{Domain assumptions.}
         \label{tab:domainassmptn_tab}%
