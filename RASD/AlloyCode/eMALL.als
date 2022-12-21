@@ -54,9 +54,9 @@ one sig Type2 extends Plug {}
 
 sig UnregisteredEVD {eVs : disj some EV}
 
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+
 ///* An EVD cannot charge his EVs simultaneously, we assume each account is associated to only one driver
 fact evdsCanChargeOnlyOneEvPerTime {
 	all evd : EVD, disj ev1, ev2 : EV |
@@ -89,16 +89,16 @@ fact evsOfUnregisteredEvdsMustNotBeConnectedToChargingPoints {
 	all cp : ChargingPoint, uevd : UnregisteredEVD |
 		#(cp.eV & uevd.eVs) = 0
 }
-///*
+///* Charging stations charge vehicles through their batteries and DSOs
 fact chargingStationsUseTheirBatteries {
 	all cs : ChargingStation, cpo : CPO |
 		cs in cpo.chargingStations and
 		cs.wayOfCharging in cs.batteries + cpo.dso
 }
 
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+
 ///* EVs are connected to compatible charging points
 assert evsAreConnectedToCompatibleChargingPoints {
 	no cp : ChargingPoint |
@@ -112,9 +112,9 @@ assert noOverlappedAppointmentsInChargingPointSchedules {
 			lte [a1.endDate, a2.startDate]
 }
 
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+
 ///* Add new appointment to the calendar for an EVD
 pred addNewAppointmentToCalendarForEvd [evd : EVD, a' : Appointment] {
 	evd.calendar.appointments = evd.calendar.appointments + a'
@@ -166,16 +166,16 @@ pred simpleWorld {
 	#EVD = 2
 	#Appointment = 2
 }
-///* Show
-pred complexWorld {
-	#ChargingStation = 1
-	#ChargingPoint = 4
+///* Create a world where there are many appointments
+pred worldWithManyAppointments {
+	#ChargingStation = 2
+	#ChargingPoint = 2
 	#EVD = 2
-	#Appointment = 6
+	#Appointment = 5
 }
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
+
+/************************************************************************************/
+/************************************************************************************/
 
 run addNewAppointmentToCalendarForEvd
 
@@ -201,8 +201,8 @@ run updateEmailInEvd
 
 run simpleWorld
 
-run complexWorld for 10
-
-check noOverlappedAppointmentsInChargingPointSchedules
+run worldWithManyAppointments for 6
 
 check evsAreConnectedToCompatibleChargingPoints
+
+check noOverlappedAppointmentsInChargingPointSchedules
