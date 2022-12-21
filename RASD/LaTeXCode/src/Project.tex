@@ -89,38 +89,8 @@
 \usepackage{fancyhdr}
 \usepackage{wasysym} % For the headers
 \usepackage{rotating}
-
 \usepackage{listings}
 \input{Configuration_Files/alloy.sty}
-\lstdefinestyle{alloy}{
-    commentstyle=\itshape,
-    keywordstyle=\bfseries,
-    stringstyle=\itshape,
-}
-
-%\definecolor{dkgreen}{rgb}{0,0.6,0}
-%\definecolor{gray}{rgb}{0.5,0.5,0.5}
-%\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-%\lstset{frame=tb,
-%    language=Alloy,
-%    aboveskip=3mm,
-%    belowskip=3mm,
-%    showstringspaces=false,
-%    columns=flexible,
-%    basicstyle={\small\ttfamily},
-%    numbers=none,
-%    numberstyle=\tiny\color{gray},
-%    keywordstyle=\color{blue},
-%    commentstyle=\color{dkgreen},
-%    stringstyle=\color{mauve},
-%    breaklines=true,
-%    breakatwhitespace=true,
-%    tabsize=3
-%}
-
-
-
 \fancyhf{}
 
 % Input of configuration file. Do not change config.tex file unless you really know what you are doing. 
@@ -137,6 +107,27 @@
 %----------------------------------------------------------------------------
 %	ADD YOUR DEFINITIONS AND COMMANDS (be careful of existing commands)
 %----------------------------------------------------------------------------
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+    language=alloy,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\bf\color{blue},
+    commentstyle=\it\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
 
 %----------------------------------------------------------------------------
 %	BEGIN OF YOUR DOCUMENT
@@ -183,17 +174,6 @@
 %-------------------------------------------------------------------------
 %	THESIS MAIN TEXT
 %-------------------------------------------------------------------------
-% In the main text of your thesis you can write the chapters in two different ways:
-%
-%(1) As presented in this template you can write:
-%    \chapter{Title of the chapter}
-%    *body of the chapter*
-%
-%(2) You can write your chapter in a separated .tex file and then include it in the main file with the following command:
-%    \chapter{Title of the chapter}
-%    \input{chapter_file.tex}
-%
-% Especially for long thesis, we recommend you the second option.
 
     \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
     \mainmatter % Begin numeric (1,2,3...) page numbering
