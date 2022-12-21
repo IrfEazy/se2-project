@@ -12,6 +12,8 @@
 
 # Ignore all Portable Document Format Files
 **.pdf
+!**simpleWorld.pdf
+!**worldWithManyAppointments.pdf
 
 # Ignore all LaTeX Auxiliary Files
 **.aux
