@@ -1,6 +1,6 @@
 This section describes the model built to represent the world in which the \verb|eMALL| system works.
 
-\section{Alloy ode}
+\section{Alloy Code}
 \label{sec: alloy}%
 \begin{lstlisting}[language=alloy]
 open util/ordering[DateTime]
@@ -213,3 +213,29 @@ check noOverlappedAppointmentsInChargingPointSchedules
 check evsAreConnectedToCompatibleChargingPoints
 
 \end{lstlisting}
+
+\section{Simulations}
+\label{sec: sim}%
+In this section we show to simulations of the built model.
+The first one is a simple world, with few instances, useful to understand the basis of the relations between entities.
+The second world is more complex due to the representation of a higher number of instances of stations, EVDs and appointments.
+
+\begin{sidewaysfigure}
+	\begin{figure} [H]
+		\begin{center}
+			\includegraphics[width=1\linewidth]{graphs/simpleWorld}
+			\caption{Simple world Alloy.}
+			\label{fig: simple_world_alloy}
+		\end{center}
+	\end{figure}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}
+	\begin{figure} [H]
+		\begin{center}
+			\includegraphics[width=1\linewidth]{graphs/worldWithManyAppointments}
+			\caption{Simple world Alloy.}
+			\label{fig: many_appointments_world_alloy}
+		\end{center}
+	\end{figure}
+\end{sidewaysfigure}
