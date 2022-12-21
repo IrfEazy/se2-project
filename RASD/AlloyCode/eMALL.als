@@ -1,205 +1,100 @@
-// signatures
-
-//sig String {}
-sig DSO {
-	supplyFee: one Int,
-	cpmsList: some CPMS
-}
-
-sig CPMS {
-	chargingStations: some ChargingStation,
-	cpo: one CPO
-}
-
-sig CPO {
-	identifier: one Int,
-	commercialName: one String,
-	cpms: one CPMS
-}
-
-sig eMSP {
-	users: some User,
-	cpmsList: some CPMS
-}
-
-sig ChargingStation {
-	identifier: one Int,
-	columnsCount: one Int,
-	position: one Position,
-	chargingPoints: some ChargingPoint
-}
-
-sig ChargingPoint {
-	identifier: one Int,
-	chargingStation: one ChargingStation,
-	status: one Status,
-	plugList: set Plug
-}
-
-////////////////////////////////////////////////////////////////////////////////
-
-sig Date {
-	day: one Int,
-	month: one Int,
-	year: one Int,
-	hour: one Int,
-	minutes: one Int,
-	seconds: one Int
-}
-
-sig Calendar {
-	owner: one User,
-	chargingPoint: one ChargingPoint,
-	appointmentLists: set Appointment
-}
+open util/ordering[DateTime]
 
 sig Appointment {
-	startingDate: one Date,
-	endingDate: one Date,
-	user: one User,
-	calendar: one Calendar
-}
+	startDate : DateTime,
+	endDate : DateTime,
+	chargingPoint : ChargingPoint
+} {this in Calendar.appointments}
 
-sig User {
-	identifier: one Int,
-	email: one String,
-	password: one String,
-	birthday: one Date,
-	vehicle: set ElectricVehicle
-}
+sig Calendar {appointments : disj set Appointment} {this in EVD.calendar}
 
-sig ElectricVehicle {
-	identifier: one Int,
-	producer: one String,
-	model: one String,
-	year: one Int,
-	capacity: one Int,
-	owner: one User,
-	plugType: one Plug
+sig ChargingPoint {
+	eV : disj lone EV,
+	plugs : some Plug
 } {
-	capacity > 0
+	EV.plug in plugs and
+	this in ChargingStation.chargingPoints
 }
 
-sig Position {
-	latitude: one Int,
-	longitute: one Int,
-	accuracy: one Int,
-}
+sig ChargingStation {chargingPoints : disj some ChargingPoint} {this in CPO.chargingStations}
 
-abstract sig Status {}
-one sig Broken extends Status {}
-one sig Booked extends Status {}
-one sig Free extends Status {}
-one sig Occupied extends Status {}
+sig CPO {chargingStations : disj some ChargingStation}
 
-abstract sig Notification {}
-sig eMail extends Notification {}
-sig mobileNotification extends Notification {} 
+sig DateTime {} {this in Appointment.startDate + Appointment.endDate}
 
-abstract sig Fee {}
+sig Email {} {this in EVD.email}
 
-abstract sig Plug {
-	electricVehicle: lone ElectricVehicle,
-	chargingPoint: set ChargingPoint
-}
-one sig Type1 extends Plug {}
-one sig Type2 extends Plug {}
+sig EV {plug : Plug} {this in UnregisteredEVD.eVs}
+
+sig Password {} {this in EVD.password}
+
+abstract sig Plug {}
 one sig CCS extends Plug {}
 one sig ChaDeMo extends Plug {}
+one sig Type1 extends Plug {}
+one sig Type2 extends Plug {}
 
-////////////////////////////////////////////////////////////////////////////////
-
-// predicates and facts
-
-/*fact allChargingPointHasOneStatus {
-	all c: ChargingPoint | one s: Status | s in c.status
-}*/
-
-fact allChargingPointHasSomePlug {
-	all c: ChargingPoint | some p: Plug | p in c.plugList
+abstract sig UnregisteredEVD {eVs : disj some EV}
+sig EVD extends UnregisteredEVD {
+	calendar : disj Calendar,
+	email : disj Email,
+	password : disj Password
 }
 
-/*fact allAppointmentHasOneUser {
-	all a: Appointment | one u: User | u in a.user
-}*/
-
-/*fact allAppointmentHasOneCalendar {
-	all a: Appointment | one c: Calendar | c in a.calendar
-}*/
-
-fact allUserUniqueId {
-	no disjoint u1, u2: User | u1.identifier = u2.identifier 
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
+///* An EVD cannot charge his EVs simultaneously, we assume each account is associated to only one driver
+fact evdsCanChargeOnlyOneEvPerTime {
+	all evd : EVD, disj ev1, ev2 : EV |
+		ev1 + ev2 in evd.eVs and
+		ev1 in ChargingPoint.eV implies
+			ev2 not in ChargingPoint.eV
+}
+///* An appointment must start before ending
+fact appointmentsAreCorrect {
+	all a : Appointment |
+		lt [a.startDate, a.endDate]
+}
+///* A booking process must not be overlapped to another booking process in the same calendar and in the same charging point
+fact noOverlappedAppointmentsInChargingPointSchedules {
+	no disj a1, a2 : Appointment |
+		a1.chargingPoint in a2.chargingPoint and
+		gte [a1.startDate, a2.startDate] and
+		lte [a1.startDate, a2.endDate]
+	no c : Calendar, disj a1, a2 : c.appointments |
+		gte [a1.startDate, a2.startDate] and
+		lte [a1.startDate, a2.endDate]
 }
 
-fact allElectricVehicleUniqueId {
-	no disjoint ev1, ev2: ElectricVehicle | ev1.identifier = ev2.identifier 
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
+///* No overlapped appointments in charging point schedules
+assert noOverlappedAppointmentsInChargingPointSchedules {
+	no disj a1, a2 : Appointment |
+		a1.chargingPoint in a2.chargingPoint and
+			lte [a1.startDate, a2.startDate] and
+			lte [a1.endDate, a2.startDate]
+}
+///* EVs are connected to compatible charging points
+assert evsAreConnectedToCompatibleChargingPoints {
+	no cp : ChargingPoint |
+		cp.eV.plug not in cp.plugs
 }
 
-fact allChargingStationUniqueId {
-	no disjoint cs1, cs2: ChargingStation | cs1.identifier = cs2.identifier
-}
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
 
-fact allChargingPointUniqueId {
-	no disjoint cp1, cp2: ChargingPoint | cp1.identifier = cp2.identifier
-}
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
 
-fact allCPOUniqueId {
-	no disjoint cpo1, cpo2: CPO | cpo1.identifier = cpo2.identifier
-}
+pred show {}
 
-fact chargintPointsAreColumnsCount {
-	all cs: ChargingStation | #cs.chargingPoints = cs.columnsCount
-}
+run show for 10
 
-fact chargingPointsAreNotShared {
-	all cs: ChargingStation, cp: ChargingPoint |
-		cp.chargingStation = cs iff cp in cs.chargingPoints
-}
+check noOverlappedAppointmentsInChargingPointSchedules
 
-fact cpoHasAssociatedOnlyOneCpms {
-	all cpoOperator: CPO, cpmsSystem: CPMS |
-		cpoOperator.cpms = cpmsSystem iff cpmsSystem.cpo = cpoOperator
-}
-
-//fact cpmsHasAssociatedOnlyOneDso {
-//	all cpms: CPMS, dso: DSO | 
-//}
-
-//fact dateIsConsistent {
-//	all d: Date |
-//		
-//}
-
-/* --- DYNAMIC MODELING --- */
-
-pred addAppointment [cal, cal': Calendar, a: Appointment] {
-	cal'.appointmentLists = cal.appointmentLists + a
-}
-
-pred addChargingPoint [chs, chs': ChargingStation, chp: ChargingPoint] {
-	chs'.chargingPoints = chs.chargingPoints + chp
-	chs'.columnsCount = chs.columnsCount + 1
-}
-
-pred addElectricVehicle [us, us': User, ev: ElectricVehicle] {
-	us'.vehicle = us.vehicle + ev
-}
-
-pred addChargingStation [cpms, cpms': CPMS, chs: ChargingStation] {
-	cpms'.chargingStations = cpms.chargingStations + chs
-}
-
-pred addNotification [] {
-
-}
-
-/* ----------------------- */
-
-pred pred1 {
-	#Date = 0
-	#Calendar = 0
-	#Appointment = 0
-	#User = 0
-}
-
-run pred1 for 3
+check evsAreConnectedToCompatibleChargingPoints
