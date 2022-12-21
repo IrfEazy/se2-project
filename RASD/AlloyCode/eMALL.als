@@ -6,6 +6,8 @@ sig Appointment {
 	chargingPoint : ChargingPoint
 } {this in Calendar.appointments}
 
+sig Battery {} {this in ChargingStation.batteries}
+
 sig Calendar {appointments : disj set Appointment} {this in EVD.calendar}
 
 sig ChargingPoint {
@@ -16,11 +18,20 @@ sig ChargingPoint {
 	this in ChargingStation.chargingPoints
 }
 
-sig ChargingStation {chargingPoints : disj some ChargingPoint} {this in CPO.chargingStations}
+sig ChargingStation {
+	chargingPoints : disj some ChargingPoint,
+	batteries : disj set Battery,
+	wayOfCharging : disj Battery + DSO
+} {this in CPO.chargingStations}
 
-sig CPO {chargingStations : disj some ChargingStation}
+sig CPO {
+	chargingStations : disj some ChargingStation,
+	dso : DSO
+}
 
 sig DateTime {} {this in Appointment.startDate + Appointment.endDate}
+
+sig DSO {} {this in CPO.dso}
 
 sig Email {} {this in EVD.email}
 
@@ -77,6 +88,12 @@ fact evsOfEvdsAreNotSharedWithUnregisteredEvds {
 fact evsOfUnregisteredEvdsMustNotBeConnectedToChargingPoints {
 	all cp : ChargingPoint, uevd : UnregisteredEVD |
 		#(cp.eV & uevd.eVs) = 0
+}
+///*
+fact chargingStationsUseTheirBatteries {
+	all cs : ChargingStation, cpo : CPO |
+		cs in cpo.chargingStations and
+		cs.wayOfCharging in cs.batteries + cpo.dso
 }
 
 /*****************************************************************************************************************/
@@ -142,14 +159,20 @@ pred removePlugFromChargingPoint [cp : ChargingPoint, p : Plug] {
 pred updateEmailInEvd [evd : EVD, e' : Email] {
 	evd.email = e'
 }
-///* Create the CPOs world
-pred worldCpo {
-	#CPO = 1 and
-	#ChargingStation = 1 and
-	#ChargingPoint = 1 and
-	#UnregisteredEVD = 0
+///* Create a simple world
+pred simpleWorld {
+	#ChargingStation = 1
+	#ChargingPoint = 3
+	#EVD = 2
+	#Appointment = 2
 }
-
+///* Show
+pred complexWorld {
+	#ChargingStation = 1
+	#ChargingPoint = 4
+	#EVD = 2
+	#Appointment = 6
+}
 /*****************************************************************************************************************/
 /*****************************************************************************************************************/
 /*****************************************************************************************************************/
@@ -175,6 +198,10 @@ run removeEvFromEvd
 run removePlugFromChargingPoint
 
 run updateEmailInEvd
+
+run simpleWorld
+
+run complexWorld for 10
 
 check noOverlappedAppointmentsInChargingPointSchedules
 
