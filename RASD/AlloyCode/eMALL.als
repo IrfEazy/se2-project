@@ -24,7 +24,14 @@ sig DateTime {} {this in Appointment.startDate + Appointment.endDate}
 
 sig Email {} {this in EVD.email}
 
-sig EV {plug : Plug} {this in UnregisteredEVD.eVs}
+sig EV {plug : Plug} {this in UnregisteredEVD.eVs + EVD.eVs}
+
+sig EVD {
+	calendar : disj Calendar,
+	email : disj Email,
+	eVs : disj some EV,
+	password : disj Password
+}
 
 sig Password {} {this in EVD.password}
 
@@ -34,12 +41,7 @@ one sig ChaDeMo extends Plug {}
 one sig Type1 extends Plug {}
 one sig Type2 extends Plug {}
 
-abstract sig UnregisteredEVD {eVs : disj some EV}
-sig EVD extends UnregisteredEVD {
-	calendar : disj Calendar,
-	email : disj Email,
-	password : disj Password
-}
+sig UnregisteredEVD {eVs : disj some EV}
 
 /*****************************************************************************************************************/
 /*****************************************************************************************************************/
@@ -66,10 +68,25 @@ fact noOverlappedAppointmentsInChargingPointSchedules {
 		gte [a1.startDate, a2.startDate] and
 		lte [a1.startDate, a2.endDate]
 }
+///* EVs of EVDs are not shared with unregistered EVDs
+fact evsOfEvdsAreNotSharedWithUnregisteredEvds {
+	all evd : EVD, uevd : UnregisteredEVD |
+		#(evd.eVs & uevd.eVs) = 0
+}
+///* EVs of unregistered EVDs must not be connected to charging points
+fact evsOfUnregisteredEvdsMustNotBeConnectedToChargingPoints {
+	all cp : ChargingPoint, uevd : UnregisteredEVD |
+		#(cp.eV & uevd.eVs) = 0
+}
 
 /*****************************************************************************************************************/
 /*****************************************************************************************************************/
 /*****************************************************************************************************************/
+///* EVs are connected to compatible charging points
+assert evsAreConnectedToCompatibleChargingPoints {
+	no cp : ChargingPoint |
+		cp.eV.plug not in cp.plugs
+}
 ///* No overlapped appointments in charging point schedules
 assert noOverlappedAppointmentsInChargingPointSchedules {
 	no disj a1, a2 : Appointment |
@@ -77,23 +94,87 @@ assert noOverlappedAppointmentsInChargingPointSchedules {
 			lte [a1.startDate, a2.startDate] and
 			lte [a1.endDate, a2.startDate]
 }
-///* EVs are connected to compatible charging points
-assert evsAreConnectedToCompatibleChargingPoints {
-	no cp : ChargingPoint |
-		cp.eV.plug not in cp.plugs
+
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
+/*****************************************************************************************************************/
+///* Add new appointment to the calendar for an EVD
+pred addNewAppointmentToCalendarForEvd [evd : EVD, a' : Appointment] {
+	evd.calendar.appointments = evd.calendar.appointments + a'
+}
+///* Add new charging point to a charging station
+pred addNewChargingPointToChargingStation [cs : ChargingStation, cp' : ChargingPoint] {
+	cs.chargingPoints = cs.chargingPoints + cp'
+}
+///* Add new charging station to a CPO
+pred addNewChargingStationToCpo [cpo : CPO, cs' : ChargingStation] {
+	cpo.chargingStations = cpo.chargingStations + cs'
+}
+///* Add new EV to an EVD
+pred addNewEvToEvd [evd : EVD, ev' : EV] {
+	evd.eVs = evd.eVs + ev'
+}
+///* Add new plug in a charging point
+pred addNewPlugToChargingPoint [cp : ChargingPoint, p' : Plug] {
+	cp.plugs = cp.plugs + p'
+}
+///* Remove appointment from the calendar of an EVD
+pred removeAppointmentFromCalendarOfEvd [evd : EVD, a : Appointment] {
+	evd.calendar.appointments = evd.calendar.appointments - a
+}
+///* Remove a charging point from a charging station
+pred removeChargingPointFromChargingStation [cs : ChargingStation, cp : ChargingPoint] {
+	cs.chargingPoints = cs.chargingPoints - cp
+}
+///* Remove a charging station from a CPO
+pred removeChargingStationFromCpo [cpo : CPO, cs : ChargingStation] {
+	cpo.chargingStations = cpo.chargingStations - cs
+}
+///* Remove EV from an EVD
+pred removeEvFromEvd [evd : EVD, ev : EV] {
+	evd.eVs = evd.eVs - ev
+}
+///* Remove plug from a charging point
+pred removePlugFromChargingPoint [cp : ChargingPoint, p : Plug] {
+	cp.plugs = cp.plugs - p
+}
+///* Update email in an EVD
+pred updateEmailInEvd [evd : EVD, e' : Email] {
+	evd.email = e'
+}
+///* Create the CPOs world
+pred worldCpo {
+	#CPO = 1 and
+	#ChargingStation = 1 and
+	#ChargingPoint = 1 and
+	#UnregisteredEVD = 0
 }
 
 /*****************************************************************************************************************/
 /*****************************************************************************************************************/
 /*****************************************************************************************************************/
 
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
-/*****************************************************************************************************************/
+run addNewAppointmentToCalendarForEvd
 
-pred show {}
+run addNewChargingPointToChargingStation
 
-run show for 10
+run addNewChargingStationToCpo
+
+run addNewEvToEvd
+
+run addNewPlugToChargingPoint
+
+run removeAppointmentFromCalendarOfEvd
+
+run removeChargingPointFromChargingStation
+
+run removeChargingStationFromCpo
+
+run removeEvFromEvd
+
+run removePlugFromChargingPoint
+
+run updateEmailInEvd
 
 check noOverlappedAppointmentsInChargingPointSchedules
 

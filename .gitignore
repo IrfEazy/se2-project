@@ -33,3 +33,6 @@
 
 # Ignore all Table of Contents Files
 **.toc
+
+# Ignore all Graphviz Graph Files
+**.dot
