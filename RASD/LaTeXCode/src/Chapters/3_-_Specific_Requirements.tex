@@ -3,21 +3,21 @@
 
 \subsection{User Interfaces}
 \label{subsec:user_interfaces}%
-The eMALL’s user interfaces are a website and a mobile application;
+The \verb|eMALL|’s user interfaces are a website and a mobile application;
 the first is developed to be used mainly by CPOs with a dedicated login section for businesses but can be used by EVDs too.
 The mobile application is available for Android and iOS and provides an enhanced experience as compared to the website
 since it offers users personalized suggestions based on their location.
 The website and the app should be easy to use since they will be used mostly by middle-aged users,
 who might not always be familiar with the technology.
-A “quick booking” section dedicated to facilitating the booking process might be included,
+A “quick booking” section dedicated to facilitating the book process might be included,
 for those EVDs who are used to booking a charge at the same charging station (based on suggestions given by AI).
 
 \subsection{Hardware Interfaces}
 \label{subsec:hardware_interfaces}%
 The system only requires a smartphone or computer with an internet connection and web browser to access websites or mobile applications.
-Furthermore, eMALL communicates with the EV through its company's API to get the current battery level, the charging state,
+Furthermore, \verb|eMALL| communicates with the EV through its company's API to get the current battery level, the charging state,
 so if it is plugged in and if it is charging, and the number of routable kilometers obtained on the current battery level.
-To access personalized suggestions, based on EV’s position, the device in use has to be able to detect its location with a GPS or Glonass localization system.
+To access personalized suggestions, based on EV’s position, the device in use has to be able to detect its location with a GPS localization system.
 
 \subsection{Software Interfaces}
 \label{subsec:software_interfaces}%
@@ -45,12 +45,10 @@ The following list describes the required software interfaces that the \verb|eMA
 The communication protocols that the \verb|eMALL| system uses are:
 \begin{itemize}
     \item \textbf{Open Charge Point Protocol (OCPP).} It is used for the communication between the CPMS and the charging
-    stations.
+    points.
     \item \textbf{HyperText Transfer Protocol over Secure Socket Layer (HTTPS).} The protocol is used every time data are
     exchanged with the external world.
     So, it is used when \verb|eMALL| communicates with EVDs and CPOs.
-    As defined in the domain assumption section, we assume that external APIs exploited by the system to retrieve data
-    through the web from DSOs and EVs use a HTTPS communication protocol.
 \end{itemize}
 
 
@@ -480,7 +478,6 @@ After that, to facilitate reading, the section reports the text of all the assum
 \end{itemize}
 
 \newpage
-
 \subsection{Use case diagrams}
 \label{subsec: use_case_diag}%
 \subsubsection*{Unregistered EVD}
@@ -525,35 +522,34 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & Unregistered EVD                                                                                                                                                                                       \\
         \hline
-        Entry conditions & The EVD isn’t registered in the eMALL system, and he clicks the sign-up button                                                                                                                         \\
+        Entry conditions & The EVD isn’t registered in the \verb|eMALL| system, and he clicks the sign-up button                                                                                                                         \\
         \hline
-        Event Flow       & 1.\ eMALL asks the unregistered EVD to insert personal information (i.e., name, surname, birthday, billing address, e-mail, and password).                                                             \\
+        Event Flow       & 1.\ \verb|eMALL| asks the unregistered EVD to insert personal information (i.e., name, surname, birthday, billing address, e-mail, and password).                                                             \\
         & 2.\ The unregistered EVD fills out the form with his personal information (name, surname, birthday, billing address, e-mail, and password) and accepts the “Terms \& Conditions” and “Privacy Policy”. \\
-        & 3.\ eMALL validates the inserted EVD’s personal information.                                                                                                                                           \\
-        & 4.\ eMALL asks the unregistered EVD to insert payment method information.                                                                                                                              \\
+        & 3.\ \verb|eMALL| validates the inserted EVD’s personal information.                                                                                                                                           \\
+        & 4.\ \verb|eMALL| asks the unregistered EVD to insert payment method information.                                                                                                                              \\
         & 5.\ The EVD fills out a form with its payment method information.                                                                                                                                      \\
-        & 6.\ eMALL validates the inserted EVD’s payment method.                                                                                                                                                 \\
-        & 7.\ eMALL sends a confirmation email to the EVD.                                                                                                                                                       \\
-        & 8.\ eMALL sends back the EVD’s registration outcome.                                                                                                                                                   \\
+        & 6.\ \verb|eMALL| validates the inserted EVD’s payment method.                                                                                                                                                 \\
+        & 7.\ \verb|eMALL| sends a confirmation email to the EVD.                                                                                                                                                       \\
+        & 8.\ \verb|eMALL| sends back the EVD’s registration outcome.                                                                                                                                                   \\
         \hline
         Exit condition   & An account is created.                                                                                                                                                                                 \\
         \hline
-        Exceptions       & 3.1. eMALL isn’t able to validate the EVD’s personal information.                                                                                                                                      \\
-        & 6.1. eMALL isn’t able to validate the EVD’s payment method.                                                                                                                                            \\
+        Exceptions       & 3.1. \verb|eMALL| isn’t able to validate the EVD’s personal information.                                                                                                                                      \\
+        & 6.1. \verb|eMALL| isn’t able to validate the EVD’s payment method.                                                                                                                                            \\
         & In all these cases, the unregistered EVD is notified with an error message.                                                                                                                            \\
         \hline
         \caption{EVD signs up use case.}
         \label{tab: EVD_sign_up_use_case}
     \end{longtable}
 
-        %TODO: insert sequence
-        %\begin{figure} [H]
-        %    \begin{center}
-        %        \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_signs_up}
-        %        \caption{EVD signs up sequence diagram}
-        %        \label{fig: evd_sign_up_seq_diag}
-        %    \end{center}
-        %\end{figure}
+    \begin{figure} [H]
+        \begin{center}
+            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_signs_up}
+            \caption{EVD signs up sequence diagram}
+            \label{fig: evd_sign_up_seq_diag}
+        \end{center}
+    \end{figure}
 \end{center}
 
 \subsubsection*{UC\cuc . Registered EVD logs in}
@@ -562,17 +558,17 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & Registered EVD                                                                       \\
         \hline
-        Entry conditions & The EVD is registered in the eMALL system and he clicks the log in button.           \\
+        Entry conditions & The EVD is registered in the \verb|eMALL| system and he clicks the log in button.           \\
         \hline
-        Event Flow       & 1.\ eMALL asks the registered EVD to insert the e-mail.                              \\
+        Event Flow       & 1.\ \verb|eMALL| asks the registered EVD to insert the e-mail.                              \\
         & 2.\ The registered EVD inserts the e-mail.                                           \\
-        & 3.\ eMALL validates the inserted e-mail.                                             \\
-        & 4.\ eMALL asks the registered EVD to insert the password associated with the e-mail. \\
+        & 3.\ \verb|eMALL| validates the inserted e-mail.                                             \\
+        & 4.\ \verb|eMALL| asks the registered EVD to insert the password associated with the e-mail. \\
         & 5.\ The registered EVD inserts the password.                                         \\
-        & 6.\ eMALL validates the inserted password in combination with the e-mail.            \\
-        & 7.\ eMALL sends back the login outcome.                                              \\
+        & 6.\ \verb|eMALL| validates the inserted password in combination with the e-mail.            \\
+        & 7.\ \verb|eMALL| sends back the login outcome.                                              \\
         \hline
-        Exit condition   & The registered EVD access the eMALL system.                                          \\
+        Exit condition   & The registered EVD access the \verb|eMALL| system.                                          \\
         \hline
         Exceptions       & 3.1 The e-mail is not recognized.                                                    \\
         & 6.1 The password is not correct.                                                     \\
@@ -583,14 +579,14 @@ that shows the messages exchanged between the entities and the called functions.
         \label{tab: EVD_logs_in_use_case}
     \end{longtable}
 
-        %TODO: insert sequence
-        %\begin{figure} [H]
-        %    \begin{center}
-        %        \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_logs_in}
-        %        \caption{Registered EVD logs in sequence diagram}
-        %        \label{fig: evd_logs_in_seq_diag}
-        %    \end{center}
-        %\end{figure}
+
+    \begin{figure} [H]
+        \begin{center}
+            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_logs_in}
+            \caption{Registered EVD logs in sequence diagram}
+            \label{fig: evd_logs_in_seq_diag}
+        \end{center}
+    \end{figure}
 \end{center}
 
 \subsubsection*{UC\cuc . Registered EVD adds an EV}
@@ -600,15 +596,15 @@ that shows the messages exchanged between the entities and the called functions.
         Actor            & Registered EVD                                                                                 \\
         \hline
         Entry conditions & The EVD is registered and correctly logged in.                                                 \\
-        & The EVD clicks the ``Add a Vehicle'' button from his profile section of eMALL                  \\
+        & The EVD clicks the ``Add a Vehicle'' button from his profile section of \verb|eMALL|                  \\
         \hline
-        Event Flow       & 1.\ eMALL asks the registered EVD to insert car information.                                   \\
-        & 2.\ The registered EVD inserts the requested information and he sends them to the eMALL.       \\
-        & 3.\ eMALL validates the information searching for possible errors.                             \\
-        & 4.\ eMALL asks the registered EVD to insert a nickname for the vehicle to save in his profile. \\
+        Event Flow       & 1.\ \verb|eMALL| asks the registered EVD to insert car information.                                   \\
+        & 2.\ The registered EVD inserts the requested information and he sends them to the \verb|eMALL|.       \\
+        & 3.\ \verb|eMALL| validates the information searching for possible errors.                             \\
+        & 4.\ \verb|eMALL| asks the registered EVD to insert a nickname for the vehicle to save in his profile. \\
         & 5.\ The registered EVD inserts the nickname.                                                   \\
-        & 6.\ eMALL validates the nickname also searching for duplicates between user EV nicknames.      \\
-        & 7.\ eMALL sends back the registration outcome.                                                 \\
+        & 6.\ \verb|eMALL| validates the nickname also searching for duplicates between user EV nicknames.      \\
+        & 7.\ \verb|eMALL| sends back the registration outcome.                                                 \\
         \hline
         Exit condition   & Registered EVD correctly added a new EV in the profile.                                        \\
         \hline
@@ -638,14 +634,14 @@ that shows the messages exchanged between the entities and the called functions.
         Entry conditions & The EVD is registered and correctly logged in.                                                         \\
         & The registered EVD selects a specific charging station and clicks the ``book'' button                  \\
         \hline
-        Event Flow       & 1.\ eMALL asks the registered EVD to choose a timeframe.                                               \\
+        Event Flow       & 1.\ \verb|eMALL| asks the registered EVD to choose a timeframe.                                               \\
         & 2.\ The registered EVD inserts the timeframe.                                                          \\
-        & 3.\ eMALL checks if the selected timeframe is currently available.                                     \\
-        & 4.\ eMALL selects a charging point to reserve for the registered EVD depending on EV's specifications. \\
-        & 5.\ eMALL asks the registered EVD to confirm the booking with the prompted information.                \\
+        & 3.\ \verb|eMALL| checks if the selected timeframe is currently available.                                     \\
+        & 4.\ \verb|eMALL| selects a charging point to reserve for the registered EVD depending on EV's specifications. \\
+        & 5.\ \verb|eMALL| asks the registered EVD to confirm the booking with the prompted information.                \\
         & 6.\ The registered EVD clicks the ``Confirm'' button to confirm the booking.                           \\
-        & 7.\ eMALL adds the booking to the registered EVD's calendar.                                           \\
-        & 8.\ eMALL sends back the booking outcome.                                                              \\
+        & 7.\ \verb|eMALL| adds the booking to the registered EVD's calendar.                                           \\
+        & 8.\ \verb|eMALL| sends back the booking outcome.                                                              \\
         \hline
         Exit condition   & A charging session is booked.                                                                          \\
         \hline
@@ -674,11 +670,11 @@ that shows the messages exchanged between the entities and the called functions.
         Entry conditions & The EVD is registered and correctly logged in.                                                               \\
         & The registered EVD is in the map section at a given or specified location.                                   \\
         \hline
-        Event Flow       & 1.\ eMALL shows the map with all the charging stations available over a specific location.                   \\
+        Event Flow       & 1.\ \verb|eMALL| shows the map with all the charging stations available over a specific location.                   \\
         & 2.\ The registered EVD moves on the map, searching for a charging station.                                   \\
-        & 3.\ eMALL retrieves the charging station locations in the new place.                                         \\
+        & 3.\ \verb|eMALL| retrieves the charging station locations in the new place.                                         \\
         & 4.\ The registered EVD selects a specific charging station to get its detailed information.                  \\
-        & 5.\ eMALL retrieves the charging station's detailed information.                                             \\
+        & 5.\ \verb|eMALL| retrieves the charging station's detailed information.                                             \\
         \hline
         Exit condition   & The registered EVD changes section, and moves from the dashboard.                                            \\
         \hline
@@ -707,15 +703,15 @@ that shows the messages exchanged between the entities and the called functions.
         Entry conditions & The EVD is registered and correctly logged in.                                                                        \\
         & The EVD is in the promotion section.                                                                                  \\
         \hline
-        Event Flow       & 1.\ eMALL sends the promotion list to the registered EVD.                                                             \\
+        Event Flow       & 1.\ \verb|eMALL| sends the promotion list to the registered EVD.                                                             \\
         & 2.\ The registered EVD selects a promotion to activate.                                                               \\
         & 3.\ The registered EVD triggers the offer.                                                                            \\
-        & 4.\ eMALL asks the registered EVD to choose between his payment methods.                                              \\
+        & 4.\ \verb|eMALL| asks the registered EVD to choose between his payment methods.                                              \\
         & 5.\ The registered EVD picks the payment method.                                                                      \\
-        & 6.\ eMALL asks the registered EVD to confirm the payment.                                                             \\
+        & 6.\ \verb|eMALL| asks the registered EVD to confirm the payment.                                                             \\
         & 7.\ The registered EVD authorizes the payment.                                                                        \\
-        & 8.\ eMALL makes the payment.                                                                                          \\
-        & 9.\ eMALL sends back the payment outcome.                                                                             \\
+        & 8.\ \verb|eMALL| makes the payment.                                                                                          \\
+        & 9.\ \verb|eMALL| sends back the payment outcome.                                                                             \\
         \hline
         Exit condition   & The promotion has been activated.                                                                                     \\
         \hline
@@ -747,15 +743,15 @@ that shows the messages exchanged between the entities and the called functions.
         Entry conditions & The EVD is registered and correctly logged in.                                                                       \\
         & The EVD starts charging the EV at a charging point of the charging station.                                          \\
         \hline
-        Event Flow       & 1.\ eMALL communicates to the EVD if he has been correctly authenticated and if he can charge at the charging point. \\
+        Event Flow       & 1.\ \verb|eMALL| communicates to the EVD if he has been correctly authenticated and if he can charge at the charging point. \\
         & 2.\ The registered EVD initializes the charging process.                                                             \\
-        & 3.\ eMALL defines the source of the electricity (batteries or DSO).                                                  \\
-        & 4.\ eMALL defines how much electricity to give to the connected EV depending on actual energy demand.                \\
-        & 5.\ eMALL sends updates of the charging session to the EVD.                                                          \\
+        & 3.\ \verb|eMALL| defines the source of the electricity (batteries or DSO).                                                  \\
+        & 4.\ \verb|eMALL| defines how much electricity to give to the connected EV depending on actual energy demand.                \\
+        & 5.\ \verb|eMALL| sends updates of the charging session to the EVD.                                                          \\
         & 6.\ The registered EVD stops the charging process.                                                                   \\
-        & 7.\ eMALL sends the receipt of the charging session to the EVD.                                                      \\
+        & 7.\ \verb|eMALL| sends the receipt of the charging session to the EVD.                                                      \\
         & 8.\ The registered EVD makes the payment for the charging session.                                                   \\
-        & 9.\ eMALL sends back the payment outcome                                                                             \\
+        & 9.\ \verb|eMALL| sends back the payment outcome                                                                             \\
         \hline
         Exit condition   & The registered EVD has charged the EV and paid for the service received.                                             \\
         \hline
@@ -784,11 +780,11 @@ that shows the messages exchanged between the entities and the called functions.
         Entry conditions & The EVD is registered and correctly logged in.                                                                        \\
         & The registered EVD has decided the charging station where will charge the EV and is in the payment module.            \\
         \hline
-        Event Flow       & 1.\ eMALL shows registered EVD's payment methods and asks to select one of them.                                      \\
+        Event Flow       & 1.\ \verb|eMALL| shows registered EVD's payment methods and asks to select one of them.                                      \\
         & 2.\ The registered EVD selects a payment method.                                                                      \\
-        & 3.\ eMALL verifies funds availability.                                                                                \\
-        & 4.\ eMALL starts the payment process.                                                                                 \\
-        & 5.\ eMALL sends back the payment outcome.                                                                             \\
+        & 3.\ \verb|eMALL| verifies funds availability.                                                                                \\
+        & 4.\ \verb|eMALL| starts the payment process.                                                                                 \\
+        & 5.\ \verb|eMALL| sends back the payment outcome.                                                                             \\
         \hline
         Exit condition   & The registered EVD has paid for a book or for a activation of a promotion.                                            \\
         \hline
@@ -820,16 +816,16 @@ that shows the messages exchanged between the entities and the called functions.
         Entry conditions & The EVD is registered and correctly logged in.                                                                \\
         & The registered EVD opens the calendar section.                                                                \\
         \hline
-        Event Flow       & 1.\ eMALL shows the calendar to the registered EVD.                                                           \\
+        Event Flow       & 1.\ \verb|eMALL| shows the calendar to the registered EVD.                                                           \\
         & 2.\ The registered EVD clicks the ``insert new activity'' button.                                             \\
-        & 3.\ eMALL sends the form to be compiled for the addition of a new activity.                                   \\
+        & 3.\ \verb|eMALL| sends the form to be compiled for the addition of a new activity.                                   \\
         & 4.\ The registered EVD inserts and submits the requested information.                                         \\
-        & 5.\ eMALL processes the received form.                                                                        \\
-        & 6.\ eMALL saves the new activity into registered EVD calendar.                                                \\
-        & 7.\ eMALL calculates the best schedule of where and when to charge the EV and sends it to the registered EVD. \\
+        & 5.\ \verb|eMALL| processes the received form.                                                                        \\
+        & 6.\ \verb|eMALL| saves the new activity into registered EVD calendar.                                                \\
+        & 7.\ \verb|eMALL| calculates the best schedule of where and when to charge the EV and sends it to the registered EVD. \\
         & 8.\ The registered EVD selects a charging station from the list of stations suggested by \verb|eMALL|.        \\
-        & 9.\ eMALL books the selected charging station at the specified timeframe.                                     \\
-        & 10.\ eMALL sends back the booking outcome to the registered EVD.                                              \\
+        & 9.\ \verb|eMALL| books the selected charging station at the specified timeframe.                                     \\
+        & 10.\ \verb|eMALL| sends back the booking outcome to the registered EVD.                                              \\
         \hline
         Exit condition   & The registered EVD inserted a new activity received a suggestion about charging session.                      \\
         \hline
@@ -841,7 +837,7 @@ that shows the messages exchanged between the entities and the called functions.
 
     \begin{figure} [H]
         \begin{center}
-            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_adds_a_new_activity_to_the_calendar}
+            \includegraphics[width=0.8\linewidth]{Images/SequenceDiagrams/evd_adds_a_new_activity_to_the_calendar}
             \caption{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule sequence diagram}
             \label{fig: evd_adds_activity_seq_diag}
         \end{center}
@@ -856,14 +852,14 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Entry conditions & CPO’s operator is in the business login section.                                                    \\
         \hline
-        Event Flow       & 1.\ eMALL asks the CPO operator to insert his credentials to log in.                                \\
+        Event Flow       & 1.\ \verb|eMALL| asks the CPO operator to insert his credentials to log in.                                \\
         & 2.\ The CPO operator inserts the CPO ID associated with its company, password, and email.           \\
-        & 3.\ eMALL validates the inserted credentials combination.                                           \\
-        & 4.\ eMALL sends back the login outcome.                                                             \\
+        & 3.\ \verb|eMALL| validates the inserted credentials combination.                                           \\
+        & 4.\ \verb|eMALL| sends back the login outcome.                                                             \\
         \hline
-        Exit condition   & The CPO access the business section of the eMALL system                                             \\
+        Exit condition   & The CPO access the business section of the \verb|eMALL| system                                             \\
         \hline
-        Exceptions       & 3.1.1. CPO credentials are not correct and not validated by eMALL.                                  \\
+        Exceptions       & 3.1.1. CPO credentials are not correct and not validated by \verb|eMALL|.                                  \\
         & 3.2.1. CPO’s affiliate agreement has expired, and its ID is no longer allowed to access the system. \\
         & In both cases, the user receives a notification with an error message.                              \\
         & Also, in the second case, the operator is invited to call the sales team.                           \\
@@ -872,14 +868,13 @@ that shows the messages exchanged between the entities and the called functions.
         \label{tab: CPO_logs_in_use_case}
     \end{longtable}
 
-        %TODO: insert sequence
-        %\begin{figure} [H]
-        %    \begin{center}
-        %        \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/cpo_logs_in}
-        %        \caption{CPO logs in sequence diagram}
-        %        \label{fig: cpo_log_in_seq_diag}
-        %    \end{center}
-        %\end{figure}
+    \begin{figure} [H]
+        \begin{center}
+            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/cpo_logs_in}
+            \caption{CPO logs in sequence diagram}
+            \label{fig: cpo_log_in_seq_diag}
+        \end{center}
+    \end{figure}
 \end{center}
 
 \subsubsection*{UC\cuc . CPO sets the charging cost}
@@ -888,16 +883,16 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                \\
         \hline
-        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in. \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in. \\
         & The CPO enters the profile section.                                \\
         \hline
-        Event Flow       & 1.\ eMALL shows the CPO his profile.                               \\
+        Event Flow       & 1.\ \verb|eMALL| shows the CPO his profile.                               \\
         & 2.\ The CPO enters the charging station managing section.          \\
-        & 3.\ eMALL shows the CPO his managing charging station section.     \\
+        & 3.\ \verb|eMALL| shows the CPO his managing charging station section.     \\
         & 4.\ The CPO taps the ``manage price'' button.                      \\
         & 5.\ The CPO inserts the value of the fee.                          \\
         & 6.\ The CPO taps the submission button.                            \\
-        & 7.\ eMALL sends back the outcome of the setting of the fee.        \\
+        & 7.\ \verb|eMALL| sends back the outcome of the setting of the fee.        \\
         \hline
         Exit condition   & The fee is set to the new value.                                   \\
         \hline
@@ -922,20 +917,20 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                                                       \\
         \hline
-        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                                        \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                                        \\
         & The CPO is in the charging station section from the profile section.                                      \\
         & The CPO clicks the button to add a new charging station to its profile.                                   \\
         \hline
-        Event Flow       & 1.\ eMALL asks the CPO to insert the location of the new charging station.                                \\
+        Event Flow       & 1.\ \verb|eMALL| asks the CPO to insert the location of the new charging station.                                \\
         & 2.\ The CPO inserts the region, province, city, and address of the new charging station.                  \\
-        & 3.\ eMALL asks the CPO to insert the initial status of the new charging station.                          \\
+        & 3.\ \verb|eMALL| asks the CPO to insert the initial status of the new charging station.                          \\
         & 4.\ The CPO inserts the status of the new charging station (available, maintenance, broken, unavailable). \\
-        & 5.\ eMALL asks the CPO to insert the charging costs.                                                      \\
+        & 5.\ \verb|eMALL| asks the CPO to insert the charging costs.                                                      \\
         & 6.\ The CPO inserts the charging costs.                                                                   \\
-        & 7.\ eMALL asks the CPO to add charging points to the new charging station.                                \\
+        & 7.\ \verb|eMALL| asks the CPO to add charging points to the new charging station.                                \\
         & 8.\ The CPO inserts the information of the charging points.                                               \\
-        & 9.\ eMALL validates all the inserted information.                                                         \\
-        & 10.\ eMALL sends back the outcome of the insertion of the new charging station.                           \\
+        & 9.\ \verb|eMALL| validates all the inserted information.                                                         \\
+        & 10.\ \verb|eMALL| sends back the outcome of the insertion of the new charging station.                           \\
         \hline
         Exit condition   & The charging station is created and added to the CPO’s profile.                                           \\
         \hline
@@ -961,17 +956,17 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                                             \\
         \hline
-        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                              \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                              \\
         & The CPO is in the charging station section from the profile section.                            \\
         & The CPO clicks the “add charging point” button.                                                 \\
         \hline
-        Event Flow       & 1.\ eMALL shows the CPO the list of its charging stations and asks it to select one.            \\
+        Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of its charging stations and asks it to select one.            \\
         & 2.\ The CPO selects a charging station.                                                         \\
-        & 3.\ eMALL asks the CPO to insert the information about the charging station.                    \\
+        & 3.\ \verb|eMALL| asks the CPO to insert the information about the charging station.                    \\
         & 4.\ The CPO inserts the serial number, the types of connectors installed on the charging point, the power supply,
         the initial status of the charging point, and the other required information. \\
-        & 5.\ eMALL validates the inserted information about the charging point.                          \\
-        & 6.\ eMALL sends back to the CPO the outcome of the creation of the new charging point.          \\
+        & 5.\ \verb|eMALL| validates the inserted information about the charging point.                          \\
+        & 6.\ \verb|eMALL| sends back to the CPO the outcome of the creation of the new charging point.          \\
         \hline
         Exit condition   & The charging point is added to the charging station.                                            \\
         \hline
@@ -997,16 +992,16 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                                  \\
         \hline
-        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                   \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                   \\
         & The CPO is in the charging station section from the profile section.                 \\
         & The CPO clicks the “edit charging station” button.                                   \\
         \hline
-        Event Flow       & 1.\ eMALL shows the CPO the list of its charging stations and asks it to select one. \\
+        Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of its charging stations and asks it to select one. \\
         & 2.\ The CPO selects a charging station.                                              \\
-        & 3.\ eMALL asks the CPO to insert the new values for the charging point.              \\
+        & 3.\ \verb|eMALL| asks the CPO to insert the new values for the charging point.              \\
         & 4.\ The CPO edits the metadata of the charging station.                              \\
-        & 5.\ eMALL updates the charging point with the new inserted values.                   \\
-        & 6.\ eMALL sends back to the CPO the outcome of the update.                           \\
+        & 5.\ \verb|eMALL| updates the charging point with the new inserted values.                   \\
+        & 6.\ \verb|eMALL| sends back to the CPO the outcome of the update.                           \\
         \hline
         Exit condition   & The metadata of the charging station is updated.                                     \\
         \hline
@@ -1031,15 +1026,15 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                                 \\
         \hline
-        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                  \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                  \\
         & The CPO is in the profile section.                                                  \\
         & The CPO clicks the “activate new promotion” button.                                 \\
         \hline
-        Event Flow       & 1.\ eMALL asks the CPO to define the features of the new promotion.                 \\
+        Event Flow       & 1.\ \verb|eMALL| asks the CPO to define the features of the new promotion.                 \\
         & 2.\ The CPO defines the features of the new promotion.                              \\
-        & 3.\ eMALL saves the new promotion.                                                  \\
-        & 4.\ eMALL initializes the promotion.                                                \\
-        & 5.\ eMALL sends back to the CPO the outcome of the activation of the new promotion. \\
+        & 3.\ \verb|eMALL| saves the new promotion.                                                  \\
+        & 4.\ \verb|eMALL| initializes the promotion.                                                \\
+        & 5.\ \verb|eMALL| sends back to the CPO the outcome of the activation of the new promotion. \\
         \hline
         Exit condition   & The promotion is created and activated.                                             \\
         \hline
@@ -1064,13 +1059,13 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                                             \\
         \hline
-        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.                              \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                              \\
         & The CPO is in the charging station section from the profile section and has selected a station. \\
         & The CPO clicks the ``schedule maintenance'' button.                                             \\
         \hline
-        Event Flow       & 1.\ eMALL asks the CPO to specify the date and the hour of the maintenance.                     \\
-        & 2.\ eMALL plans the maintenance session of the charging station.                                \\
-        & 3.\ eMALL sends back the outcome of the planning of the maintenance to the CPO.                 \\
+        Event Flow       & 1.\ \verb|eMALL| asks the CPO to specify the date and the hour of the maintenance.                     \\
+        & 2.\ \verb|eMALL| plans the maintenance session of the charging station.                                \\
+        & 3.\ \verb|eMALL| sends back the outcome of the planning of the maintenance to the CPO.                 \\
         \hline
         Exit condition   & It is planned a maintenance session for the specified charging station.                         \\
         \hline
@@ -1096,16 +1091,16 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                           \\
         \hline
-        Entry conditions & The CPO is subscribed to the eMALL system and correctly logged in.            \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.            \\
         & The CPO is in the DSO section from the profile section.                       \\
         & The CPO clicks the “set DSO” button.                                          \\
         \hline
-        Event Flow       & 1.\ eMALL shows the CPO the list of DSOs.                                     \\
-        & 2.\ eMALL asks the CPO to select a DSO from the list.                         \\
+        Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of DSOs.                                     \\
+        & 2.\ \verb|eMALL| asks the CPO to select a DSO from the list.                         \\
         & 3.\ The CPO selects a DSO from the list.                                      \\
-        & 4.\ eMALL updates CPO’s profile information.                                  \\
-        & 5.\ eMALL activates the selected DSO as the one from which to acquire energy. \\
-        & 6.\ eMALL sends back to the CPO the outcome of the setting of the DSO         \\
+        & 4.\ \verb|eMALL| updates CPO’s profile information.                                  \\
+        & 5.\ \verb|eMALL| activates the selected DSO as the one from which to acquire energy. \\
+        & 6.\ \verb|eMALL| sends back to the CPO the outcome of the setting of the DSO         \\
         \hline
         Exit condition   & The DSO from which to acquire energy is updated.                              \\
         \hline
@@ -1134,143 +1129,143 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         \textbf{Use Case} & \textbf{Requirements}                                                                                                                           \\
         \hline
-        UC\cmr            & R1. The eMALL system shall allow an unregistered EVD to create an account.                                                                      \\
-        & R21.\ The eMALL system shall allow a registered EVD to insert a new payment method.                                                             \\
-        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments.                                                \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R1. The \verb|eMALL| system shall allow an unregistered EVD to create an account.                                                                      \\
+        & R21.\ The \verb|eMALL| system shall allow a registered EVD to insert a new payment method.                                                             \\
+        & R24.\ The \verb|eMALL| system shall communicate with third-party payment services to make the payments.                                                \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
+        UC\cmr            & R2. The \verb|eMALL| system shall allow a registered EVD to log in.                                                                                    \\
         \hline
-        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
-        & R3. The eMALL system shall allow a registered EVD to add an EV in his profile.                                                                  \\
-        & R4. The eMALL system shall communicate with EV’s brand API to get needed information.                                                           \\
-        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station.                                                      \\
+        UC\cmr            & R2. The \verb|eMALL| system shall allow a registered EVD to log in.                                                                                    \\
+        & R3. The \verb|eMALL| system shall allow a registered EVD to add an EV in his profile.                                                                  \\
+        & R4. The \verb|eMALL| system shall communicate with EV’s brand API to get needed information.                                                           \\
+        & R11.\ The \verb|eMALL| system shall allow a registered EVD to select a specific charging station.                                                      \\
         \hline
-        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
-        & R5. The eMALL system shall allow a registered EVD to book a charge.                                                                             \\
-        & R6. The eMALL system shall allow a registered EVD to select a timeframe to reserve a charging point.                                            \\
-        & R7. The eMALL system shall add a booked reservation into EVD’s calendar.                                                                        \\
-        & R55.\ The eMALL system shall reserve a charging point in a certain timeframe.                                                                   \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R2. The \verb|eMALL| system shall allow a registered EVD to log in.                                                                                    \\
+        & R5. The \verb|eMALL| system shall allow a registered EVD to book a charge.                                                                             \\
+        & R6. The \verb|eMALL| system shall allow a registered EVD to select a timeframe to reserve a charging point.                                            \\
+        & R7. The \verb|eMALL| system shall add a booked reservation into EVD’s calendar.                                                                        \\
+        & R55.\ The \verb|eMALL| system shall reserve a charging point in a certain timeframe.                                                                   \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
-        & R8. The eMALL system shall allow a registered EVD to get all the charging station near to his current location.                                 \\
-        & R9. The eMALL system shall allow a registered EVD to insert a specific location to get charging station nearby.                                 \\
-        & R10.\ The eMALL system shall allow a registered EVD to move into the map of charging stations.                                                  \\
-        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station.                                                      \\
-        & R12.\ The eMALL system shall allow a registered EVD to get the location of a specific charging station.                                         \\
-        & R13.\ The eMALL system shall allow a registered EVD to get the costs of a specific charging station.                                            \\
-        & R14.\ The eMALL system shall allow a registered EVD to get the CPO owner of a specific charging station.                                        \\
-        & R15.\ The eMALL system shall allow a registered EVD to get type of connectors of a specific charging station.                                   \\
-        & R16.\ The eMALL system shall allow a registered EVD to get maximum power supply of the spots of a specific charging station.                    \\
-        & R17.\ The eMALL system shall allow a registered EVD to get the status of a specific charging station.                                           \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R2. The \verb|eMALL| system shall allow a registered EVD to log in.                                                                                    \\
+        & R8. The \verb|eMALL| system shall allow a registered EVD to get all the charging station near to his current location.                                 \\
+        & R9. The \verb|eMALL| system shall allow a registered EVD to insert a specific location to get charging station nearby.                                 \\
+        & R10.\ The \verb|eMALL| system shall allow a registered EVD to move into the map of charging stations.                                                  \\
+        & R11.\ The \verb|eMALL| system shall allow a registered EVD to select a specific charging station.                                                      \\
+        & R12.\ The \verb|eMALL| system shall allow a registered EVD to get the location of a specific charging station.                                         \\
+        & R13.\ The \verb|eMALL| system shall allow a registered EVD to get the costs of a specific charging station.                                            \\
+        & R14.\ The \verb|eMALL| system shall allow a registered EVD to get the CPO owner of a specific charging station.                                        \\
+        & R15.\ The \verb|eMALL| system shall allow a registered EVD to get type of connectors of a specific charging station.                                   \\
+        & R16.\ The \verb|eMALL| system shall allow a registered EVD to get maximum power supply of the spots of a specific charging station.                    \\
+        & R17.\ The \verb|eMALL| system shall allow a registered EVD to get the status of a specific charging station.                                           \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
-        & R18.\ The eMALL system shall allow a registered EVD to get the list of active promotions.                                                       \\
-        & R19.\ The eMALL system shall allow a registered EVD to select a specific promotion.                                                             \\
-        & R20.\ The eMALL system shall allow a registered EVD to activate a promotion.                                                                    \\
-        & R21.\ The eMALL system shall allow a registered EVD to insert a new payment method.                                                             \\
-        & R22.\ The eMALL system shall allow a registered EVD to select a payment method.                                                                 \\
-        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
-        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments.                                                \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R2. The \verb|eMALL| system shall allow a registered EVD to log in.                                                                                    \\
+        & R18.\ The \verb|eMALL| system shall allow a registered EVD to get the list of active promotions.                                                       \\
+        & R19.\ The \verb|eMALL| system shall allow a registered EVD to select a specific promotion.                                                             \\
+        & R20.\ The \verb|eMALL| system shall allow a registered EVD to activate a promotion.                                                                    \\
+        & R21.\ The \verb|eMALL| system shall allow a registered EVD to insert a new payment method.                                                             \\
+        & R22.\ The \verb|eMALL| system shall allow a registered EVD to select a payment method.                                                                 \\
+        & R23.\ The \verb|eMALL| system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
+        & R24.\ The \verb|eMALL| system shall communicate with third-party payment services to make the payments.                                                \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
-        & R22.\ The eMALL system shall allow a registered EVD to select a payment method.                                                                 \\
-        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
-        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments.                                                \\
-        & R25.\ The eMALL system shall allow a registered EVD to start a charging process.                                                                \\
-        & R26.\ The eMALL system shall verify the identity of the EVD requesting to start a charging session.                                             \\
-        & R27.\ The eMALL system shall communicate to charging points to unlock their plug.                                                               \\
-        & R28.\ The eMALL system shall communicate to charging points to start the charging session.                                                      \\
-        & R29.\ The eMALL system shall define the source of the charging session (batteries or DSO).                                                      \\
-        & R30.\ The eMALL system shall define the power of the charging session.                                                                          \\
-        & R31.\ The eMALL system shall get EV’s battery status.                                                                                           \\
-        & R32.\ The eMALL system shall send notifications about the current status of the charging session to the registered EVD\@.                       \\
-        & R33.\ The eMALL system shall allow a registered EVD to stop the charging session.                                                               \\
-        & R34.\ The eMALL system shall communicate to a charging point to stop the charging session.                                                      \\
-        & R35.\ The eMALL system shall send the receipt of the charging session to the registered EVD\@.                                                  \\
-        & R36.\ The eMALL system shall communicate the outcome of the payment to a registered EVD\@.                                                      \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R2. The \verb|eMALL| system shall allow a registered EVD to log in.                                                                                    \\
+        & R22.\ The \verb|eMALL| system shall allow a registered EVD to select a payment method.                                                                 \\
+        & R23.\ The \verb|eMALL| system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
+        & R24.\ The \verb|eMALL| system shall communicate with third-party payment services to make the payments.                                                \\
+        & R25.\ The \verb|eMALL| system shall allow a registered EVD to start a charging process.                                                                \\
+        & R26.\ The \verb|eMALL| system shall verify the identity of the EVD requesting to start a charging session.                                             \\
+        & R27.\ The \verb|eMALL| system shall communicate to charging points to unlock their plug.                                                               \\
+        & R28.\ The \verb|eMALL| system shall communicate to charging points to start the charging session.                                                      \\
+        & R29.\ The \verb|eMALL| system shall define the source of the charging session (batteries or DSO).                                                      \\
+        & R30.\ The \verb|eMALL| system shall define the power of the charging session.                                                                          \\
+        & R31.\ The \verb|eMALL| system shall get EV’s battery status.                                                                                           \\
+        & R32.\ The \verb|eMALL| system shall send notifications about the current status of the charging session to the registered EVD\@.                       \\
+        & R33.\ The \verb|eMALL| system shall allow a registered EVD to stop the charging session.                                                               \\
+        & R34.\ The \verb|eMALL| system shall communicate to a charging point to stop the charging session.                                                      \\
+        & R35.\ The \verb|eMALL| system shall send the receipt of the charging session to the registered EVD\@.                                                  \\
+        & R36.\ The \verb|eMALL| system shall communicate the outcome of the payment to a registered EVD\@.                                                      \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
-        & R22.\ The eMALL system shall allow a registered EVD to select a payment method.                                                                 \\
-        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
-        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments.                                                \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R2. The \verb|eMALL| system shall allow a registered EVD to log in.                                                                                    \\
+        & R22.\ The \verb|eMALL| system shall allow a registered EVD to select a payment method.                                                                 \\
+        & R23.\ The \verb|eMALL| system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
+        & R24.\ The \verb|eMALL| system shall communicate with third-party payment services to make the payments.                                                \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
-        & R5. The eMALL system shall allow a registered EVD to book a charge.                                                                             \\
-        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station.                                                      \\
-        & R37.\ The eMALL system shall allow a registered EVD to access in his own calendar.                                                              \\
-        & R38.\ The eMALL system shall allow a registered EVD to add a new activity into his calendar.                                                    \\
-        & R39.\ The eMALL system shall allow a registered EVD to specify the starting hour of a new activity.                                             \\
-        & R40.\ The eMALL system shall allow a registered EVD to specify the destination of a new activity.                                               \\
-        & R41.\ The eMALL system shall save a new activity into EVD’s calendar.                                                                           \\
-        & R42.\ The eMALL system shall calculate the best schedules of where and when to charge registered EVD’s EV so to minimize costs and wasted time. \\
-        & R43.\ The eMALL system shall communicate to the registered EVD the details of the suggestions about the calculated schedules.                   \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R2. The \verb|eMALL| system shall allow a registered EVD to log in.                                                                                    \\
+        & R5. The \verb|eMALL| system shall allow a registered EVD to book a charge.                                                                             \\
+        & R11.\ The \verb|eMALL| system shall allow a registered EVD to select a specific charging station.                                                      \\
+        & R37.\ The \verb|eMALL| system shall allow a registered EVD to access in his own calendar.                                                              \\
+        & R38.\ The \verb|eMALL| system shall allow a registered EVD to add a new activity into his calendar.                                                    \\
+        & R39.\ The \verb|eMALL| system shall allow a registered EVD to specify the starting hour of a new activity.                                             \\
+        & R40.\ The \verb|eMALL| system shall allow a registered EVD to specify the destination of a new activity.                                               \\
+        & R41.\ The \verb|eMALL| system shall save a new activity into EVD’s calendar.                                                                           \\
+        & R42.\ The \verb|eMALL| system shall calculate the best schedules of where and when to charge registered EVD’s EV so to minimize costs and wasted time. \\
+        & R43.\ The \verb|eMALL| system shall communicate to the registered EVD the details of the suggestions about the calculated schedules.                   \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
+        UC\cmr            & R44.\ The \verb|eMALL| system shall allow a CPO to log in as a business user.                                                                          \\
         \hline
-        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
-        & R46.\ The eMALL system shall allow a CPO to set new selling prices for charging sessions.                                                       \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R44.\ The \verb|eMALL| system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The \verb|eMALL| system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R46.\ The \verb|eMALL| system shall allow a CPO to set new selling prices for charging sessions.                                                       \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
-        & R47.\ The eMALL system shall allow a CPO to add a new charging station in its profile.                                                          \\
-        & R48.\ The eMALL system shall allow a CPO to specify the location of charging station (region, province, city, address).                         \\
-        & R49.\ The eMALL system shall allow a CPO to specify the status of a charging station (available, maintenance, broken, unavailable).             \\
-        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station.                                               \\
-        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point.                                                        \\
-        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
-        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
-        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R44.\ The \verb|eMALL| system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The \verb|eMALL| system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R47.\ The \verb|eMALL| system shall allow a CPO to add a new charging station in its profile.                                                          \\
+        & R48.\ The \verb|eMALL| system shall allow a CPO to specify the location of charging station (region, province, city, address).                         \\
+        & R49.\ The \verb|eMALL| system shall allow a CPO to specify the status of a charging station (available, maintenance, broken, unavailable).             \\
+        & R50.\ The \verb|eMALL| system shall allow a CPO to add a charging point in an existing charging station.                                               \\
+        & R51.\ The \verb|eMALL| system shall allow a CPO to specify the serial number of charging point.                                                        \\
+        & R52.\ The \verb|eMALL| system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
+        & R53.\ The \verb|eMALL| system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
+        & R54.\ The \verb|eMALL| system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
-        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station.                                               \\
-        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point.                                                        \\
-        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
-        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
-        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R44.\ The \verb|eMALL| system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The \verb|eMALL| system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R50.\ The \verb|eMALL| system shall allow a CPO to add a charging point in an existing charging station.                                               \\
+        & R51.\ The \verb|eMALL| system shall allow a CPO to specify the serial number of charging point.                                                        \\
+        & R52.\ The \verb|eMALL| system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
+        & R53.\ The \verb|eMALL| system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
+        & R54.\ The \verb|eMALL| system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
-        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station.                                               \\
-        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point.                                                        \\
-        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
-        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
-        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R44.\ The \verb|eMALL| system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The \verb|eMALL| system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R50.\ The \verb|eMALL| system shall allow a CPO to add a charging point in an existing charging station.                                               \\
+        & R51.\ The \verb|eMALL| system shall allow a CPO to specify the serial number of charging point.                                                        \\
+        & R52.\ The \verb|eMALL| system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
+        & R53.\ The \verb|eMALL| system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
+        & R54.\ The \verb|eMALL| system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
-        & R56.\ The eMALL system shall allow a CPO to manage its promotions.                                                                              \\
-        & R57.\ The eMALL system shall allow a CPO to create a new promotion.                                                                             \\
-        & R58.\ The eMALL system shall allow a CPO to specify the details of the a promotion.                                                             \\
-        & R59.\ The eMALL system shall save the information of a promotion.                                                                               \\
-        & R60.\ The eMALL system shall initialize the information of a new promotion.                                                                     \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R44.\ The \verb|eMALL| system shall allow a CPO to log in as a business user.                                                                          \\
+        & R56.\ The \verb|eMALL| system shall allow a CPO to manage its promotions.                                                                              \\
+        & R57.\ The \verb|eMALL| system shall allow a CPO to create a new promotion.                                                                             \\
+        & R58.\ The \verb|eMALL| system shall allow a CPO to specify the details of the a promotion.                                                             \\
+        & R59.\ The \verb|eMALL| system shall save the information of a promotion.                                                                               \\
+        & R60.\ The \verb|eMALL| system shall initialize the information of a new promotion.                                                                     \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
-        & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
-        & R61.\ The eMALL system shall allow a CPO to schedule a maintenance session for a charging station.                                              \\
-        & R62.\ The eMALL system shall allow a CPO to specify date and starting hour of a maintenance session for a charging station.                     \\
-        & R63.\ The eMALL system shall communicate to a charging station to schedule a maintenance at a specified timeframe.                              \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R44.\ The \verb|eMALL| system shall allow a CPO to log in as a business user.                                                                          \\
+        & R45.\ The \verb|eMALL| system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R61.\ The \verb|eMALL| system shall allow a CPO to schedule a maintenance session for a charging station.                                              \\
+        & R62.\ The \verb|eMALL| system shall allow a CPO to specify date and starting hour of a maintenance session for a charging station.                     \\
+        & R63.\ The \verb|eMALL| system shall communicate to a charging station to schedule a maintenance at a specified timeframe.                              \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
-        UC\cmr            & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
-        & R64.\ The eMALL system shall allow a CPO to get the list of DSOs.                                                                               \\
-        & R65.\ The eMALL system shall allow a CPO to select a DSO from the list of DSOs.                                                                 \\
-        & R66.\ The eMALL system shall allow a CPO to update its electricity provider.                                                                    \\
-        & R67.\ The eMALL system shall communicate to a specified DSO to send energy to the charging stations of a CPO\@.                                 \\
-        & R68.\ The eMALL system shall get the electricity selling prices from the DSOs.                                                                  \\
-        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        UC\cmr            & R44.\ The \verb|eMALL| system shall allow a CPO to log in as a business user.                                                                          \\
+        & R64.\ The \verb|eMALL| system shall allow a CPO to get the list of DSOs.                                                                               \\
+        & R65.\ The \verb|eMALL| system shall allow a CPO to select a DSO from the list of DSOs.                                                                 \\
+        & R66.\ The \verb|eMALL| system shall allow a CPO to update its electricity provider.                                                                    \\
+        & R67.\ The \verb|eMALL| system shall communicate to a specified DSO to send energy to the charging stations of a CPO\@.                                 \\
+        & R68.\ The \verb|eMALL| system shall get the electricity selling prices from the DSOs.                                                                  \\
+        & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
         \caption{Mapping on requirements.}
         \label{tab: map_on_req}
@@ -1285,7 +1280,7 @@ According to a market analysis conducted by \verb|MOTUS-E| in September 2022,
 the number of fully electric vehicles and plug-in hybrid vehicles registered in Italy is 320.776.
 If we suppose that the eMALL system will be used by one in every three EVDs,
 the system should guarantee that it can handle an overall of 100.000 clients. \\
-So, we can consider that the system should be able to handle th $50\%$ of them could be connected simultaneously.
+So, we can consider that the system should be able to handle simultaneously the $50\%$ of them.
 
 \subsection*{Data storage}
 From the data storage point of view, the \verb|eMALL| system should consider several sources of data:
@@ -1360,7 +1355,7 @@ is given in Art.\ 5 of the GDPR document.
 \label{subsec:hardware_limitations}%
 The \verb|eMALL| system can be used from both web browsers and mobile applications.
 As explained in the system attributes section, the system is strictly related to the operating systems
-in which the mobile application will be implemented, so Android and IO\@..
+in which the mobile application will be implemented, so Android and IOS\@..
 
 \subsection{Any other constraint}
 \label{subsec:any_other_constraint}%
