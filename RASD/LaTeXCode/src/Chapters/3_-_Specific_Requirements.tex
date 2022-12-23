@@ -516,7 +516,6 @@ After that, to facilitate reading, the section reports the text of all the assum
 In this section, they are explained and represented the main identified use cases.
 There is a table with entry conditions, event flow, exit conditions and exception for each of them, and a sequence diagram
 that shows the messages exchanged between the entities and the called functions. \\
-%TODO: insert exeptions
 \subsubsection*{UC\cuc . EVD signs up}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
@@ -590,6 +589,8 @@ that shows the messages exchanged between the entities and the called functions.
     \end{figure}
 \end{center}
 
+\newpage
+
 \subsubsection*{UC\cuc . Registered EVD adds an EV}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
@@ -661,6 +662,8 @@ that shows the messages exchanged between the entities and the called functions.
         \end{center}
     \end{figure}
 \end{center}
+
+\newpage
 
 \subsubsection*{UC\cuc . Registered EVD consults the map of charging stations}
 \begin{center}
@@ -756,7 +759,9 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Exit condition   & The registered EVD has charged the EV and paid for the service received.                                                    \\
         \hline
-        Exceptions       &                                                                                                                             \\
+        Exceptions       & 1.1 The registered EVD is not authorized to charge the EV at that charging point.                                           \\
+        & 2.1 The EV is not correctly connected and the session can't be started.                                                     \\
+        & In both cases, the registered EVD is notified with an error message.                                                        \\
         \hline
         \caption{Registered EVD starts the charging process use case.}
         \label{tab: EVD_charges_EV_use_case}
@@ -828,7 +833,8 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Exit condition   & The registered EVD inserted a new activity received a suggestion about charging session.                             \\
         \hline
-        Exceptions       &                                                                                                                      \\
+        Exceptions       & 5.1 The registered EVD has inserted a new activity that starts at the same hour of another one previously inserted.  \\
+        & In this case, the registered EVD is notified with an error message and brought back to the calendar section.         \\
         \hline
         \caption{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule use case.}
         \label{tab: EVD_adds_activity_calendar_use_case}
@@ -876,7 +882,7 @@ that shows the messages exchanged between the entities and the called functions.
     \end{figure}
 \end{center}
 
-\subsubsection*{UC\cuc . CPO sets the charging cost}
+\subsubsection*{UC\cuc . CPO sets a fee}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
@@ -895,7 +901,8 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Exit condition   & The fee is set to the new value.                                          \\
         \hline
-        Exceptions       &                                                                           \\
+        Exceptions       & 7.1 The CPO inserted a negative value.                                    \\
+        & In this case, the system asks the CPO to insert a new value.              \\
         \hline
         \caption{CPO sets a fee use case.}
         \label{tab: CPO_sets_fee_use_case}
@@ -909,6 +916,8 @@ that shows the messages exchanged between the entities and the called functions.
         \end{center}
     \end{figure}
 \end{center}
+
+\newpage
 
 \subsubsection*{UC\cuc . CPO adds a charging station}
 \begin{center}
@@ -1004,7 +1013,8 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Exit condition   & The metadata of the charging station is updated.                                            \\
         \hline
-        Exceptions       &                                                                                             \\
+        Exceptions       & 4.1 The CPO inserts a new serial number of a charging point that is already registered into the system. \\
+        & In this case, the system asks the CPO to insert again the value.                                        \\
         \hline
         \caption{CPO changes the metadata of a charging point use case.}
         \label{tab: CPO_updates_charging_point_use_case}
@@ -1037,7 +1047,8 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Exit condition   & The promotion is created and activated.                                                    \\
         \hline
-        Exceptions       &                                                                                            \\
+        Exceptions       & 2.1 The CPO inserted a date that is in the past.                                           \\
+        & 2.2 The CPO inserted requirements of a promotion that conflict with its other promotions.  \\
         \hline
         \caption{CPO activates a promotion use case.}
         \label{tab: CPO_activates_promotion_use_case}
@@ -1068,7 +1079,8 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Exit condition   & It is planned a maintenance session for the specified charging station.                         \\
         \hline
-        Exceptions       &                                                                                                 \\
+        Exceptions       & 2.1 The CPO tries to schedule a maintenance in a day that is in the past.                                      \\
+        & 2.2 The CPO tries to schedule a maintenance that conflicts with another maintenance session already scheduled. \\
         \hline
         \caption{CPO plans a maintenance session for a charging station use case.}
         \label{tab: CPO_plans_maintenance_use_case}
@@ -1101,7 +1113,8 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Exit condition   & The DSO from which to acquire energy is updated.                                     \\
         \hline
-        Exceptions       &                                                                                      \\
+        Exceptions       & 3.1 It is impossible to communicate with the chosen DSO, so it can't be set as new electricity provider. \\
+        & In this case, the CPO is asked to select another DSO or to end the process.                              \\
         \hline
         \caption{CPO decides the DSO from which acquire energy use case.}
         \label{tab: CPO_decides_DSO_use_case}
@@ -1337,6 +1350,7 @@ So, a memory storage of $200\ GB$ will be enough for the first year of the \verb
 \textbf{Time response} \\
 The \verb|eMALL| system should handle all the requests within 3 seconds, given that there are not strict time response requirements.
 
+\newpage
 
 \section{Design Constraints}
 \label{sec:design_constraints}%
