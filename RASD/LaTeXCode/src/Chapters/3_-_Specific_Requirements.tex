@@ -738,14 +738,14 @@ that shows the messages exchanged between the entities and the called functions.
     \end{figure}
 \end{center}
 
-\subsubsection*{UC\cuc . Registered EVD starts the charging process}
+\subsubsection*{UC\cuc . Registered EVD charges his EV}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
         Actor            & Registered EVD                                                                                                              \\
         \hline
         Entry conditions & The EVD is registered and correctly logged in.                                                                              \\
-        & The EVD starts charging the EV at a charging point of the charging station.                                                 \\
+        & The EVD asks the charging point to charge his EV.                                                                           \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| communicates to the EVD if he has been correctly authenticated and if he can charge at the charging point. \\
         & 2.\ The registered EVD initializes the charging process.                                                                    \\
@@ -763,14 +763,14 @@ that shows the messages exchanged between the entities and the called functions.
         & 2.1 The EV is not correctly connected and the session can't be started.                                                     \\
         & In both cases, the registered EVD is notified with an error message.                                                        \\
         \hline
-        \caption{Registered EVD starts the charging process use case.}
+        \caption{Registered EVD charges his EV use case.}
         \label{tab: EVD_charges_EV_use_case}
     \end{longtable}
     \begin{figure} [H]
         \begin{center}
             \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_charges_his_ev}
             \caption{Registered EVD charges his EV sequence diagram}
-            \label{fig:evd_starts_charging_seq_diag}
+            \label{fig:evd_charges_ev_seq_diag}
         \end{center}
     \end{figure}
 \end{center}
@@ -998,20 +998,20 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & CPO                                                                                         \\
+        Actor            & CPO                                                                                                     \\
         \hline
-        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                   \\
-        & The CPO is in the charging station section from the profile section.                        \\
-        & The CPO clicks the “edit charging station” button.                                          \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                               \\
+        & The CPO is in the charging station section from the profile section.                                    \\
+        & The CPO clicks the “edit charging station” button.                                                      \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of its charging stations and asks it to select one. \\
-        & 2.\ The CPO selects a charging station.                                                     \\
-        & 3.\ \verb|eMALL| asks the CPO to insert the new values for the charging point.              \\
-        & 4.\ The CPO edits the metadata of the charging station.                                     \\
-        & 5.\ \verb|eMALL| updates the charging point with the new inserted values.                   \\
-        & 6.\ \verb|eMALL| sends back to the CPO the outcome of the update.                           \\
+        Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of its charging stations and asks it to select one.             \\
+        & 2.\ The CPO selects a charging station.                                                                 \\
+        & 3.\ \verb|eMALL| asks the CPO to insert the new values for the charging point.                          \\
+        & 4.\ The CPO edits the metadata of the charging station.                                                 \\
+        & 5.\ \verb|eMALL| updates the charging point with the new inserted values.                               \\
+        & 6.\ \verb|eMALL| sends back to the CPO the outcome of the update.                                       \\
         \hline
-        Exit condition   & The metadata of the charging station is updated.                                            \\
+        Exit condition   & The metadata of the charging station is updated.                                                        \\
         \hline
         Exceptions       & 4.1 The CPO inserts a new serial number of a charging point that is already registered into the system. \\
         & In this case, the system asks the CPO to insert again the value.                                        \\
@@ -1067,17 +1067,17 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & CPO                                                                                             \\
+        Actor            & CPO                                                                                                            \\
         \hline
-        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                       \\
-        & The CPO is in the charging station section from the profile section and has selected a station. \\
-        & The CPO clicks the ``schedule maintenance'' button.                                             \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                                      \\
+        & The CPO is in the charging station section from the profile section and has selected a station.                \\
+        & The CPO clicks the ``schedule maintenance'' button.                                                            \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| asks the CPO to specify the date and the hour of the maintenance.              \\
-        & 2.\ \verb|eMALL| plans the maintenance session of the charging station.                         \\
-        & 3.\ \verb|eMALL| sends back the outcome of the planning of the maintenance to the CPO.          \\
+        Event Flow       & 1.\ \verb|eMALL| asks the CPO to specify the date and the hour of the maintenance.                             \\
+        & 2.\ \verb|eMALL| plans the maintenance session of the charging station.                                        \\
+        & 3.\ \verb|eMALL| sends back the outcome of the planning of the maintenance to the CPO.                         \\
         \hline
-        Exit condition   & It is planned a maintenance session for the specified charging station.                         \\
+        Exit condition   & It is planned a maintenance session for the specified charging station.                                        \\
         \hline
         Exceptions       & 2.1 The CPO tries to schedule a maintenance in a day that is in the past.                                      \\
         & 2.2 The CPO tries to schedule a maintenance that conflicts with another maintenance session already scheduled. \\
@@ -1098,20 +1098,20 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & CPO                                                                                  \\
+        Actor            & CPO                                                                                                      \\
         \hline
-        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.            \\
-        & The CPO is in the DSO section from the profile section.                              \\
-        & The CPO clicks the “set DSO” button.                                                 \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                                \\
+        & The CPO is in the DSO section from the profile section.                                                  \\
+        & The CPO clicks the “set DSO” button.                                                                     \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of DSOs.                                     \\
-        & 2.\ \verb|eMALL| asks the CPO to select a DSO from the list.                         \\
-        & 3.\ The CPO selects a DSO from the list.                                             \\
-        & 4.\ \verb|eMALL| updates CPO’s profile information.                                  \\
-        & 5.\ \verb|eMALL| activates the selected DSO as the one from which to acquire energy. \\
-        & 6.\ \verb|eMALL| sends back to the CPO the outcome of the setting of the DSO         \\
+        Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of DSOs.                                                         \\
+        & 2.\ \verb|eMALL| asks the CPO to select a DSO from the list.                                             \\
+        & 3.\ The CPO selects a DSO from the list.                                                                 \\
+        & 4.\ \verb|eMALL| updates CPO’s profile information.                                                      \\
+        & 5.\ \verb|eMALL| activates the selected DSO as the one from which to acquire energy.                     \\
+        & 6.\ \verb|eMALL| sends back to the CPO the outcome of the setting of the DSO                             \\
         \hline
-        Exit condition   & The DSO from which to acquire energy is updated.                                     \\
+        Exit condition   & The DSO from which to acquire energy is updated.                                                         \\
         \hline
         Exceptions       & 3.1 It is impossible to communicate with the chosen DSO, so it can't be set as new electricity provider. \\
         & In this case, the CPO is asked to select another DSO or to end the process.                              \\
@@ -1351,6 +1351,7 @@ So, a memory storage of $200\ GB$ will be enough for the first year of the \verb
 The \verb|eMALL| system should handle all the requests within 3 seconds, given that there are not strict time response requirements.
 
 \newpage
+
 
 \section{Design Constraints}
 \label{sec:design_constraints}%
