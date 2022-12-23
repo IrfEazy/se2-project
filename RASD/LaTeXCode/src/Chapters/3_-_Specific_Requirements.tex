@@ -478,6 +478,7 @@ After that, to facilitate reading, the section reports the text of all the assum
 \end{itemize}
 
 \newpage
+
 \subsection{Use case diagrams}
 \label{subsec: use_case_diag}%
 \subsubsection*{Unregistered EVD}
@@ -522,21 +523,21 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & Unregistered EVD                                                                                                                                                                                       \\
         \hline
-        Entry conditions & The EVD isn’t registered in the \verb|eMALL| system, and he clicks the sign-up button                                                                                                                         \\
+        Entry conditions & The EVD isn’t registered in the \verb|eMALL| system, and he clicks the sign-up button                                                                                                                  \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| asks the unregistered EVD to insert personal information (i.e., name, surname, birthday, billing address, e-mail, and password).                                                             \\
+        Event Flow       & 1.\ \verb|eMALL| asks the unregistered EVD to insert personal information (i.e., name, surname, birthday, billing address, e-mail, and password).                                                      \\
         & 2.\ The unregistered EVD fills out the form with his personal information (name, surname, birthday, billing address, e-mail, and password) and accepts the “Terms \& Conditions” and “Privacy Policy”. \\
-        & 3.\ \verb|eMALL| validates the inserted EVD’s personal information.                                                                                                                                           \\
-        & 4.\ \verb|eMALL| asks the unregistered EVD to insert payment method information.                                                                                                                              \\
+        & 3.\ \verb|eMALL| validates the inserted EVD’s personal information.                                                                                                                                    \\
+        & 4.\ \verb|eMALL| asks the unregistered EVD to insert payment method information.                                                                                                                       \\
         & 5.\ The EVD fills out a form with its payment method information.                                                                                                                                      \\
-        & 6.\ \verb|eMALL| validates the inserted EVD’s payment method.                                                                                                                                                 \\
-        & 7.\ \verb|eMALL| sends a confirmation email to the EVD.                                                                                                                                                       \\
-        & 8.\ \verb|eMALL| sends back the EVD’s registration outcome.                                                                                                                                                   \\
+        & 6.\ \verb|eMALL| validates the inserted EVD’s payment method.                                                                                                                                          \\
+        & 7.\ \verb|eMALL| sends a confirmation email to the EVD.                                                                                                                                                \\
+        & 8.\ \verb|eMALL| sends back the EVD’s registration outcome.                                                                                                                                            \\
         \hline
         Exit condition   & An account is created.                                                                                                                                                                                 \\
         \hline
-        Exceptions       & 3.1. \verb|eMALL| isn’t able to validate the EVD’s personal information.                                                                                                                                      \\
-        & 6.1. \verb|eMALL| isn’t able to validate the EVD’s payment method.                                                                                                                                            \\
+        Exceptions       & 3.1. \verb|eMALL| isn’t able to validate the EVD’s personal information.                                                                                                                               \\
+        & 6.1. \verb|eMALL| isn’t able to validate the EVD’s payment method.                                                                                                                                     \\
         & In all these cases, the unregistered EVD is notified with an error message.                                                                                                                            \\
         \hline
         \caption{EVD signs up use case.}
@@ -556,22 +557,22 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & Registered EVD                                                                       \\
+        Actor            & Registered EVD                                                                              \\
         \hline
         Entry conditions & The EVD is registered in the \verb|eMALL| system and he clicks the log in button.           \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| asks the registered EVD to insert the e-mail.                              \\
-        & 2.\ The registered EVD inserts the e-mail.                                           \\
+        & 2.\ The registered EVD inserts the e-mail.                                                  \\
         & 3.\ \verb|eMALL| validates the inserted e-mail.                                             \\
         & 4.\ \verb|eMALL| asks the registered EVD to insert the password associated with the e-mail. \\
-        & 5.\ The registered EVD inserts the password.                                         \\
+        & 5.\ The registered EVD inserts the password.                                                \\
         & 6.\ \verb|eMALL| validates the inserted password in combination with the e-mail.            \\
         & 7.\ \verb|eMALL| sends back the login outcome.                                              \\
         \hline
         Exit condition   & The registered EVD access the \verb|eMALL| system.                                          \\
         \hline
-        Exceptions       & 3.1 The e-mail is not recognized.                                                    \\
-        & 6.1 The password is not correct.                                                     \\
+        Exceptions       & 3.1 The e-mail is not recognized.                                                           \\
+        & 6.1 The password is not correct.                                                            \\
         & In both cases, the registered EVD receives a notification through an error message.
         He has to insert his credentials again. \\
         \hline
@@ -593,24 +594,24 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & Registered EVD                                                                                 \\
+        Actor            & Registered EVD                                                                                        \\
         \hline
-        Entry conditions & The EVD is registered and correctly logged in.                                                 \\
+        Entry conditions & The EVD is registered and correctly logged in.                                                        \\
         & The EVD clicks the ``Add a Vehicle'' button from his profile section of \verb|eMALL|                  \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| asks the registered EVD to insert car information.                                   \\
         & 2.\ The registered EVD inserts the requested information and he sends them to the \verb|eMALL|.       \\
         & 3.\ \verb|eMALL| validates the information searching for possible errors.                             \\
         & 4.\ \verb|eMALL| asks the registered EVD to insert a nickname for the vehicle to save in his profile. \\
-        & 5.\ The registered EVD inserts the nickname.                                                   \\
+        & 5.\ The registered EVD inserts the nickname.                                                          \\
         & 6.\ \verb|eMALL| validates the nickname also searching for duplicates between user EV nicknames.      \\
         & 7.\ \verb|eMALL| sends back the registration outcome.                                                 \\
         \hline
-        Exit condition   & Registered EVD correctly added a new EV in the profile.                                        \\
+        Exit condition   & Registered EVD correctly added a new EV in the profile.                                               \\
         \hline
-        Exceptions       & 3.1 The e-mail is not recognized.                                                              \\
-        & 5.1 The inserted nickname is already taken between those owned by the user.                    \\
-        & In both cases, the registered EVD receives a notification through an error message.            \\
+        Exceptions       & 3.1 The e-mail is not recognized.                                                                     \\
+        & 5.1 The inserted nickname is already taken between those owned by the user.                           \\
+        & In both cases, the registered EVD receives a notification through an error message.                   \\
         \hline
         \caption{Registered EVD adds an EV use case.}
         \label{tab: EVD_adds_a_vehicle_use_case}
@@ -629,24 +630,24 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & Registered EVD                                                                                         \\
+        Actor            & Registered EVD                                                                                                \\
         \hline
-        Entry conditions & The EVD is registered and correctly logged in.                                                         \\
-        & The registered EVD selects a specific charging station and clicks the ``book'' button                  \\
+        Entry conditions & The EVD is registered and correctly logged in.                                                                \\
+        & The registered EVD selects a specific charging station and clicks the ``book'' button                         \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| asks the registered EVD to choose a timeframe.                                               \\
-        & 2.\ The registered EVD inserts the timeframe.                                                          \\
+        & 2.\ The registered EVD inserts the timeframe.                                                                 \\
         & 3.\ \verb|eMALL| checks if the selected timeframe is currently available.                                     \\
         & 4.\ \verb|eMALL| selects a charging point to reserve for the registered EVD depending on EV's specifications. \\
         & 5.\ \verb|eMALL| asks the registered EVD to confirm the booking with the prompted information.                \\
-        & 6.\ The registered EVD clicks the ``Confirm'' button to confirm the booking.                           \\
+        & 6.\ The registered EVD clicks the ``Confirm'' button to confirm the booking.                                  \\
         & 7.\ \verb|eMALL| adds the booking to the registered EVD's calendar.                                           \\
         & 8.\ \verb|eMALL| sends back the booking outcome.                                                              \\
         \hline
-        Exit condition   & A charging session is booked.                                                                          \\
+        Exit condition   & A charging session is booked.                                                                                 \\
         \hline
-        Exceptions       & 3.1. No free charging points are available at the selected timeframe.                                  \\
-        & The registered EVD is notified with an error message, and asked to select a new timeframe.             \\
+        Exceptions       & 3.1. No free charging points are available at the selected timeframe.                                         \\
+        & The registered EVD is notified with an error message, and asked to select a new timeframe.                    \\
         \hline
         \caption{Registered EVD books a charge use case.}
         \label{tab: EVD_booking_use_case}
@@ -670,11 +671,11 @@ that shows the messages exchanged between the entities and the called functions.
         Entry conditions & The EVD is registered and correctly logged in.                                                               \\
         & The registered EVD is in the map section at a given or specified location.                                   \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| shows the map with all the charging stations available over a specific location.                   \\
+        Event Flow       & 1.\ \verb|eMALL| shows the map with all the charging stations available over a specific location.            \\
         & 2.\ The registered EVD moves on the map, searching for a charging station.                                   \\
-        & 3.\ \verb|eMALL| retrieves the charging station locations in the new place.                                         \\
+        & 3.\ \verb|eMALL| retrieves the charging station locations in the new place.                                  \\
         & 4.\ The registered EVD selects a specific charging station to get its detailed information.                  \\
-        & 5.\ \verb|eMALL| retrieves the charging station's detailed information.                                             \\
+        & 5.\ \verb|eMALL| retrieves the charging station's detailed information.                                      \\
         \hline
         Exit condition   & The registered EVD changes section, and moves from the dashboard.                                            \\
         \hline
@@ -703,15 +704,15 @@ that shows the messages exchanged between the entities and the called functions.
         Entry conditions & The EVD is registered and correctly logged in.                                                                        \\
         & The EVD is in the promotion section.                                                                                  \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| sends the promotion list to the registered EVD.                                                             \\
+        Event Flow       & 1.\ \verb|eMALL| sends the promotion list to the registered EVD.                                                      \\
         & 2.\ The registered EVD selects a promotion to activate.                                                               \\
         & 3.\ The registered EVD triggers the offer.                                                                            \\
-        & 4.\ \verb|eMALL| asks the registered EVD to choose between his payment methods.                                              \\
+        & 4.\ \verb|eMALL| asks the registered EVD to choose between his payment methods.                                       \\
         & 5.\ The registered EVD picks the payment method.                                                                      \\
-        & 6.\ \verb|eMALL| asks the registered EVD to confirm the payment.                                                             \\
+        & 6.\ \verb|eMALL| asks the registered EVD to confirm the payment.                                                      \\
         & 7.\ The registered EVD authorizes the payment.                                                                        \\
-        & 8.\ \verb|eMALL| makes the payment.                                                                                          \\
-        & 9.\ \verb|eMALL| sends back the payment outcome.                                                                             \\
+        & 8.\ \verb|eMALL| makes the payment.                                                                                   \\
+        & 9.\ \verb|eMALL| sends back the payment outcome.                                                                      \\
         \hline
         Exit condition   & The promotion has been activated.                                                                                     \\
         \hline
@@ -738,37 +739,35 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & Registered EVD                                                                                                       \\
+        Actor            & Registered EVD                                                                                                              \\
         \hline
-        Entry conditions & The EVD is registered and correctly logged in.                                                                       \\
-        & The EVD starts charging the EV at a charging point of the charging station.                                          \\
+        Entry conditions & The EVD is registered and correctly logged in.                                                                              \\
+        & The EVD starts charging the EV at a charging point of the charging station.                                                 \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| communicates to the EVD if he has been correctly authenticated and if he can charge at the charging point. \\
-        & 2.\ The registered EVD initializes the charging process.                                                             \\
+        & 2.\ The registered EVD initializes the charging process.                                                                    \\
         & 3.\ \verb|eMALL| defines the source of the electricity (batteries or DSO).                                                  \\
         & 4.\ \verb|eMALL| defines how much electricity to give to the connected EV depending on actual energy demand.                \\
         & 5.\ \verb|eMALL| sends updates of the charging session to the EVD.                                                          \\
-        & 6.\ The registered EVD stops the charging process.                                                                   \\
+        & 6.\ The registered EVD stops the charging process.                                                                          \\
         & 7.\ \verb|eMALL| sends the receipt of the charging session to the EVD.                                                      \\
-        & 8.\ The registered EVD makes the payment for the charging session.                                                   \\
+        & 8.\ The registered EVD makes the payment for the charging session.                                                          \\
         & 9.\ \verb|eMALL| sends back the payment outcome                                                                             \\
         \hline
-        Exit condition   & The registered EVD has charged the EV and paid for the service received.                                             \\
+        Exit condition   & The registered EVD has charged the EV and paid for the service received.                                                    \\
         \hline
-        Exceptions       &                                                                                                                      \\
+        Exceptions       &                                                                                                                             \\
         \hline
         \caption{Registered EVD starts the charging process use case.}
         \label{tab: EVD_charges_EV_use_case}
     \end{longtable}
-
-        %TODO: insert sequence
-        %\begin{figure} [H]
-        %    \begin{center}
-        %        \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_starts_charging}
-        %        \caption{Registered EVD starts the charging process sequence diagram}
-        %        \label{fig: evd_starts_charging_seq_diag}
-        %    \end{center}
-        %\end{figure}
+    \begin{figure} [H]
+        \begin{center}
+            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_charges_his_ev}
+            \caption{Registered EVD charges his EV sequence diagram}
+            \label{fig:evd_starts_charging_seq_diag}
+        \end{center}
+    \end{figure}
 \end{center}
 
 \subsubsection*{UC\cuc . Registered EVD makes a payment}
@@ -780,11 +779,11 @@ that shows the messages exchanged between the entities and the called functions.
         Entry conditions & The EVD is registered and correctly logged in.                                                                        \\
         & The registered EVD has decided the charging station where will charge the EV and is in the payment module.            \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| shows registered EVD's payment methods and asks to select one of them.                                      \\
+        Event Flow       & 1.\ \verb|eMALL| shows registered EVD's payment methods and asks to select one of them.                               \\
         & 2.\ The registered EVD selects a payment method.                                                                      \\
-        & 3.\ \verb|eMALL| verifies funds availability.                                                                                \\
-        & 4.\ \verb|eMALL| starts the payment process.                                                                                 \\
-        & 5.\ \verb|eMALL| sends back the payment outcome.                                                                             \\
+        & 3.\ \verb|eMALL| verifies funds availability.                                                                         \\
+        & 4.\ \verb|eMALL| starts the payment process.                                                                          \\
+        & 5.\ \verb|eMALL| sends back the payment outcome.                                                                      \\
         \hline
         Exit condition   & The registered EVD has paid for a book or for a activation of a promotion.                                            \\
         \hline
@@ -811,25 +810,25 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & Registered EVD                                                                                                \\
+        Actor            & Registered EVD                                                                                                       \\
         \hline
-        Entry conditions & The EVD is registered and correctly logged in.                                                                \\
-        & The registered EVD opens the calendar section.                                                                \\
+        Entry conditions & The EVD is registered and correctly logged in.                                                                       \\
+        & The registered EVD opens the calendar section.                                                                       \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| shows the calendar to the registered EVD.                                                           \\
-        & 2.\ The registered EVD clicks the ``insert new activity'' button.                                             \\
+        & 2.\ The registered EVD clicks the ``insert new activity'' button.                                                    \\
         & 3.\ \verb|eMALL| sends the form to be compiled for the addition of a new activity.                                   \\
-        & 4.\ The registered EVD inserts and submits the requested information.                                         \\
+        & 4.\ The registered EVD inserts and submits the requested information.                                                \\
         & 5.\ \verb|eMALL| processes the received form.                                                                        \\
         & 6.\ \verb|eMALL| saves the new activity into registered EVD calendar.                                                \\
         & 7.\ \verb|eMALL| calculates the best schedule of where and when to charge the EV and sends it to the registered EVD. \\
-        & 8.\ The registered EVD selects a charging station from the list of stations suggested by \verb|eMALL|.        \\
+        & 8.\ The registered EVD selects a charging station from the list of stations suggested by \verb|eMALL|.               \\
         & 9.\ \verb|eMALL| books the selected charging station at the specified timeframe.                                     \\
         & 10.\ \verb|eMALL| sends back the booking outcome to the registered EVD.                                              \\
         \hline
-        Exit condition   & The registered EVD inserted a new activity received a suggestion about charging session.                      \\
+        Exit condition   & The registered EVD inserted a new activity received a suggestion about charging session.                             \\
         \hline
-        Exceptions       &                                                                                                               \\
+        Exceptions       &                                                                                                                      \\
         \hline
         \caption{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule use case.}
         \label{tab: EVD_adds_activity_calendar_use_case}
@@ -852,14 +851,14 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Entry conditions & CPO’s operator is in the business login section.                                                    \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| asks the CPO operator to insert his credentials to log in.                                \\
+        Event Flow       & 1.\ \verb|eMALL| asks the CPO operator to insert his credentials to log in.                         \\
         & 2.\ The CPO operator inserts the CPO ID associated with its company, password, and email.           \\
-        & 3.\ \verb|eMALL| validates the inserted credentials combination.                                           \\
-        & 4.\ \verb|eMALL| sends back the login outcome.                                                             \\
+        & 3.\ \verb|eMALL| validates the inserted credentials combination.                                    \\
+        & 4.\ \verb|eMALL| sends back the login outcome.                                                      \\
         \hline
-        Exit condition   & The CPO access the business section of the \verb|eMALL| system                                             \\
+        Exit condition   & The CPO access the business section of the \verb|eMALL| system                                      \\
         \hline
-        Exceptions       & 3.1.1. CPO credentials are not correct and not validated by \verb|eMALL|.                                  \\
+        Exceptions       & 3.1.1. CPO credentials are not correct and not validated by \verb|eMALL|.                           \\
         & 3.2.1. CPO’s affiliate agreement has expired, and its ID is no longer allowed to access the system. \\
         & In both cases, the user receives a notification with an error message.                              \\
         & Also, in the second case, the operator is invited to call the sales team.                           \\
@@ -881,22 +880,22 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & CPO                                                                \\
+        Actor            & CPO                                                                       \\
         \hline
         Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in. \\
-        & The CPO enters the profile section.                                \\
+        & The CPO enters the profile section.                                       \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| shows the CPO his profile.                               \\
-        & 2.\ The CPO enters the charging station managing section.          \\
+        & 2.\ The CPO enters the charging station managing section.                 \\
         & 3.\ \verb|eMALL| shows the CPO his managing charging station section.     \\
-        & 4.\ The CPO taps the ``manage price'' button.                      \\
-        & 5.\ The CPO inserts the value of the fee.                          \\
-        & 6.\ The CPO taps the submission button.                            \\
+        & 4.\ The CPO taps the ``manage price'' button.                             \\
+        & 5.\ The CPO inserts the value of the fee.                                 \\
+        & 6.\ The CPO taps the submission button.                                   \\
         & 7.\ \verb|eMALL| sends back the outcome of the setting of the fee.        \\
         \hline
-        Exit condition   & The fee is set to the new value.                                   \\
+        Exit condition   & The fee is set to the new value.                                          \\
         \hline
-        Exceptions       &                                                                    \\
+        Exceptions       &                                                                           \\
         \hline
         \caption{CPO sets a fee use case.}
         \label{tab: CPO_sets_fee_use_case}
@@ -917,20 +916,20 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                                                       \\
         \hline
-        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                                        \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                                 \\
         & The CPO is in the charging station section from the profile section.                                      \\
         & The CPO clicks the button to add a new charging station to its profile.                                   \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| asks the CPO to insert the location of the new charging station.                                \\
+        Event Flow       & 1.\ \verb|eMALL| asks the CPO to insert the location of the new charging station.                         \\
         & 2.\ The CPO inserts the region, province, city, and address of the new charging station.                  \\
-        & 3.\ \verb|eMALL| asks the CPO to insert the initial status of the new charging station.                          \\
+        & 3.\ \verb|eMALL| asks the CPO to insert the initial status of the new charging station.                   \\
         & 4.\ The CPO inserts the status of the new charging station (available, maintenance, broken, unavailable). \\
-        & 5.\ \verb|eMALL| asks the CPO to insert the charging costs.                                                      \\
+        & 5.\ \verb|eMALL| asks the CPO to insert the charging costs.                                               \\
         & 6.\ The CPO inserts the charging costs.                                                                   \\
-        & 7.\ \verb|eMALL| asks the CPO to add charging points to the new charging station.                                \\
+        & 7.\ \verb|eMALL| asks the CPO to add charging points to the new charging station.                         \\
         & 8.\ The CPO inserts the information of the charging points.                                               \\
-        & 9.\ \verb|eMALL| validates all the inserted information.                                                         \\
-        & 10.\ \verb|eMALL| sends back the outcome of the insertion of the new charging station.                           \\
+        & 9.\ \verb|eMALL| validates all the inserted information.                                                  \\
+        & 10.\ \verb|eMALL| sends back the outcome of the insertion of the new charging station.                    \\
         \hline
         Exit condition   & The charging station is created and added to the CPO’s profile.                                           \\
         \hline
@@ -956,17 +955,17 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                                             \\
         \hline
-        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                              \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                       \\
         & The CPO is in the charging station section from the profile section.                            \\
         & The CPO clicks the “add charging point” button.                                                 \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of its charging stations and asks it to select one.            \\
+        Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of its charging stations and asks it to select one.     \\
         & 2.\ The CPO selects a charging station.                                                         \\
-        & 3.\ \verb|eMALL| asks the CPO to insert the information about the charging station.                    \\
+        & 3.\ \verb|eMALL| asks the CPO to insert the information about the charging station.             \\
         & 4.\ The CPO inserts the serial number, the types of connectors installed on the charging point, the power supply,
         the initial status of the charging point, and the other required information. \\
-        & 5.\ \verb|eMALL| validates the inserted information about the charging point.                          \\
-        & 6.\ \verb|eMALL| sends back to the CPO the outcome of the creation of the new charging point.          \\
+        & 5.\ \verb|eMALL| validates the inserted information about the charging point.                   \\
+        & 6.\ \verb|eMALL| sends back to the CPO the outcome of the creation of the new charging point.   \\
         \hline
         Exit condition   & The charging point is added to the charging station.                                            \\
         \hline
@@ -990,22 +989,22 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & CPO                                                                                  \\
+        Actor            & CPO                                                                                         \\
         \hline
         Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                   \\
-        & The CPO is in the charging station section from the profile section.                 \\
-        & The CPO clicks the “edit charging station” button.                                   \\
+        & The CPO is in the charging station section from the profile section.                        \\
+        & The CPO clicks the “edit charging station” button.                                          \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of its charging stations and asks it to select one. \\
-        & 2.\ The CPO selects a charging station.                                              \\
+        & 2.\ The CPO selects a charging station.                                                     \\
         & 3.\ \verb|eMALL| asks the CPO to insert the new values for the charging point.              \\
-        & 4.\ The CPO edits the metadata of the charging station.                              \\
+        & 4.\ The CPO edits the metadata of the charging station.                                     \\
         & 5.\ \verb|eMALL| updates the charging point with the new inserted values.                   \\
         & 6.\ \verb|eMALL| sends back to the CPO the outcome of the update.                           \\
         \hline
-        Exit condition   & The metadata of the charging station is updated.                                     \\
+        Exit condition   & The metadata of the charging station is updated.                                            \\
         \hline
-        Exceptions       &                                                                                      \\
+        Exceptions       &                                                                                             \\
         \hline
         \caption{CPO changes the metadata of a charging point use case.}
         \label{tab: CPO_updates_charging_point_use_case}
@@ -1024,21 +1023,21 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & CPO                                                                                 \\
+        Actor            & CPO                                                                                        \\
         \hline
         Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                  \\
-        & The CPO is in the profile section.                                                  \\
-        & The CPO clicks the “activate new promotion” button.                                 \\
+        & The CPO is in the profile section.                                                         \\
+        & The CPO clicks the “activate new promotion” button.                                        \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| asks the CPO to define the features of the new promotion.                 \\
-        & 2.\ The CPO defines the features of the new promotion.                              \\
+        & 2.\ The CPO defines the features of the new promotion.                                     \\
         & 3.\ \verb|eMALL| saves the new promotion.                                                  \\
         & 4.\ \verb|eMALL| initializes the promotion.                                                \\
         & 5.\ \verb|eMALL| sends back to the CPO the outcome of the activation of the new promotion. \\
         \hline
-        Exit condition   & The promotion is created and activated.                                             \\
+        Exit condition   & The promotion is created and activated.                                                    \\
         \hline
-        Exceptions       &                                                                                     \\
+        Exceptions       &                                                                                            \\
         \hline
         \caption{CPO activates a promotion use case.}
         \label{tab: CPO_activates_promotion_use_case}
@@ -1059,13 +1058,13 @@ that shows the messages exchanged between the entities and the called functions.
         \hline
         Actor            & CPO                                                                                             \\
         \hline
-        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                              \\
+        Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.                       \\
         & The CPO is in the charging station section from the profile section and has selected a station. \\
         & The CPO clicks the ``schedule maintenance'' button.                                             \\
         \hline
-        Event Flow       & 1.\ \verb|eMALL| asks the CPO to specify the date and the hour of the maintenance.                     \\
-        & 2.\ \verb|eMALL| plans the maintenance session of the charging station.                                \\
-        & 3.\ \verb|eMALL| sends back the outcome of the planning of the maintenance to the CPO.                 \\
+        Event Flow       & 1.\ \verb|eMALL| asks the CPO to specify the date and the hour of the maintenance.              \\
+        & 2.\ \verb|eMALL| plans the maintenance session of the charging station.                         \\
+        & 3.\ \verb|eMALL| sends back the outcome of the planning of the maintenance to the CPO.          \\
         \hline
         Exit condition   & It is planned a maintenance session for the specified charging station.                         \\
         \hline
@@ -1074,37 +1073,35 @@ that shows the messages exchanged between the entities and the called functions.
         \caption{CPO plans a maintenance session for a charging station use case.}
         \label{tab: CPO_plans_maintenance_use_case}
     \end{longtable}
-
-        %TODO: insert sequence
-        %\begin{figure} [H]
-        %    \begin{center}
-        %        \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/cpo_plans_maintenance}
-        %        \caption{CPO plans a maintenance session for a charging station sequence diagram}
-        %        \label{fig: cpo_plans_maintenance_seq_diag}
-        %    \end{center}
-        %\end{figure}
+    \begin{figure} [H]
+        \begin{center}
+            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/cpo_plans_maintenance_session_for_charging_station}
+            \caption{CPO plans a maintenance session for a charging station sequence diagram}
+            \label{fig: cpo_plans_maintenance_seq_diag}
+        \end{center}
+    \end{figure}
 \end{center}
 
 \subsubsection*{UC\cuc . CPO decides the DSO from which acquire energy}
 \begin{center}
     \begin{longtable}{lp{0.75\linewidth}}
         \hline
-        Actor            & CPO                                                                           \\
+        Actor            & CPO                                                                                  \\
         \hline
         Entry conditions & The CPO is subscribed to the \verb|eMALL| system and correctly logged in.            \\
-        & The CPO is in the DSO section from the profile section.                       \\
-        & The CPO clicks the “set DSO” button.                                          \\
+        & The CPO is in the DSO section from the profile section.                              \\
+        & The CPO clicks the “set DSO” button.                                                 \\
         \hline
         Event Flow       & 1.\ \verb|eMALL| shows the CPO the list of DSOs.                                     \\
         & 2.\ \verb|eMALL| asks the CPO to select a DSO from the list.                         \\
-        & 3.\ The CPO selects a DSO from the list.                                      \\
+        & 3.\ The CPO selects a DSO from the list.                                             \\
         & 4.\ \verb|eMALL| updates CPO’s profile information.                                  \\
         & 5.\ \verb|eMALL| activates the selected DSO as the one from which to acquire energy. \\
         & 6.\ \verb|eMALL| sends back to the CPO the outcome of the setting of the DSO         \\
         \hline
-        Exit condition   & The DSO from which to acquire energy is updated.                              \\
+        Exit condition   & The DSO from which to acquire energy is updated.                                     \\
         \hline
-        Exceptions       &                                                                               \\
+        Exceptions       &                                                                                      \\
         \hline
         \caption{CPO decides the DSO from which acquire energy use case.}
         \label{tab: CPO_decides_DSO_use_case}
@@ -1127,7 +1124,7 @@ that shows the messages exchanged between the entities and the called functions.
 \begin{center}
     \begin{longtable}{p{0.12\linewidth}p{0.88\linewidth}}
         \hline
-        \textbf{Use Case} & \textbf{Requirements}                                                                                                                           \\
+        \textbf{Use Case} & \textbf{Requirements}                                                                                                                                  \\
         \hline
         UC\cmr            & R1. The \verb|eMALL| system shall allow an unregistered EVD to create an account.                                                                      \\
         & R21.\ The \verb|eMALL| system shall allow a registered EVD to insert a new payment method.                                                             \\
