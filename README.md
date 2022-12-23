@@ -6,4 +6,4 @@ R&amp;DD - Software Engineering 2 [PoliMi].
 * Cela Mario [10685242] - mario.cela@mail.polimi.it
 * Cogollo Alessandro [10571078] - alessandro.cogollo@mail.polimi.it
 
-RASD document: [download](https://github.com/IrfEazy/CelaCelaCogollo/raw/main/out/Project.pdf)
+RASD document: [download](https://github.com/IrfEazy/CelaCelaCogollo/raw/main/RASD/LaTeXCode/out/Project.pdf)
