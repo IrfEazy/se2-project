@@ -17708,99 +17708,6 @@
             },
             {
               "_type": "UMLDependencyView",
-              "_id": "AAAAAAGFf2KOsv3CvvQ=",
-              "_parent": {
-                "$ref": "AAAAAAGFfZFA4sKZCNQ="
-              },
-              "model": {
-                "$ref": "AAAAAAGFf2KOsv3A1gY="
-              },
-              "subViews": [
-                {
-                  "_type": "EdgeLabelView",
-                  "_id": "AAAAAAGFf2KOsv3D36U=",
-                  "_parent": {
-                    "$ref": "AAAAAAGFf2KOsv3CvvQ="
-                  },
-                  "model": {
-                    "$ref": "AAAAAAGFf2KOsv3A1gY="
-                  },
-                  "visible": false,
-                  "font": "Arial;13;0",
-                  "left": 805,
-                  "top": 1003,
-                  "height": 13,
-                  "alpha": 1.5707963267948966,
-                  "distance": 15,
-                  "hostEdge": {
-                    "$ref": "AAAAAAGFf2KOsv3CvvQ="
-                  },
-                  "edgePosition": 1
-                },
-                {
-                  "_type": "EdgeLabelView",
-                  "_id": "AAAAAAGFf2KOsv3ERY8=",
-                  "_parent": {
-                    "$ref": "AAAAAAGFf2KOsv3CvvQ="
-                  },
-                  "model": {
-                    "$ref": "AAAAAAGFf2KOsv3A1gY="
-                  },
-                  "visible": null,
-                  "font": "Arial;13;0",
-                  "left": 805,
-                  "top": 988,
-                  "height": 13,
-                  "alpha": 1.5707963267948966,
-                  "distance": 30,
-                  "hostEdge": {
-                    "$ref": "AAAAAAGFf2KOsv3CvvQ="
-                  },
-                  "edgePosition": 1
-                },
-                {
-                  "_type": "EdgeLabelView",
-                  "_id": "AAAAAAGFf2KOsv3FBQw=",
-                  "_parent": {
-                    "$ref": "AAAAAAGFf2KOsv3CvvQ="
-                  },
-                  "model": {
-                    "$ref": "AAAAAAGFf2KOsv3A1gY="
-                  },
-                  "visible": false,
-                  "font": "Arial;13;0",
-                  "left": 805,
-                  "top": 1033,
-                  "height": 13,
-                  "alpha": -1.5707963267948966,
-                  "distance": 15,
-                  "hostEdge": {
-                    "$ref": "AAAAAAGFf2KOsv3CvvQ="
-                  },
-                  "edgePosition": 1
-                }
-              ],
-              "font": "Arial;13;0",
-              "head": {
-                "$ref": "AAAAAAGFfhB3oM/CVec="
-              },
-              "tail": {
-                "$ref": "AAAAAAGFfoLfktfUJW8="
-              },
-              "points": "624:1048;624:1024;986:1024;986:519",
-              "showVisibility": true,
-              "nameLabel": {
-                "$ref": "AAAAAAGFf2KOsv3D36U="
-              },
-              "stereotypeLabel": {
-                "$ref": "AAAAAAGFf2KOsv3ERY8="
-              },
-              "propertyLabel": {
-                "$ref": "AAAAAAGFf2KOsv3FBQw="
-              }
-            },
-            {
-              "_type": "UMLDependencyView",
               "_id": "AAAAAAGFf2M6yv3Y/mY=",
               "_parent": {
                 "$ref": "AAAAAAGFfZFA4sKZCNQ="
@@ -18417,19 +18324,6 @@
                       },
                       "target": {
                         "$ref": "AAAAAAGFfyBgEOpeasU="
-                      }
-                    },
-                    {
-                      "_type": "UMLDependency",
-                      "_id": "AAAAAAGFf2KOsv3A1gY=",
-                      "_parent": {
-                        "$ref": "AAAAAAGFfn0xKtZF+s4="
-                      },
-                      "source": {
-                        "$ref": "AAAAAAGFfn0xKtZF+s4="
-                      },
-                      "target": {
-                        "$ref": "AAAAAAGFfhA86M+9VJM="
                       }
                     },
                     {
