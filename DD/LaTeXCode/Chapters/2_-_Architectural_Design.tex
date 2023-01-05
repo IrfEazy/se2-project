@@ -262,11 +262,11 @@ Then, we will present eMALL actions from the point of view of the CPO user, acti
 In this section, we hadn't presented all the RASD document use cases because we have decided to focus on the critical part of the system functionalities.
 
 \paragraph{Registered EVD Logs In}
-When the EVD - \verb|Client Application| - wants to log in to eMALL, he calls the ``\verb|logIn|'' function from the \verb|EVD Authentication Service| component.
-That component requests the client to display the login form by running the ``\verb|displayLogInForm|'' function, and then it waits for the email and password from the \verb|Client Application|.
+When the EVD - \verb|Client Application| - wants to log in to eMALL, he calls the ``\verb|logIn|'' function from the \verb|EVD| \verb|Authentication| \verb|Service| component.
+That component requests the client to display the login form by running the ``\verb|displayLogInForm|'' function, and then it waits for the email and password from the \verb|Client| \verb|Application|.
 
-When the EVD sends this information, the Authentication Service asks the \verb|EVDs DBMS| to validate it.
-Finished processing the login, the last component returns an ACK message to the \verb|EVD Authentication Service|, which sends a confirmation or an error to the client.
+When the EVD sends this information, the Authentication Service asks the \verb|EVDs| \verb|DBMS| to validate it.
+Finished processing the login, the last component returns an ACK message to the \verb|EVD| \verb|Authentication| \verb|Service|, which sends a confirmation or an error to the client.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Logs In}
@@ -276,12 +276,12 @@ Finished processing the login, the last component returns an ACK message to the 
 \end{figure}
 
 \paragraph{Registered EVD adds an EV}
-When the EVD is on his profile page and wants to add a new vehicle to his parking lot, he runs the ``\verb|addVehicle|'' function through the \verb|EVD Profile Manager Service| component.
+When the EVD is on his profile page and wants to add a new vehicle to his parking lot, he runs the ``\verb|addVehicle|'' function through the \verb|EVD| \verb|Profile| \verb|Manager| \verb|Service| component.
 
 At first, it asks back to the client to insert the EV information to save in his profile, and then it waits for him.
 After the user has sent the information, the component also asks for the nickname to give to the EV\@.
-Sending the nickname, the Profile Manager saves the new information by passing them to the \verb|EVDs DBMS|\@.
-When the DBMS has sent back the ACK message, the \verb|EVD Profile Manager Service| component returns the outcome of the process to the EVD\@.
+Sending the nickname, the Profile Manager saves the new information by passing them to the \verb|EVDs| \verb|DBMS|\@.
+When the DBMS has sent back the ACK message, the \verb|EVD| \verb|Profile| \verb|Manager| \verb|Service| component returns the outcome of the process to the EVD\@.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Adds a Vehicle}
@@ -292,13 +292,13 @@ When the DBMS has sent back the ACK message, the \verb|EVD Profile Manager Servi
 
 \paragraph{Registered EVD books a charge}
 In eMALL, the EVD can also book a charge in a charging station.
-In the sequence diagram, we suppose the \verb|Client Application| knows the charging stations he wants to book.
-Then, the user calls the ``\verb|bookCharge|'' function of the \verb|Booking Service| component, passing the given charging station.
+In the sequence diagram, we suppose the \verb|Client| \verb|Application| knows the charging stations he wants to book.
+Then, the user calls the ``\verb|bookCharge|'' function of the \verb|Booking| \verb|Service| component, passing the given charging station.
 
-The component needs to know the available timeframes for the charging station, so it waits for the \verb|Sessions DBMS| component to process the information.
-When it receives the list of timeframes, the \verb|Booking Service| asks the user to choose one among them.
+The component needs to know the available timeframes for the charging station, so it waits for the \verb|Sessions| \verb|DBMS| component to process the information.
+When it receives the list of timeframes, the \verb|Booking| \verb|Service| asks the user to choose one among them.
 Knowing that more than one EVD uses the system, then one timeframe that is at first available might be unavailable when eMALL proceeds with the booking.
-To avoid it, the \verb|Booking Service| asks for the \verb|Sessions DBMS| to check the availability of the chosen timeframe and to lock it if so by calling the ``\verb|isTimeframeAvailable|'' function.
+To avoid it, the \verb|Booking| \verb|Service| asks for the \verb|Sessions| \verb|DBMS| to check the availability of the chosen timeframe and to lock it if so by calling the ``\verb|isTimeframeAvailable|'' function.
 
 Once the chosen timeframe is locked, the component asks the EVD to confirm the booking - ``\hyperlink{evdconfirmsbooking}{EVD Confirms the Booking}'' sequence diagram.
 In the end, the system sends the outcome of the process to the \verb|EVD Client Application|.
@@ -311,10 +311,10 @@ In the end, the system sends the outcome of the process to the \verb|EVD Client 
 \end{figure}
 
 \paragraph{\texorpdfstring{\protect\hypertarget{evdconfirmsbooking}{Registered EVD confirms the booking}}{}}
-Our system always asks the client to confirm a booking before saving it, so the \verb|Booking Service| component receives the client, the charging station where he wants to book, and the timeframe to reserve for the client.
+Our system always asks the client to confirm a booking before saving it, so the \verb|Booking| \verb|Service| component receives the client, the charging station where he wants to book, and the timeframe to reserve for the client.
 At first, it asks the EVD to confirm the booking and waits for his reply.
-Given the confirmation, the \verb|Booking Service| runs the ``\verb|addSession|'' function of \verb|Sessions DBMS| to add the new booking to the database and orders to the \verb|Calendar Service| to add it to the calendar.
-After the \verb|Calendar Service| has run the ``\verb|saveActivity|'' function of \verb|Calendars DBMS|, \verb|Booking Service| returns the outcome to the caller.
+Given the confirmation, the \verb|Booking| \verb|Service| runs the ``\verb|addSession|'' function of \verb|Sessions| \verb|DBMS| to add the new booking to the database and orders to the \verb|Calendar| \verb|Service| to add it to the calendar.
+After the \verb|Calendar| \verb|Service| has run the ``\verb|saveActivity|'' function of \verb|Calendars| \verb|DBMS|, \verb|Booking| \verb|Service| returns the outcome to the caller.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Confirms the Booking}
@@ -325,12 +325,12 @@ After the \verb|Calendar Service| has run the ``\verb|saveActivity|'' function o
 
 \paragraph{Registered EVD consults a specific promotion that can be redeemed}
 An EVD might want to redeem an available promotion in eMALL through his page.
-He has to call the ``\verb|redeemPromotion|'' function from the \verb|Promotion Service| component, which retrieves all the promotions by running the get function of the list of promotions from the \verb|Promotions DBMS|\@.
-When the \verb|Promotion Service| has received the list, it asks the user to select which promotion he wants to redeem and then asks for a confirmation for its activation.
+He has to call the ``\verb|redeemPromotion|'' function from the \verb|Promotion| \verb|Service| component, which retrieves all the promotions by running the get function of the list of promotions from the \verb|Promotions| \verb|DBMS|\@.
+When the \verb|Promotion| \verb|Service| has received the list, it asks the user to select which promotion he wants to redeem and then asks for a confirmation for its activation.
 
-If the user has decided to proceed with the activation, \verb|Promotion Service| initializes the payment by calling the ``\verb|pay|'' function from the \verb|Payment Service| component - ``\hyperlink{evdmakespayment}{EVD Makes a Payment}'' sequence diagram.
-When the payment successfully ends, the activation process runs through the \verb|EVD Profile Manager Service| component by calling the ``\verb|activate|'' function that receives the paid promotion and the client in input.
-The \verb|Profile Manager| calls the counterpart ``\verb|activate|'' function from the \verb|EVDs DBMS|\@.
+If the user has decided to proceed with the activation, \verb|Promotion| \verb|Service| initializes the payment by calling the ``\verb|pay|'' function from the \verb|Payment| \verb|Service| component - ``\hyperlink{evdmakespayment}{EVD Makes a Payment}'' sequence diagram.
+When the payment successfully ends, the activation process runs through the \verb|EVD| \verb|Profile| \verb|Manager| \verb|Service| component by calling the ``\verb|activate|'' function that receives the paid promotion and the client in input.
+The Profile Manager calls the counterpart ``\verb|activate|'' function from the \verb|EVDs| \verb|DBMS|\@.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Consults a Specific Promotion to Redeem}
@@ -341,8 +341,8 @@ The \verb|Profile Manager| calls the counterpart ``\verb|activate|'' function fr
 
 \paragraph{Registered EVD charges his EV}
 Now we explain how a charging process evolves in eMALL\@.
-At first, we need the EVD to call the function ``\verb|startChargeEV|'' from the \verb|Manage Charging Session Service| component to verify that the current user has booked a charging session.
-The service calls so the ``\verb|convalidateClient|'' from the \verb|Sessions DBMS| because it is the only one that can retrieve this information.
+At first, we need the EVD to call the function ``\verb|startChargeEV|'' from the \verb|Manage| \verb|Charging| \verb|Session| \verb|Service| component to verify that the current user has booked a charging session.
+The service calls so the ``\verb|validateClient|'' from the \verb|Sessions| \verb|DBMS| because it is the only one that can retrieve this information.
 
 The timeframe is not necessary because the system checks at the current time.
 If the EVD has booked, the service requests to unlock the charging point to the \verb|Charging| \verb|Station| \verb|Communication| \verb|Service|, which delegates the process to the \verb|Charging| \verb|Point| \verb|System|.
@@ -363,7 +363,7 @@ Finally, the \verb|Manage| \verb|Charging| \verb|Session| \verb|Service| initial
 \paragraph{\texorpdfstring{\protect\hypertarget{evdmakespayment}{Registered EVD makes a payment}}{}}
 When an EVD has to pay, the \verb|Payment| \verb|Service| receives a call with the amount to pay from a client and the client himself in input.
 The service asks the \verb|EVD| \verb|Profile| \verb|Manager| \verb|Service| to select a payment method for the given EVD\@.
-The \verb|Profile| \verb|Manager| asks the \verb|EVDs| \verb|DBMS| for the user's payment methods by calling the ``\verb|getPaymentMethods|'' function and returns the obtained list to the caller.
+The Profile Manager asks the \verb|EVDs| \verb|DBMS| for the user's payment methods by calling the ``\verb|getPaymentMethods|'' function and returns the obtained list to the caller.
 Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from the \verb|Third-party| \verb|Payment| \verb|Service| with the amount to pay in input.
 \begin{figure}[H]
     \begin{center}
@@ -374,6 +374,14 @@ Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from
 \end{figure}
 
 \paragraph{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule}
+When the EVD wants to add a new activity to his calendar, he first opens the calendar section by calling the ``\verb|openCalendar|'' function from the \verb|Calendar| \verb|Service| component, which delegates the call to \verb|Calendars| \verb|DBMS|\@.
+
+Once the user has received the calendar, he can insert the new activity by requesting a form to the \verb|Calendar| \verb|Service| through the ``\verb|insertNewActivity|'' function call.
+When the user fills out the form, he sends it to the \verb|Calendar| \verb|Service|, which calls the ``\verb|validateActivity|'' function from the \verb|Calendars| \verb|DBMS| and then the ``\verb|saveActivity|'' function from the same DBMS component.
+
+Finally, the service initializes asynchronously the function ``\verb|findBestSchedule|,'' which computes the best path in reaching the different appointments of the user depending on the battery status of the EV, its capacity, and energy costs.
+The call is asynchronous because the service is not essential for the EVD\@.
+If the \verb|Suggestion| \verb|Service| component is down, eMALL has to work without it and allow the users to add new activities to their calendars.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Adds a New Activity to the Calendar}
@@ -383,6 +391,9 @@ Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from
 \end{figure}
 
 \paragraph{CPO logs in}
+In eMALL, when a CPO wants to log in, he calls the function ``\verb|logInCPO|'' from the \verb|CPO| \verb|Authentication| \verb|Service| component, which calls back the ``\verb|insertInfo|'' function from the \verb|Client| \verb|Application| to retrieve the essential information for the CPO identification, i.e., ID, email, and password.
+Once the CPO has sent the information, the Authentication Service runs the ``\verb|validateAccount|'' function from the \verb|CPOs| \verb|DBMS|\@.
+If the CPO operator has inserted the correct credentials, he will enter his homepage.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Logs In}
@@ -392,6 +403,9 @@ Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from
 \end{figure}
 
 \paragraph{CPO sets a fee}
+From his homepage, a CPO might want to change the fees of his charging stations.
+When he has decided which charging station, he calls the ``\verb|setFee|'' function from the \verb|Charging| \verb|Station| \verb|Manager| \verb|Service| component, which asks the user to insert the new fee to set to the given charging station.
+Once the CPO has specified the new fee, the Charging Station Manager runs the ``\verb|updateFee|'' function from the \verb|Charging| \verb|Stations| \verb|DBMS|, which replaces the old fee value with the new one in input.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Sets a Fee}
@@ -401,6 +415,10 @@ Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from
 \end{figure}
 
 \paragraph{CPO adds a charging station}
+From his homepage, a CPO can add new charging stations to his profile, so he calls the ``\verb|addChargingStation|'' function from the \verb|Charging| \verb|Station| \verb|Manager| \verb|Service| component.
+The service asks the \verb|Client| \verb|Application| to insert the location of the new charging station, its status, the charging costs, and the charging points with their information.
+For each piece of information, the service waits for the CPO to reply before proceeding with the new request.
+Once the service has received all the information, it passes them to the validate function called from the \verb|Charging| \verb|Stations| \verb|DBMS|\@.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Adds a New Charging Station}
@@ -410,6 +428,9 @@ Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from
 \end{figure}
 
 \paragraph{CPO adds a charging point}
+A CPO can also add new charging points to an existing charging station.
+When he chooses this operation, he calls the ``\verb|addChargingPoint|'' function from the \verb|Charging| \verb|Station| \verb|Manager| \verb|Service| component, which asks the \verb|Client| \verb|Application| to enter the charging station where the new charging point has to be added and then the information of the charging point itself.
+Once the service has received all the information, it passes them to the validate function called from the \verb|Charging| \verb|Stations| \verb|DBMS|\@.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Adds a New Charging Point}
@@ -419,15 +440,24 @@ Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from
 \end{figure}
 
 \paragraph{CPO changes the metadata of a charging point}
+When a CPO wants to edit the metadata of charging points, he calls the ``\verb|updateMetadataChargingPoint|'' from the \verb|Charging| \verb|Station| \verb|Manager| \verb|Service| component with the given charging station in input.
+At first, the service asks the \verb|Client| \verb|Application| to select the charging point to edit, so it calls the ``\verb|editMetadataChargingPoint|'' function from the \verb|Client| \verb|Application| that allows the CPO to edit the charging point information.
+Once the user has filled out the form, the function returns the new charging point to the Charging Station Manager, which calls the update function with the charging station, the old charging point, and the up-to-date charging point from the \verb|Charging| \verb|Stations| \verb|DBMS|\@.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Changes the Metadata of a Charging Station}
         \caption{CPO changes the metadata of a charging point sequence diagram}
-        \label{cpo_changes_metadata_of_charging_station}
+        \label{cpo_changes_metadata_of_charging_point}
     \end{center}
 \end{figure}
 
 \paragraph{CPO activates a promotion}
+The CPO can define promotions for the EVD\@.
+At first, the CPO calls the ``\verb|activatePromotion|'' function from the \verb|Promotion| \verb|Manager| \verb|Service| component, which calls back the ``\verb|definePromotionFeatures|'' from the \verb|Client| \verb|Application|.
+The function, as the name suggests, allows the CPO to define the features of the new promotion.
+The form is sent to the caller when filled out.
+The Promotion Manager processes the result and, if it's correct, calls the function ``\verb|save|'' with the promotion in input from the \verb|Promotions| \verb|DBMS|\@.
+If the store is successful, the service calls the ``\verb|initialize|'' function to make the promotion available to EVDs\@.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Activates a Promotion}
@@ -437,6 +467,12 @@ Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from
 \end{figure}
 
 \paragraph{CPO plans a maintenance session for a charging station}
+A CPO can plan maintenance sessions for his charging station, so here we describe the sequence diagram of the planning process.
+At first, the CPO calls the ``\verb|planMaintenanceSession|'' function from the \verb|Charging| \verb|Station| \verb|Manager| \verb|Service| component with the charging station in input.
+The service asks the user to fill out the form for the date and hour of the planned maintenance.
+Once the CPO returns the form, the Charging Station Manager calls the ``\verb|planMaintenance|'' function from the \verb|Charging| \verb|Station| \verb|Communication| \verb|Service|, which delegates the job to the \verb|Charging| \verb|Point| \verb|System|.
+The function notifies the \verb|Charging| \verb|Point| \verb|System| that the charging points of a given charging station will be unavailable on a particular date.
+When the Charging Station Manager receives the success notification of the alert, it saves the information into the \verb|Charging| \verb|Stations| \verb|DBMS| by calling the ``\verb|savePlannedMaintenance|'' function with the charging station, date, and hour in input.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Plans Maintenance Session for Charging Station}
@@ -446,6 +482,12 @@ Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from
 \end{figure}
 
 \paragraph{CPO decides the DSO from which acquire energy}
+A CPO can edit his energy provider - DSO - from his homepage.
+At first, he calls the ``\verb|setDSOAcquireEnergy|'' function from the \verb|DSO| \verb|Manager| \verb|Service| with the CPO's identifier in input.
+The DSO Manager orders the \verb|DSO| \verb|Communication| \verb|Module| to return the list of all the DSOs available in eMALL\@.
+When the list is ready, the DSO Manager asks the client to select the DSO from the list, and then it runs the ``\verb|activateDSO|'' function of the \verb|DSO| \verb|Communication| \verb|Module|, which alerts the DSO that a new CPO will acquire energy from it.
+After the alert, the service calls the ``\verb|update|'' function from the \verb|CPO| \verb|Profile| \verb|Manager| \verb|Service|, which delegates to the counterpart ``\verb|update|'' function of the \verb|CPOs| \verb|DBMS| to store the new relationship.
+The process ends by notifying the \verb|Client| \verb|Application| about the successful ending of the operation.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Decides the DSO from which Acquire Energy}
