@@ -253,7 +253,206 @@ communication interfaces previously shown in the component diagram.
 
 
 \section{Runtime View}
-\label{sec: runtime_view}%
+\label{sec:runtime_view}%
+Here we present the dynamic of our system through sequence diagrams.
+We have found the components that communicate with each other to form our system, so now we explain their behaviors.
+
+First, we will present eMALL actions from the point of view of the EVD user, i.e., logging in, booking a charge, managing his profile, etc.
+Then, we will present eMALL actions from the point of view of the CPO user, actions that are much more business functionality.
+In this section, we hadn't presented all the RASD document use cases because we have decided to focus on the critical part of the system functionalities.
+
+\paragraph{Registered EVD Logs In}
+When the EVD - \verb|Client Application| - wants to log in to eMALL, he calls the ``\verb|logIn|'' function from the \verb|EVD Authentication Service| component.
+That component requests the client to display the login form by running the ``\verb|displayLogInForm|'' function, and then it waits for the email and password from the \verb|Client Application|.
+
+When the EVD sends this information, the Authentication Service asks the \verb|EVDs DBMS| to validate it.
+Finished processing the login, the last component returns an ACK message to the \verb|EVD Authentication Service|, which sends a confirmation or an error to the client.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Logs In}
+        \caption{Registered EVD logs in sequence diagram}
+        \label{fig:evd_logs_in}
+    \end{center}
+\end{figure}
+
+\paragraph{Registered EVD adds an EV}
+When the EVD is on his profile page and wants to add a new vehicle to his parking lot, he runs the ``\verb|addVehicle|'' function through the \verb|EVD Profile Manager Service| component.
+
+At first, it asks back to the client to insert the EV information to save in his profile, and then it waits for him.
+After the user has sent the information, the component also asks for the nickname to give to the EV\@.
+Sending the nickname, the Profile Manager saves the new information by passing them to the \verb|EVDs DBMS|\@.
+When the DBMS has sent back the ACK message, the \verb|EVD Profile Manager Service| component returns the outcome of the process to the EVD\@.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Adds a Vehicle}
+        \caption{Registered EVD adds an EV sequence diagram}
+        \label{fig:evd_adds_vehicle}
+    \end{center}
+\end{figure}
+
+\paragraph{Registered EVD books a charge}
+In eMALL, the EVD can also book a charge in a charging station.
+In the sequence diagram, we suppose the \verb|Client Application| knows the charging stations he wants to book.
+Then, the user calls the ``\verb|bookCharge|'' function of the \verb|Booking Service| component, passing the given charging station.
+
+The component needs to know the available timeframes for the charging station, so it waits for the \verb|Sessions DBMS| component to process the information.
+When it receives the list of timeframes, the \verb|Booking Service| asks the user to choose one among them.
+Knowing that more than one EVD uses the system, then one timeframe that is at first available might be unavailable when eMALL proceeds with the booking.
+To avoid it, the \verb|Booking Service| asks for the \verb|Sessions DBMS| to check the availability of the chosen timeframe and to lock it if so by calling the ``\verb|isTimeframeAvailable|'' function.
+
+Once the chosen timeframe is locked, the component asks the EVD to confirm the booking - ``\hyperlink{evdconfirmsbooking}{EVD Confirms the Booking}'' sequence diagram.
+In the end, the system sends the outcome of the process to the \verb|EVD Client Application|.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Books a Charge in a Charging Station}
+        \caption{Registered EVD books a charge sequence diagram}
+        \label{fig:evd_books_charge_charging_station}
+    \end{center}
+\end{figure}
+
+\paragraph{\texorpdfstring{\protect\hypertarget{evdconfirmsbooking}{Registered EVD confirms the booking}}{}}
+Our system always asks the client to confirm a booking before saving it, so the \verb|Booking Service| component receives the client, the charging station where he wants to book, and the timeframe to reserve for the client.
+At first, it asks the EVD to confirm the booking and waits for his reply.
+Given the confirmation, the \verb|Booking Service| runs the ``\verb|addSession|'' function of \verb|Sessions DBMS| to add the new booking to the database and orders to the \verb|Calendar Service| to add it to the calendar.
+After the \verb|Calendar Service| has run the ``\verb|saveActivity|'' function of \verb|Calendars DBMS|, \verb|Booking Service| returns the outcome to the caller.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Confirms the Booking}
+        \caption{Registered EVD confirms the booking sequence diagram}
+        \label{fig:evd_confirms_booking}
+    \end{center}
+\end{figure}
+
+\paragraph{Registered EVD consults a specific promotion that can be redeemed}
+An EVD might want to redeem an available promotion in eMALL through his page.
+He has to call the ``\verb|redeemPromotion|'' function from the \verb|Promotion Service| component, which retrieves all the promotions by running the get function of the list of promotions from the \verb|Promotions DBMS|\@.
+When the \verb|Promotion Service| has received the list, it asks the user to select which promotion he wants to redeem and then asks for a confirmation for its activation.
+
+If the user has decided to proceed with the activation, \verb|Promotion Service| initializes the payment by calling the ``\verb|pay|'' function from the \verb|Payment Service| component - ``\hyperlink{evdmakespayment}{EVD Makes a Payment}'' sequence diagram.
+When the payment successfully ends, the activation process runs through the \verb|EVD Profile Manager Service| component by calling the ``\verb|activate|'' function that receives the paid promotion and the client in input.
+The \verb|Profile Manager| calls the counterpart ``\verb|activate|'' function from the \verb|EVDs DBMS|\@.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Consults a Specific Promotion to Redeem}
+        \caption{Registered EVD consults a specific promotion that can be redeemed sequence diagram}
+        \label{fig:evd_consults_specific_promotion_to_redeem}
+    \end{center}
+\end{figure}
+
+\paragraph{Registered EVD charges his EV}
+Now we explain how a charging process evolves in eMALL\@.
+At first, we need the EVD to call the function ``\verb|startChargeEV|'' from the \verb|Manage Charging Session Service| component to verify that the current user has booked a charging session.
+The service calls so the ``\verb|convalidateClient|'' from the \verb|Sessions DBMS| because it is the only one that can retrieve this information.
+
+The timeframe is not necessary because the system checks at the current time.
+If the EVD has booked, the service requests to unlock the charging point to the \verb|Charging| \verb|Station| \verb|Communication| \verb|Service|, which delegates the process to the \verb|Charging| \verb|Point| \verb|System|.
+Once the charging point is unlocked, the \verb|Manage| \verb|Charging| \verb|Session| \verb|Service| asks the user to connect his EV and confirm the start of the charging process.
+
+When the EVD confirms, the service asks the \verb|Charging| \verb|Session| \verb|Communication| \verb|Service| to start charging, which delegates to the \verb|Charging| \verb|Point| \verb|System|.
+Then, we have a loop sequence where the user asks indirectly for information from the \verb|Charging| \verb|Point| \verb|System| to see the status of his EV's battery.
+When the EVD decides to stop the charging process, he communicates it to the \verb|Manage| \verb|Charging| \verb|Session| \verb|Service|, which delegates the decision to the \verb|Charging| \verb|Session| \verb|Communication| \verb|Service|, which orders to stop charging to the \verb|Charging| \verb|Point| \verb|System|.
+Finally, the \verb|Manage| \verb|Charging| \verb|Session| \verb|Service| initializes the payment - \hyperlink{evdmakespayment}{EVD Makes a Payment} sequence diagram - and calls the ``\verb|save|'' function from the \verb|Sessions| \verb|DBMS| to save the EVD session.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Charges His EV}
+        \caption{Registered EVD charges his EV sequence diagram}
+        \label{fig:evd_charges_his_ev}
+    \end{center}
+\end{figure}
+
+\paragraph{\texorpdfstring{\protect\hypertarget{evdmakespayment}{Registered EVD makes a payment}}{}}
+When an EVD has to pay, the \verb|Payment| \verb|Service| receives a call with the amount to pay from a client and the client himself in input.
+The service asks the \verb|EVD| \verb|Profile| \verb|Manager| \verb|Service| to select a payment method for the given EVD\@.
+The \verb|Profile| \verb|Manager| asks the \verb|EVDs| \verb|DBMS| for the user's payment methods by calling the ``\verb|getPaymentMethods|'' function and returns the obtained list to the caller.
+Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from the \verb|Third-party| \verb|Payment| \verb|Service| with the amount to pay in input.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Makes a Payment}
+        \caption{Registered EVD makes a payment sequence diagram}
+        \label{fig:evd_makes_payment}
+    \end{center}
+\end{figure}
+
+\paragraph{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Adds a New Activity to the Calendar}
+        \caption{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule sequence diagram}
+        \label{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule sequence diagram}
+    \end{center}
+\end{figure}
+
+\paragraph{CPO logs in}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Logs In}
+        \caption{CPO logs in sequence diagram}
+        \label{cpo_logs_in}
+    \end{center}
+\end{figure}
+
+\paragraph{CPO sets a fee}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Sets a Fee}
+        \caption{CPO sets a fee sequence diagram}
+        \label{cpo_sets_fee}
+    \end{center}
+\end{figure}
+
+\paragraph{CPO adds a charging station}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Adds a New Charging Station}
+        \caption{CPO adds a charging station sequence diagram}
+        \label{cpo_adds_new_charging_station}
+    \end{center}
+\end{figure}
+
+\paragraph{CPO adds a charging point}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Adds a New Charging Point}
+        \caption{CPO adds a charging point sequence diagram}
+        \label{cpo_adds_new_charging_point}
+    \end{center}
+\end{figure}
+
+\paragraph{CPO changes the metadata of a charging point}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Changes the Metadata of a Charging Station}
+        \caption{CPO changes the metadata of a charging point sequence diagram}
+        \label{cpo_changes_metadata_of_charging_station}
+    \end{center}
+\end{figure}
+
+\paragraph{CPO activates a promotion}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Activates a Promotion}
+        \caption{CPO activates a promotion sequence diagram}
+        \label{cpo_activates_promotion}
+    \end{center}
+\end{figure}
+
+\paragraph{CPO plans a maintenance session for a charging station}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Plans Maintenance Session for Charging Station}
+        \caption{CPO plans a maintenance session for a charging station sequence diagram}
+        \label{cpo_plans_maintenance_session_for_charging_station}
+    \end{center}
+\end{figure}
+
+\paragraph{CPO decides the DSO from which acquire energy}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Decides the DSO from which Acquire Energy}
+        \caption{CPO decides the DSO from which acquire energy sequence diagram}
+        \label{cpo_decides_dso_from_which_acquire_energy}
+    \end{center}
+\end{figure}
 
 
 \section{Component Interfaces}
