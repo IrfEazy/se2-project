@@ -461,7 +461,29 @@ Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from
 
 \section{Selected Architectural Styles and Patterns}
 \label{sec: patterns}%
+The \verb|eMALL| system offers functionalities to both EVDs and CPOs.
+The second ones represent companies that use the system to manage their business goals.
+For this reason, we choose to adopt a microservices architecture. \\
+The following list describes the key benefits of the choice:
+\begin{itemize}
+    \item \textbf{Technology heterogeneity.} With a system composed of multiple, collaborating services, we can decide to use different
+    technologies inside each one.
+    This allows to pick the right tool for each job.
+    As shown in the previous sections, it is shown a wide variety of functionalities.
+    So, it is good for the system to use different programming languages and tools depending on the characteristics of
+    the module in question.
+    \item \textbf{Scalability.} Microservices are designed to be independently deployable and scalable.
+    \item \textbf{Availability.} If a service fails, the rest of system keeps running.
+    For this reason, is easier to maintain modules that present problems still guaranteeing all the other functionalities
+    of the system.
+    \item \textbf{Ease of deployment.} With microservices, it is possible to make a change to a single service and deploy
+    it independently of the rest of the system.
+    If problems occur, they can be identified, isolated, and corrected quicker, without the need of halting the whole system.
+\end{itemize}
 
 
 \section{Other Design Decisions}
 \label{sec: other_design_decisions}%
+%TODO: spiega il 3-tier client server architecture
+%TODO: spiega il thin client
+%TODO: spiega le scelte di design riguardanti i database (approccio di condivisione e tipo di database pensato)
