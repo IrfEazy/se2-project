@@ -526,6 +526,31 @@ The following list describes the key benefits of the choice:
 
 \section{Other Design Decisions}
 \label{sec: other_design_decisions}%
-%TODO: spiega il 3-tier client server architecture
-%TODO: spiega il thin client
-%TODO: spiega le scelte di design riguardanti i database (approccio di condivisione e tipo di database pensato)
+
+\subsection{Client-Server architecture}
+\label{subsec:client_server_architecture}%
+The \verb|eMALL| system adopts a 3-tier client-server architecture.
+So, the system is divided into three main components: the client, the server, and the databases.
+The client represents the front-end user interface, and it is the tool used by users to communicate with the system.
+The server is the back-end platform, which receives users' requests, elaborates answers, and stores data.
+This design decision has different key benefits: the server can handle several requests simultaneously.
+Additionally, it is easier to guarantee the security and integrity of the stored data,
+given that the databases are separated from the business logic and users.
+Finally, it facilitates maintenance and updates of the parts of the system, given that client and server can be handled independently.
+
+\subsection{Thin client}
+\label{subsec:thin_client}%
+The mobile app and the web page that will be used by users act as a client, sending requests to the server and receiving responses,
+while the server handles the heavy lifting of processing and storing data.
+Given the microservices architecture we adopted, the client will communicate to defined offered services according to its needs.
+So, the client will be lightweight and easy to use since it doesn't need to store and process large amounts of data.
+Another benefit the system enjoys from the thin client design decision is an increase in the system's security
+since all the information is processed and stored on the server rather than on the client device.
+
+\subsection{Shared databases}
+\label{subsec:shared_databases}%
+We decided to introduce databases that will be shared by several services, as already shown in the deployment view section.
+The choice relies on several services working on the same kind of data.
+The possibility of having only one database shared entirely by services could have introduced strong dependencies between modules.
+In the same way, introducing one database for each service and replicating information where needed would have been more expensive.
+Considering the system's requirements, sharing databases between modules is, instead, a good point of balance.
