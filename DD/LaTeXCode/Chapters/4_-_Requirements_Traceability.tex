@@ -1,6 +1,135 @@
+This chapter shows how the functional and non-functional requirements of the eMALL system described in the RASD are met.
+Firstly, we describe the mapping between the requirements listed in the 3.2.1 \textit{Requirements} section in the RASD
+and the components identified in section 2.2 of this document.
+Then, we comment on how \textit{Performance Requirements} and \textit{Software System Attributes} described in the 3.3
+and 3.5 sections of the RASD are met thanks to the design adopted for the eMALL system.
+
+
 \section{Functional Requirements Traceability}
 \label{sec: functional_requirements_traceability}%
+The following table lists all the requirements that are satisfied by the components.
+Texts of the requirements are inserted in the table to facilitate comprehension.
+\begin{center}
+    \begin{longtable}{p{0.3\linewidth}p{0.7\linewidth}}
+        \hline
+        Registration Service                   & R1. The eMALL system shall allow an unregistered EVD to create an account.                                                                      \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        \hline
+        EVD Authentication Service             & R2. The eMALL system shall allow a registered EVD to log in.                                                                                    \\
+        \hline
+        EVD Profile Manager Service            & R3. The eMALL system shall allow a registered EVD to add an EV in his profile.                                                                  \\
+        & R21.\ The eMALL system shall allow a registered EVD to insert a new payment method.                                                             \\
+        & R22.\ The eMALL system shall allow a registered EVD to select a payment method.                                                                 \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        \hline
+        Explore Stations Service               & R8. The eMALL system shall allow a registered EVD to get all the charging station near to his current location.                                 \\
+        & R9. The eMALL system shall allow a registered EVD to insert a specific location to get charging station nearby.                                 \\
+        & R10.\ The eMALL system shall allow a registered EVD to move into the map of charging stations.                                                  \\
+        & R11.\ The eMALL system shall allow a registered EVD to select a specific charging station.                                                      \\
+        & R12.\ The eMALL system shall allow a registered EVD to get the location of a specific charging station.                                         \\
+        & R13.\ The eMALL system shall allow a registered EVD to get the costs of a specific charging station.                                            \\
+        & R14.\ The eMALL system shall allow a registered EVD to get the CPO owner of a specific charging station.                                        \\
+        & R15.\ The eMALL system shall allow a registered EVD to get type of connectors of a specific charging station.                                   \\
+        & R16.\ The eMALL system shall allow a registered EVD to get maximum power supply of the spots of a specific charging station.                    \\
+        & R17.\ The eMALL system shall allow a registered EVD to get the status of a specific charging station.                                           \\
+        \hline
+        Booking Service                        & R5. The eMALL system shall allow a registered EVD to book a charge.                                                                             \\
+        & R6. The eMALL system shall allow a registered EVD to select a timeframe to reserve a charging point.                                            \\
+        & R55.\ The eMALL system shall reserve a charging point in a certain timeframe.                                                                   \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        \hline
+        Manage Charging Session Service        & R25.\ The eMALL system shall allow a registered EVD to start a charging process.                                                                \\
+        & R26.\ The eMALL system shall verify the identity of the EVD requesting to start a charging session.                                             \\
+        & R32.\ The eMALL system shall send notifications about the current status of the charging session to the registered EVD.                         \\
+        & R33.\ The eMALL system shall allow a registered EVD to stop the charging session.                                                               \\
+        & R35.\ The eMALL system shall send the receipt of the charging session to the registered EVD.                                                    \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        \hline
+        Promotion Service                      & R18.\ The eMALL system shall allow a registered EVD to get the list of active promotions.                                                       \\
+        & R19.\ The eMALL system shall allow a registered EVD to select a specific promotion.                                                             \\
+        & R20.\ The eMALL system shall allow a registered EVD to activate a promotion.                                                                    \\
+        \hline
+        Calendar Service                       & R7. The eMALL system shall add a booked reservation into EVD’s calendar.                                                                        \\
+        & R37.\ The eMALL system shall allow a registered EVD to access in his own calendar.                                                              \\
+        & R38.\ The eMALL system shall allow a registered EVD to add a new activity into his calendar.                                                    \\
+        & R39.\ The eMALL system shall allow a registered EVD to specify the starting hour of a new activity.                                             \\
+        & R40.\ The eMALL system shall allow a registered EVD to specify the destination of a new activity.                                               \\
+        & R41.\ The eMALL system shall save a new activity into EVD’s calendar.                                                                           \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        \hline
+        Suggestion Service                     & R4. The eMALL system shall communicate with EV’s brand API to get needed information.                                                           \\
+        & R42.\ The eMALL system shall calculate the best schedules of where and when to charge registered EVD’s EV so to minimize costs and wasted time. \\
+        & R43.\ The eMALL system shall communicate to the registered EVD the details of the suggestions about the calculated schedules.                   \\
+        \hline
+        Payment Service                        & R23.\ The eMALL system shall allow a registered EVD to pay with the preferred payment method.                                                   \\
+        & R24.\ The eMALL system shall communicate with third-party payment services to make the payments.                                                \\
+        & R36.\ The eMALL system shall communicate the outcome of the payment to a registered EVD.                                                        \\
+        \hline
+        CPO Authentication Service             & R44.\ The eMALL system shall allow a CPO to log in as a business user.                                                                          \\
+        &                                                                                                                                                 \\
+        \hline
+        CPO Profile Manager Service            & R66.\ The eMALL system shall allow a CPO to update its electricity provider.                                                                    \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        & R70.\ The eMALL system shall allow the CPO to manage its company personal information.                                                          \\
+        \hline
+        Charging Station Manager Service       & R45.\ The eMALL system shall allow a CPO to manage its charging stations.                                                                       \\
+        & R46.\ The eMALL system shall allow a CPO to set new selling prices for charging sessions.                                                       \\
+        & R47.\ The eMALL system shall allow a CPO to add a new charging station in its profile.                                                          \\
+        & R48.\ The eMALL system shall allow a CPO to specify the location of charging station (region, province, city, address).                         \\
+        & R49.\ The eMALL system shall allow a CPO to specify the status of a charging station (available, maintenance, broken, unavailable).             \\
+        & R50.\ The eMALL system shall allow a CPO to add a charging point in an existing charging station.                                               \\
+        & R51.\ The eMALL system shall allow a CPO to specify the serial number of charging point.                                                        \\
+        & R52.\ The eMALL system shall allow a CPO to specify the types of connectors of a charging point.                                                \\
+        & R53.\ The eMALL system shall allow a CPO to specify the maximum power of a charging point.                                                      \\
+        & R54.\ The eMALL system shall allow a CPO to specify the type of connectors of a charging point.                                                 \\
+        & R61.\ The eMALL system shall allow a CPO to schedule a maintenance session for a charging station.                                              \\
+        & R62.\ The eMALL system shall allow a CPO to specify date and starting hour of a maintenance session for a charging station.                     \\
+        & R69.\ The eMALL system shall store users information.                                                                                           \\
+        \hline
+        Charging Station Communication Service & R28.\ The eMALL system shall communicate to charging points to start the charging session.                                                      \\
+        & R29.\ The eMALL system shall define the source of the charging session (batteries or DSO).                                                      \\
+        & R30.\ The eMALL system shall define the power of the charging session.                                                                          \\
+        & R31.\ The eMALL system shall get EV’s battery status.                                                                                           \\
+        & R34.\ The eMALL system shall communicate to a charging point to stop the charging session.                                                      \\
+        & R63.\ The eMALL system shall communicate to a charging station to schedule a maintenance at a specified timeframe.                              \\
+        \hline
+        Promotion Manager Service              & R56.\ The eMALL system shall allow a CPO to manage its promotions.                                                                              \\
+        & R57.\ The eMALL system shall allow a CPO to create a new promotion.                                                                             \\
+        & R58.\ The eMALL system shall allow a CPO to specify the details of the a promotion.                                                             \\
+        & R59.\ The eMALL system shall save the information of a promotion.                                                                               \\
+        & R60.\ The eMALL system shall initialize the information of a new promotion.                                                                     \\
+        \hline
+        DSO Manager Service                    & R64.\ The eMALL system shall allow a CPO to get the list of DSOs.                                                                               \\
+        & R65.\ The eMALL system shall allow a CPO to select a DSO from the list of DSOs.                                                                 \\
+        & R67.\ The eMALL system shall communicate to a specified DSO to send energy to the charging stations of a CPO.                                   \\
+        & R68.\ The eMALL system shall get the electricity selling prices from the DSOs.                                                                  \\
+        \hline
+        \caption{Mapping between components and requirements.}
+        \label{tab: map_comp_req}%
+    \end{longtable}
+\end{center}
 
 
 \section{Non Functional Requirements Traceability}
 \label{sec: non_functional_requirements_traceability}%
+
+\subsection{Performance Requirements}
+\label{subsec:performance_requirements}%
+The \textit{Number of users} section (3.3 of the RASD) says that the system should be able to handle $50\ 000$ users.
+The performance requirement is guaranteed thanks to the adopted of a microservices architecture and
+the insertion of a load balancer to distribute requests into the several nodes that constitute the system.
+In this way, the system avoids cases of network congestion. \\
+From the time response point of view, there are not strict performance requirements.
+According to the relations explained in the previous sections, there are not complex communications, so the time needed
+by the \verb|eMALL| system to answer to received requests won't be high.
+
+\subsection{Software System Attributes}
+\label{subsec:software_system_attributes}%
+Thanks to loose coupling considered for the identification of services, when a module fails the rest of the system keeps running.
+In this way, the availability of the system is guaranteed.
+When a module fails, it is not necessary to halt the whole system to proceed with the maintenance session:
+only the service in question will be maintained, the other ones won't be influenced.
+Finally, the system guarantees security for users information encrypting them before proceeding with the storage
+and memorizing all the data on the server side.
+The client, as already explained in the 2.7.3 section will be a thin client, so its purpose it to communicate with services
+interfaces and sending requests to the server, that will handle any insertion, update or deletion of data.
