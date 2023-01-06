@@ -300,7 +300,7 @@ When it receives the list of timeframes, the \verb|Booking| \verb|Service| asks 
 Knowing that more than one EVD uses the system, then one timeframe that is at first available might be unavailable when eMALL proceeds with the booking.
 To avoid it, the \verb|Booking| \verb|Service| asks for the \verb|Sessions| \verb|DBMS| to check the availability of the chosen timeframe and to lock it if so by calling the ``\verb|isTimeframeAvailable|'' function.
 
-Once the chosen timeframe is locked, the component asks the EVD to confirm the booking - ``\hyperlink{evdconfirmsbooking}{EVD Confirms the Booking}'' sequence diagram.
+Once the chosen timeframe is locked, the component asks the EVD to confirm the booking - \textit{``}\hyperlink{evdconfirmsbooking}{\textcolor{blue}{\textit{EVD Confirms the Booking}}}\textit{''} sequence diagram.
 In the end, the system sends the outcome of the process to the \verb|EVD Client Application|.
 \begin{figure}[H]
     \begin{center}
@@ -328,7 +328,7 @@ An EVD might want to redeem an available promotion in eMALL through his page.
 He has to call the ``\verb|redeemPromotion|'' function from the \verb|Promotion| \verb|Service| component, which retrieves all the promotions by running the get function of the list of promotions from the \verb|Promotions| \verb|DBMS|\@.
 When the \verb|Promotion| \verb|Service| has received the list, it asks the user to select which promotion he wants to redeem and then asks for a confirmation for its activation.
 
-If the user has decided to proceed with the activation, \verb|Promotion| \verb|Service| initializes the payment by calling the ``\verb|pay|'' function from the \verb|Payment| \verb|Service| component - ``\hyperlink{evdmakespayment}{EVD Makes a Payment}'' sequence diagram.
+If the user has decided to proceed with the activation, \verb|Promotion| \verb|Service| initializes the payment by calling the ``\verb|pay|'' function from the \verb|Payment| \verb|Service| component - \textit{``}\hyperlink{evdmakespayment}{\textcolor{blue}{\textit{EVD Makes a Payment}}}\textit{''} sequence diagram.
 When the payment successfully ends, the activation process runs through the \verb|EVD| \verb|Profile| \verb|Manager| \verb|Service| component by calling the ``\verb|activate|'' function that receives the paid promotion and the client in input.
 The Profile Manager calls the counterpart ``\verb|activate|'' function from the \verb|EVDs| \verb|DBMS|\@.
 \begin{figure}[H]
@@ -351,7 +351,7 @@ Once the charging point is unlocked, the \verb|Manage| \verb|Charging| \verb|Ses
 When the EVD confirms, the service asks the \verb|Charging| \verb|Session| \verb|Communication| \verb|Service| to start charging, which delegates to the \verb|Charging| \verb|Point| \verb|System|.
 Then, we have a loop sequence where the user asks indirectly for information from the \verb|Charging| \verb|Point| \verb|System| to see the status of his EV's battery.
 When the EVD decides to stop the charging process, he communicates it to the \verb|Manage| \verb|Charging| \verb|Session| \verb|Service|, which delegates the decision to the \verb|Charging| \verb|Session| \verb|Communication| \verb|Service|, which orders to stop charging to the \verb|Charging| \verb|Point| \verb|System|.
-Finally, the \verb|Manage| \verb|Charging| \verb|Session| \verb|Service| initializes the payment - \hyperlink{evdmakespayment}{EVD Makes a Payment} sequence diagram - and calls the ``\verb|save|'' function from the \verb|Sessions| \verb|DBMS| to save the EVD session.
+Finally, the \verb|Manage| \verb|Charging| \verb|Session| \verb|Service| initializes the payment - \textit{``}\hyperlink{evdmakespayment}{\textcolor{blue}{\textit{EVD Makes a Payment}}}\textit{''} sequence diagram - and calls the ``\verb|save|'' function from the \verb|Sessions| \verb|DBMS| to save the EVD session.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Charges His EV}
@@ -379,14 +379,33 @@ When the EVD wants to add a new activity to his calendar, he first opens the cal
 Once the user has received the calendar, he can insert the new activity by requesting a form to the \verb|Calendar| \verb|Service| through the ``\verb|insertNewActivity|'' function call.
 When the user fills out the form, he sends it to the \verb|Calendar| \verb|Service|, which calls the ``\verb|validateActivity|'' function from the \verb|Calendars| \verb|DBMS| and then the ``\verb|saveActivity|'' function from the same DBMS component.
 
-Finally, the service initializes asynchronously the function ``\verb|findBestSchedule|,'' which computes the best path in reaching the different appointments of the user depending on the battery status of the EV, its capacity, and energy costs.
+Finally, the service initializes asynchronously the function ``\verb|findBestSchedule|,'' which computes the best path in reaching the different appointments of the user depending on the battery status of the EV, its capacity, and energy costs - \textit{``}\hyperlink{suggestionfindsschedule}{\textcolor{blue}{\textit{Suggestion Service Finds the Best Schedule}}}\textit{''} sequence diagram.
 The call is asynchronous because the service is not essential for the EVD\@.
 If the \verb|Suggestion| \verb|Service| component is down, eMALL has to work without it and allow the users to add new activities to their calendars.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Adds a New Activity to the Calendar}
         \caption{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule sequence diagram}
-        \label{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule sequence diagram}
+        \label{fig:evd_adds_new_activity_calendar}
+    \end{center}
+\end{figure}
+
+\paragraph{\texorpdfstring{\protect\hypertarget{suggestionfindsschedule}{Suggestion service finds the best schedule}}{}}
+A feature of eMALL is to provide suggestions in booking charging sessions to allow the EVD to reach the different locations for his activities.
+The \verb|Suggestion| \verb|Service| component needs a client id to realize this operation, which is in input to the ``\verb|findBestSchedule|'' function.
+The \verb|Suggestion| \verb|Service| is a critical component of eMALL because it communicates with different modules and external APIs.
+At first, the ``\verb|findBestSchedule|'' function calls the ``\verb|openCalendar|'' function from the \verb|Calendars| \verb|DBMS| because it needs to know the user activities to compute the optimal suggestion.
+When the service gets the calendar, it asks for the client's EV from the \verb|EVDs| \verb|DBMS| and the path the user might follow according to the \verb|Navigator| \verb|System|.
+Once the \verb|Suggestion| \verb|Service| has received this information, it runs the ``\verb|optimize|'' function with the EV and the path in input.
+The last function orders the \verb|EV| \verb|System| and the \verb|Charging| \verb|Stations| \verb|DBMS| to provide the EV's battery status and the list of charging stations near the given path.
+With all the available information, the service asks the \verb|Sessions| \verb|DBMS| which timeframes are available in all the given charging stations.
+Finally, the \verb|Suggestion| \verb|Service| component will choose the best timeframe and charging station to book according to the EV information and the activities the EVD will attend.
+The process ends by asynchronously calling the ``\verb|confirmBooking|'' function from the \verb|Booking| \verb|Service| component with the client, charging station, and charging point in input - \textit{``}\hyperlink{evdconfirmsbooking}{\textcolor{blue}{\textit{EVD Confirms the Booking}}}\textit{''} sequence diagram.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/Suggestion Service Finds the Best Schedule}
+        \caption{Suggestion service finds the best schedule sequence diagram}
+        \label{suggestion_service_finds_best_schedule}
     \end{center}
 \end{figure}
 
