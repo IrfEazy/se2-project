@@ -445,7 +445,7 @@ At first, the service asks the \verb|Client| \verb|Application| to select the ch
 Once the user has filled out the form, the function returns the new charging point to the Charging Station Manager, which calls the update function with the charging station, the old charging point, and the up-to-date charging point from the \verb|Charging| \verb|Stations| \verb|DBMS|\@.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Changes the Metadata of a Charging Station}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Changes the Metadata of a Charging Point}
         \caption{CPO changes the metadata of a charging point sequence diagram}
         \label{cpo_changes_metadata_of_charging_point}
     \end{center}
@@ -490,7 +490,7 @@ After the alert, the service calls the ``\verb|update|'' function from the \verb
 The process ends by notifying the \verb|Client| \verb|Application| about the successful ending of the operation.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Decides the DSO from which Acquire Energy}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Decides the DSO from which to Acquire Energy}
         \caption{CPO decides the DSO from which acquire energy sequence diagram}
         \label{cpo_decides_dso_from_which_acquire_energy}
     \end{center}
