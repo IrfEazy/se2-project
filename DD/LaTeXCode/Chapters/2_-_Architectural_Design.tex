@@ -1,5 +1,18 @@
 \section{Overview}
 \label{sec: overview}%
+In this section, a general description of the architecture of the \verb|eMALL| system is provided.
+The main aspects of the design are:
+\begin{itemize}
+    \item \textbf{Client-Server architecture. } It consists of a presentation tier, an application and a data tier.
+    The firsts one allow the user to communicate with the server and shows him through the UI the answers it receives back from the application tier.
+    The second one receives requests from users, elaborates answers, changes the status communicating with the data tier and sends back the needed information to users.
+    Finally, the data tier stores, updates, and handles the information.
+    \item \textbf{Microservices. } Functionalities of the system are divided into several services in order to reduce dependencies between
+    modules and to increase scalability, availability and maintainability of the system.
+\end{itemize}
+Detailed description of the features of the architecture will be provided in the next sections.
+
+\newpage
 
 
 \section{Component View}
@@ -132,6 +145,8 @@ The components are:
     to communicate with the DSOs in order to get their prices and to enable electricity providing.
 \end{itemize}
 
+\newpage
+
 
 \section{Deployment View}
 \label{sec: deployment_view}%
@@ -250,6 +265,8 @@ communication interfaces previously shown in the component diagram.
         \label{fig: services}
     \end{center}
 \end{figure}
+
+\newpage
 
 
 \section{Runtime View}
@@ -514,6 +531,8 @@ The process ends by notifying the \verb|Client| \verb|Application| about the suc
         \label{cpo_decides_dso_from_which_acquire_energy}
     \end{center}
 \end{figure}
+
+\newpage
 
 
 \section{Component Interfaces}
