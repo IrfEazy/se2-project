@@ -286,7 +286,7 @@ When the EVD sends this information, the Authentication Service asks the \verb|E
 Finished processing the login, the last component returns an ACK message to the \verb|EVD| \verb|Authentication| \verb|Service|, which sends a confirmation or an error to the client.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Logs In}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/evd_logs_in}
         \caption{Registered EVD logs in sequence diagram}
         \label{fig:evd_logs_in}
     \end{center}
@@ -301,7 +301,7 @@ Sending the nickname, the Profile Manager saves the new information by passing t
 When the DBMS has sent back the ACK message, the \verb|EVD| \verb|Profile| \verb|Manager| \verb|Service| component returns the outcome of the process to the EVD\@.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Adds a Vehicle}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/evd_adds_a_vehicle}
         \caption{Registered EVD adds an EV sequence diagram}
         \label{fig:evd_adds_vehicle}
     \end{center}
@@ -321,7 +321,7 @@ Once the chosen timeframe is locked, the component asks the EVD to confirm the b
 In the end, the system sends the outcome of the process to the \verb|EVD Client Application|.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Books a Charge in a Charging Station}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/edv_books_a_charge_in_a_charging_station}
         \caption{Registered EVD books a charge sequence diagram}
         \label{fig:evd_books_charge_charging_station}
     \end{center}
@@ -334,7 +334,7 @@ Given the confirmation, the \verb|Booking| \verb|Service| runs the ``\verb|addSe
 After the \verb|Calendar| \verb|Service| has run the ``\verb|saveActivity|'' function of \verb|Calendars| \verb|DBMS|, \verb|Booking| \verb|Service| returns the outcome to the caller.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Confirms the Booking}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/evd_confirms_the_booking}
         \caption{Registered EVD confirms the booking sequence diagram}
         \label{fig:evd_confirms_booking}
     \end{center}
@@ -350,7 +350,7 @@ When the payment successfully ends, the activation process runs through the \ver
 The Profile Manager calls the counterpart ``\verb|activate|'' function from the \verb|EVDs| \verb|DBMS|\@.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Consults a Specific Promotion to Redeem}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/evd_consults_a_specific_promotion_to_redeem}
         \caption{Registered EVD consults a specific promotion that can be redeemed sequence diagram}
         \label{fig:evd_consults_specific_promotion_to_redeem}
     \end{center}
@@ -371,7 +371,7 @@ When the EVD decides to stop the charging process, he communicates it to the \ve
 Finally, the \verb|Manage| \verb|Charging| \verb|Session| \verb|Service| initializes the payment - \textit{``}\hyperlink{evdmakespayment}{\textcolor{blue}{\textit{EVD Makes a Payment}}}\textit{''} sequence diagram - and calls the ``\verb|save|'' function from the \verb|Sessions| \verb|DBMS| to save the EVD session.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Charges His EV}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/edv_charges_his_ev}
         \caption{Registered EVD charges his EV sequence diagram}
         \label{fig:evd_charges_his_ev}
     \end{center}
@@ -384,7 +384,7 @@ The Profile Manager asks the \verb|EVDs| \verb|DBMS| for the user's payment meth
 Finally, the \verb|Payment| \verb|Service| runs the ``\verb|pay|'' function from the \verb|Third-party| \verb|Payment| \verb|Service| with the amount to pay in input.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Makes a Payment}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/evd_makes_a_payment}
         \caption{Registered EVD makes a payment sequence diagram}
         \label{fig:evd_makes_payment}
     \end{center}
@@ -401,7 +401,7 @@ The call is asynchronous because the service is not essential for the EVD\@.
 If the \verb|Suggestion| \verb|Service| component is down, eMALL has to work without it and allow the users to add new activities to their calendars.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/EVD Adds a New Activity to the Calendar}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/evd_adds_a_new_activity_to_the_calendar}
         \caption{Registered EVD adds a new activity into the calendar and receives suggestions about charging schedule sequence diagram}
         \label{fig:evd_adds_new_activity_calendar}
     \end{center}
@@ -420,7 +420,7 @@ Finally, the \verb|Suggestion| \verb|Service| component will choose the best tim
 The process ends by asynchronously calling the ``\verb|confirmBooking|'' function from the \verb|Booking| \verb|Service| component with the client, charging station, and charging point in input - \textit{``}\hyperlink{evdconfirmsbooking}{\textcolor{blue}{\textit{EVD Confirms the Booking}}}\textit{''} sequence diagram.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/Suggestion Service Finds the Best Schedule}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/suggestion_service_finds_the_best_schedule}
         \caption{Suggestion service finds the best schedule sequence diagram}
         \label{suggestion_service_finds_best_schedule}
     \end{center}
@@ -432,7 +432,7 @@ Once the CPO has sent the information, the Authentication Service runs the ``\ve
 If the CPO operator has inserted the correct credentials, he will enter his homepage.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Logs In}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/cpo_logs_in}
         \caption{CPO logs in sequence diagram}
         \label{cpo_logs_in}
     \end{center}
@@ -444,7 +444,7 @@ When he has decided which charging station, he calls the ``\verb|setFee|'' funct
 Once the CPO has specified the new fee, the Charging Station Manager runs the ``\verb|updateFee|'' function from the \verb|Charging| \verb|Stations| \verb|DBMS|, which replaces the old fee value with the new one in input.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Sets a Fee}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/cpo_sets_a_fee}
         \caption{CPO sets a fee sequence diagram}
         \label{cpo_sets_fee}
     \end{center}
@@ -457,7 +457,7 @@ For each piece of information, the service waits for the CPO to reply before pro
 Once the service has received all the information, it passes them to the validate function called from the \verb|Charging| \verb|Stations| \verb|DBMS|\@.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Adds a New Charging Station}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/cpo_adds_a_new_charging_station}
         \caption{CPO adds a charging station sequence diagram}
         \label{cpo_adds_new_charging_station}
     \end{center}
@@ -469,7 +469,7 @@ When he chooses this operation, he calls the ``\verb|addChargingPoint|'' functio
 Once the service has received all the information, it passes them to the validate function called from the \verb|Charging| \verb|Stations| \verb|DBMS|\@.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Adds a New Charging Point}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/cpo_adds_a_new_charging_point}
         \caption{CPO adds a charging point sequence diagram}
         \label{cpo_adds_new_charging_point}
     \end{center}
@@ -481,7 +481,7 @@ At first, the service asks the \verb|Client| \verb|Application| to select the ch
 Once the user has filled out the form, the function returns the new charging point to the Charging Station Manager, which calls the update function with the charging station, the old charging point, and the up-to-date charging point from the \verb|Charging| \verb|Stations| \verb|DBMS|\@.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Changes the Metadata of a Charging Point}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/cpo_changes_the_metadata_of_a_charging_point}
         \caption{CPO changes the metadata of a charging point sequence diagram}
         \label{cpo_changes_metadata_of_charging_point}
     \end{center}
@@ -496,7 +496,7 @@ The Promotion Manager processes the result and, if it's correct, calls the funct
 If the store is successful, the service calls the ``\verb|initialize|'' function to make the promotion available to EVDs\@.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Activates a Promotion}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/cpo_activates_a_promotion}
         \caption{CPO activates a promotion sequence diagram}
         \label{cpo_activates_promotion}
     \end{center}
@@ -511,7 +511,7 @@ The function notifies the \verb|Charging| \verb|Point| \verb|System| that the ch
 When the Charging Station Manager receives the success notification of the alert, it saves the information into the \verb|Charging| \verb|Stations| \verb|DBMS| by calling the ``\verb|savePlannedMaintenance|'' function with the charging station, date, and hour in input.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Plans Maintenance Session for Charging Station}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/cpo_plans_maintenance_session_for_chaging_station}
         \caption{CPO plans a maintenance session for a charging station sequence diagram}
         \label{cpo_plans_maintenance_session_for_charging_station}
     \end{center}
@@ -526,7 +526,7 @@ After the alert, the service calls the ``\verb|update|'' function from the \verb
 The process ends by notifying the \verb|Client| \verb|Application| about the successful ending of the operation.
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=\linewidth]{SequenceDiagrams/CPO Decides the DSO from which to Acquire Energy}
+        \includegraphics[width=\linewidth]{SequenceDiagrams/cpo_decides_the_dso_from_which_to_acquire_energy}
         \caption{CPO decides the DSO from which acquire energy sequence diagram}
         \label{cpo_decides_dso_from_which_acquire_energy}
     \end{center}
