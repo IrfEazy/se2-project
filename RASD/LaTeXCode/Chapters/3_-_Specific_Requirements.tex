@@ -37,7 +37,9 @@ The following list describes the required software interfaces that the \verb|eMA
     \item \textbf{CPMS and DSOs.} The CPMSs offered to the CPO communicate with the DSOs through their APIs.
     CPOs can get selling prices set by the DSOs and they can decide from which DSO to acquire electricity.
     \item \textbf{eMALL and third-party payment services.} The \verb|eMALL| system offers the possibility to pay through
-    external payment services to the EVD. The communication happens thanks to APIs offered by the companies that handle payments.
+    external payment services to the EVD\@.
+    The communication happens thanks to APIs offered by the companies that handle payments.
+    \item \textbf{eMALL and Navigator Service.} The \verb|eMALL| system communicates with an external Navigator System to be able to map the position and compute paths between the provided location and the destination place.
 \end{itemize}
 
 \subsection{Communication Interfaces}
@@ -145,7 +147,7 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|eMALL| system shall allow a registered EVD to add a new activity into his calendar.                                                    \\
         \hline
-        R\creq      & The \verb|eMALL| system shall allow a registered EVD to specify the starting hour of a new activity.                                             \\
+        R\creq      & The \verb|eMALL| system shall allow a registered EVD to specify the timeframe of a new activity.                                                 \\
         \hline
         R\creq      & The \verb|eMALL| system shall allow a registered EVD to specify the destination of a new activity.                                               \\
         \hline
@@ -207,6 +209,8 @@ the satisfiability of the goals:
         \hline
         R\creq      & The \verb|eMALL| system shall store users information.                                                                                           \\
         \hline
+        R\creq      & The \verb|eMALL| system shall allow the CPO to manage its company personal information.                                                          \\
+        \hline
         \caption{Requirements.}
         \label{tab: req}%
     \end{longtable}
@@ -223,25 +227,25 @@ After that, to facilitate reading, the section reports the text of all the assum
 \begin{center}
     \begin{longtable}{|p{0.06\linewidth}|p{0.34\linewidth}|p{0.6\linewidth}|}
         \hline
-        \textbf{Goal} & \textbf{Domain assumptions}                       & \textbf{Requirements}                                                          \\
+        \textbf{Goal} & \textbf{Domain assumptions}                       & \textbf{Requirements}                                                               \\
         \hline
-        G\cmg         & DA1, DA2, DA4, DA5                                & R1, R2, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R69                    \\
+        G\cmg         & DA1, DA2, DA4, DA5                                & R1, R2, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R69                         \\
         \hline
-        G\cmg         & DA1, DA2, DA3, DA4, DA11                          & R1, R2, R18, R19, R20, R21, R22, R23, R24, R69                                 \\
+        G\cmg         & DA1, DA2, DA3, DA4, DA11                          & R1, R2, R18, R19, R20, R21, R22, R23, R24, R69                                      \\
         \hline
-        G\cmg         & DA1, DA2, DA3, DA4, DA5, DA6, DA7, DA8, DA9, DA11 & R1, R2, R3, R4, R5, R6, R11, R21, R22, R23, R24, R69                           \\
+        G\cmg         & DA1, DA2, DA3, DA4, DA5, DA6, DA7, DA8, DA9, DA11 & R1, R2, R3, R4, R5, R6, R11, R21, R22, R23, R24, R69                                \\
         \hline
-        G\cmg         & DA1, DA2, DA4, DA6, DA9                           & R1, R2, R4, R25, R26, R27, R28, R29, R30, R31, R32, R33, R35, R36, R69         \\
+        G\cmg         & DA1, DA2, DA4, DA6, DA9                           & R1, R2, R4, R25, R26, R27, R28, R29, R30, R31, R32, R33, R35, R36, R69              \\
         \hline
-        G\cmg         & DA1, DA2, DA4, DA5                                & R1, R2, R7, R37, R38, R39, R40, R41, R42, R43, R69                             \\
+        G\cmg         & DA1, DA2, DA4, DA5                                & R1, R2, R7, R37, R38, R39, R40, R41, R42, R43, R69                                  \\
         \hline
-        G\cmg         & DA1, DA2, DA4                                     & R44, R45, R46, R47, R48, R49, R50, R51, R52, R53, R54, R55, R61, R62, R63, R69 \\
+        G\cmg         & DA1, DA2, DA4                                     & R44, R45, R46, R47, R48, R49, R50, R51, R52, R53, R54, R55, R61, R62, R63, R69, R70 \\
         \hline
-        G\cmg         & DA1, DA2, DA4, DA7, DA8, DA9                      & R4, R26, R27, R28, R29, R30, R31, R34, R44, R55, R69                           \\
+        G\cmg         & DA1, DA2, DA4, DA7, DA8, DA9                      & R4, R26, R27, R28, R29, R30, R31, R34, R44, R55, R69                                \\
         \hline
-        G\cmg         & DA1, DA2, DA4                                     & R44, R56, R57, R58, R59, R60, R69                                              \\
+        G\cmg         & DA1, DA2, DA4                                     & R44, R56, R57, R58, R59, R60, R69                                                   \\
         \hline
-        G\cmg         & DA1, DA2, DA4, DA9, DA10                          & R4, R44, R64, R65, R66, R67, R68, R69                                          \\
+        G\cmg         & DA1, DA2, DA4, DA9, DA10                          & R4, R44, R64, R65, R66, R67, R68, R69                                               \\
         \hline
         \caption{Mapping on goals.}
         \label{tab: map_on_g}%
@@ -418,6 +422,7 @@ After that, to facilitate reading, the section reports the text of all the assum
     maintenance session for a charging station.
     \item R63.\ The \verb|eMALL| system shall communicate to a charging station to schedule a maintenance at a specified timeframe.
     \item R69.\ The \verb|eMALL| system shall store users information.
+    \item R70.\ The \verb|eMALL| system shall allow the CPO to manage its company personal information.
 \end{itemize}
 
 \subsubsection{The CPO can manage a charging session}
@@ -656,7 +661,7 @@ that shows the messages exchanged between the entities and the called functions.
 
     \begin{figure} [H]
         \begin{center}
-            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_books_a_charge_in_a_charging_station}
+            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/evd_books_a_charge_in_charging_station}
             \caption{Registered EVD books a charge sequence diagram}
             \label{fig: evd_books_charge_seq_diag}
         \end{center}
@@ -951,7 +956,7 @@ that shows the messages exchanged between the entities and the called functions.
 
     \begin{figure} [H]
         \begin{center}
-            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/cpo_adds_a_charging_stations}
+            \includegraphics[width=0.9\linewidth]{Images/SequenceDiagrams/cpo_adds_a_charging_station}
             \caption{CPO adds a charging station sequence diagram}
             \label{fig: cpo_adds_station_seq_diag}
         \end{center}
@@ -1276,6 +1281,7 @@ that shows the messages exchanged between the entities and the called functions.
         & R67.\ The \verb|eMALL| system shall communicate to a specified DSO to send energy to the charging stations of a CPO\@.                                 \\
         & R68.\ The \verb|eMALL| system shall get the electricity selling prices from the DSOs.                                                                  \\
         & R69.\ The \verb|eMALL| system shall store users information.                                                                                           \\
+        & R70.\ The \verb|eMALL| system shall allow the CPO to manage its company personal information.                                                          \\
         \hline
         \caption{Mapping on requirements.}
         \label{tab: map_on_req}
@@ -1347,7 +1353,7 @@ Summing all the values, it is:
 \]
 So, a memory storage of $200\ GB$ will be enough for the first year of the \verb|eMALL| system.
 
-\textbf{Time response} \\
+\subsection*{Time response}
 The \verb|eMALL| system should handle all the requests within 3 seconds, given that there are not strict time response requirements.
 
 \newpage
