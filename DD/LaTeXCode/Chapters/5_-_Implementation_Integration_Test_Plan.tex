@@ -1,9 +1,24 @@
-\section{Implementation}
+\section{Implementation \& Integration}
 \label{sec: implementation}%
-
-
-\section{Integration}
-\label{sec: integration}%
+As showed in the deployment diagram, there relations between services that should be considered for the definition of
+the order of implementation of the modules.
+We suppose that DBMS are already deployed systems that will be used by our components.
+It follows a list of a possible path for the implementation.
+Each step lists modules that can be deployed in parallel.
+The order is defined by the dependencies between components.
+It is:
+\begin{itemize}
+    \item We start with the modules that directly communicate with DBMSs. They are: Registration Service,
+    EVD Authentication Service, EVD Profile Manager Service, Explore Stations Service, Calendar Service, CPO Authentication Service,
+    CPO Profile Manager Service, Charging Stations Manager Service.
+    \item The implementation should continue with modules that allow communication with external services.
+    They are: Payment Service, Charging Station Communication Service, DSO Manager Service.
+    \item Now it is the turn of components that have strong relations with previous implemented service, as:
+    Promotion Service, Booking Service and Charging Session Service.
+    \item Finally, it has to be implemented the module that communicates with the greater number of services: Suggestion Service.
+    In this final step, it should be completed the process for the asynchronous call started by Calendar Service
+    after the addition of a new activity.
+\end{itemize}
 
 
 \section{Test Plan}
